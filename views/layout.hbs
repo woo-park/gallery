@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+  </head>
+  <body>
+
+    {{#if user}}
+
+        <h1>Logged in : {{user.username}}</h1>
+        <a href="/logout">logout</a>
+
+    {{else}}
+
+        <a href="/login">Login</a>
+        <br>
+        <a href="/register">Register</a>
+
+    {{/if}}
+
+
+
+    {{#if message}}
+        <div class="">{{message}}</div>
+    {{/if}}
+
+
+    {{{body}}}
+    
+    <script src="/js/script.js" charset="utf-8"></script>
+  </body>
+</html>

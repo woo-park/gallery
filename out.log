@@ -1,0 +1,10 @@
+started server on port 3333
+MongoDB connected
+index page session_id is  1CkodSz8nGmdaPjW2WL6eeBsPN_LjH79
+[0mGET / [36m304 [0m56.226 ms - -[0m
+[0mGET /js/script.js [36m304 [0m9.365 ms - -[0m
+[0mGET /stylesheets/style.css [32m200 [0m20.271 ms - 83[0m
+[0mGET /favicon.ico [0m- [0m- ms - -[0m
+[0mGET /login [36m304 [0m10.890 ms - -[0m
+[0mGET /stylesheets/style.css [36m304 [0m4.181 ms - -[0m
+[0mGET /js/script.js [36m304 [0m9.500 ms - -[0m

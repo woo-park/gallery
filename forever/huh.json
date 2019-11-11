@@ -1,0 +1,15 @@
+{
+    // Comments are supported
+    "uid": "server",
+    //useful as a namespace for processes (must wrap in a string)
+                     //e.g. forever start --uid "production" app.js
+                         //forever stop production
+    "append": true,
+    "watch": true,
+    "script": "server.js",
+    "sourceDir": "./"
+
+
+
+    //Logging and output file locations By default forever places all of //the files it needs into /$HOME/.forever.
+}

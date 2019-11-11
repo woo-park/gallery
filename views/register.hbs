@@ -1,0 +1,15 @@
+<h1>Register</h1>
+
+
+{{#if message}}
+  <div class="">
+      <p>{{message}}</p>
+  </div>
+{{/if}}
+
+
+<form method="POST" action="/register">
+    username: <input name="username" type="text">
+    password: <input name="password" type="password">
+    <input type="submit" value="register">
+</form>

@@ -84,7 +84,7 @@ if (app.get('env') == 'development') {
     res.render('error', {
       message: err.message,
       error: {}
-    })
+    });
   });
 }
 
@@ -95,9 +95,9 @@ app.use(function(err, req, res, next) {
   res.render('error', {
     message: err.message,
     error: {}
-  })
+  });
 });
 
 const PORT = process.env.PORT || 3333;
-app.listen(PORT)
+app.listen(PORT);
 console.log(`started server on port ${PORT}`);

@@ -46,7 +46,7 @@ router.post('/register', function(req, res, next) {
                       req.body.password,
                       function(err, account) {
                         if(err) {
-                          res.render('register', {message:'Your registration information is invalid'})
+                          res.render('register', {message:'Your registration information is invalid'});
                         } else {
                           passport.authenticate('local')(req, res, function() {
                             res.redirect('/');
@@ -62,31 +62,33 @@ router.get('/login', function(req, res, next) {
 });
 
 
-router.post('/login', function(req, res, next) {
-  passport.authenticate('local', function(err, user) {
-    if (err) { return next(err) }
-    if (!user) { return res.redirect('/login', {message:'Your login or password is incorrect.'}) }
-    req.logIn(user, function(err) {
-      if(err) {return next(err)}
-      return res.redirect('/');
-    });
+// router.post('/login', function(req, res, next) {
+//   passport.authenticate('local', function(err, user) {
+//     if (err) { return next(err) }
+//     if (!user) { return res.redirect('/login', {message:'Your login or password is incorrect.'}) }
+//     req.logIn(user, function(err) {
+//       if(err) {return next(err)}
+//       return res.redirect('/');
+//     });
+//
+//     // this was causing err....
+//     // if(user) {
+//     //   req.logIn(user, function(err) {
+//     //     return res.redirect('/');
+//     //
+//     //   });
+//     // }
+//     // console.log('in here')
+//     // res.render('login', {message:'Your login or password is incorrect.'});
+//
+//     // works as well but can't send the err message
+//     // router.post('/login', passport.authenticate('local', {successRedirect: '/', failureRedirect: '/login', failureFlash: false}));
+//
+//
+//   })(req, res, next);
+// });
 
-    // this was causing err....
-    // if(user) {
-    //   req.logIn(user, function(err) {
-    //     return res.redirect('/');
-    //
-    //   });
-    // }
-    // console.log('in here')
-    // res.render('login', {message:'Your login or password is incorrect.'});
-
-    // works as well but can't send the err message
-    // router.post('/login', passport.authenticate('local', {successRedirect: '/', failureRedirect: '/login', failureFlash: false}));
-
-
-  })(req, res, next);
-});
+  router.post('/login', passport.authenticate('local', {successRedirect: '/', failureRedirect: '/login'}));
 
 
 router.get('/logout', function(req, res) {
@@ -98,8 +100,10 @@ router.get('/logout', function(req, res) {
 
 router.get('/gallery', ensureAuthenticated ,function(req, res, next) {
 
-    res.render('gallery')
+    res.render('gallery');
 });
+
+
 
 // router.post('/gallery', passport.authenticate('local', { successRedirect: '/gallery', failureRedirect: '/login' }));
 
@@ -113,5 +117,9 @@ router.get('/gallery', ensureAuthenticated ,function(req, res, next) {
 //     });
 //   })(req, res, next);
 // });
+
+router.get('/summary', function(req, res, next) {
+  res.render('summary')
+});
 
 module.exports = router;

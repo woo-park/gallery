@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const passportLocalMongoose = require('passport-local-mongoose');
 ////username, password, salt, etc available due to passport-local-mongoose
-
+const db_config = require('./config/keys').mongoURI;
 
 const UserSchema = new mongoose.Schema({
   username: String,
@@ -16,14 +16,15 @@ mongoose.model('Account', UserSchema);    //created our model here
 
 
 // DB config
-const db_config = require('./config/keys').mongoURI;
+
 
 mongoose.connect(db_config, {useNewUrlParser: true
                             ,useUnifiedTopology: true})
                 .then(()=>{ console.log('MongoDB connected') })
                 .catch(error => console.log(error));
 
-
+// mongoose.connect('mongodb://localhost/myproject',{useNewUrlParser: true
+//                             ,useUnifiedTopology: true})
 
 
 // const conn = mongoose.createConnection('mongodb+srv://woo:January2011@mycluster-uk96g.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});

@@ -18,13 +18,13 @@ mongoose.model('Account', UserSchema);    //created our model here
 // DB config
 
 
-mongoose.connect(db_config, {useNewUrlParser: true
-                            ,useUnifiedTopology: true})
-                .then(()=>{ console.log('MongoDB connected') })
-                .catch(error => console.log(error));
+//mongoose.connect(db_config, {useNewUrlParser: true
+    //                        ,useUnifiedTopology: true})
+  //              .then(()=>{ console.log('MongoDB connected') })
+//                .catch(error => console.log(error));
 
-// mongoose.connect('mongodb://localhost/myproject',{useNewUrlParser: true
-//                             ,useUnifiedTopology: true})
+ mongoose.connect('mongodb://localhost/myproject',{useNewUrlParser: true
+                             ,useUnifiedTopology: true})
 
 
 // const conn = mongoose.createConnection('mongodb+srv://woo:January2011@mycluster-uk96g.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});

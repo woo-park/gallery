@@ -1,0 +1,50 @@
+<a href="/summary">Summary</a>
+<h1>Here are some lists!</h1>
+<style media="screen">
+  .left {
+    width: 100px;
+    height:25;
+    display:inline-block;
+    background-color:darkgrey;
+    text-align: center;
+  }
+  .right {
+    width: 100px;
+    height:25;
+    display:inline-block;
+    background-color:lightgray;
+    text-align: center;
+  }
+</style>
+
+{{#if summary}}
+  <div class="title">
+      <p>{{summary.name}}</p>
+
+  </div>
+
+  <div class="lists">
+
+    <ul>
+      {{#each summary.decodedText as |word|}}
+
+        <li><span class="left">{{word.[0]}}</span><span class="right">{{word.[1]}}</span></li>
+
+    {{/each}}
+    </ul>
+  </div>
+
+
+
+  <script type="text/javascript">
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const lists = document.querySelector('.lists');
+
+
+
+    });
+
+  </script>
+{{/if}}

@@ -4,6 +4,7 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 
 const { ensureAuthenticated } = require('./ensure');
+const decode = require('./../decode')
 
 Account = mongoose.model('Account');// bringing our model
 
@@ -54,6 +55,8 @@ router.post('/register', function(req, res, next) {
                         }
                     });
 });
+
+
 
 
 router.get('/login', function(req, res, next) {
@@ -118,8 +121,58 @@ router.get('/gallery', ensureAuthenticated ,function(req, res, next) {
 //   })(req, res, next);
 // });
 
-router.get('/summary', function(req, res, next) {
+router.get('/summary',ensureAuthenticated,  function(req, res, next) {
   res.render('summary')
 });
+
+
+
+router.post('/summary', function(req, res, next) {
+  const { name, text } = req.body;
+
+  let errors = [];
+  if (!name) {
+    errors.push({ msg: 'please write text title'});
+  }
+  if (!text) {
+    errors.push({ msg: 'please submit text' });
+  }
+  if (errors.length > 0) {                //not required
+    console.warn('enter name and text!');
+  }
+
+  decodedText = decode(text);
+
+  const decodedNestedArray = Object.entries(decodedText.data);  // converting obj to array
+
+  decodedNestedArray.sort(function(a, b) {      //sorting array - most appeared to least
+  return b[1] - a[1] ;
+  });
+
+
+  req.session.name = name;                      //setting up local var
+  req.session.decodedText = decodedNestedArray
+
+
+
+  res.redirect('/summary-list');
+
+  // res.render('summary-list', { summary: { textname: name, textcontent: decodedText}});    //but prolly have to redirect
+
+  // ,{'summary': {
+  //                           name:name,
+  //                           text: decodedText
+  //                         }
+  // }
+});
+
+router.get('/summary-list', function(req, res, next) {
+  let name = req.session.name;                  //destructure local var
+  let decodedText = req.session.decodedText;
+
+  res.render('summary-list', {summary: {name: name, decodedText: decodedText}});
+
+});
+
 
 module.exports = router;

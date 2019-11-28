@@ -47,7 +47,7 @@
               <div id="textContentVisible">
 
               </div>
-              <div id="textContent">
+              <div id="textContent" style ="visibility:hidden;">
                 {{summary.text}}
               </div>
     </div>
@@ -75,7 +75,7 @@
       const lists = document.querySelector('.lists');
       let textContent = document.getElementById('textContent');
       let textContents = textContent.childNodes[0].nodeValue;
-
+      console.log(textContents);
 
       let textContentVisible = document.getElementById('textContentVisible');
 

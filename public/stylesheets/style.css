@@ -2,7 +2,64 @@ body {
   background-color: azure;
 }
 
+ul{
+  margin:0;padding:0;
+}
 a {
   color:#00B7FF
   text-decoration:none;
+}
+a:visited {
+  color:#00B7FF;
+  text-decoration: none;
+}
+#navigation{
+  list-style:none;
+}
+
+.three_column{
+    display: flex;
+    justify-content: space-between;
+
+}
+.three_column > div{
+    /* give width */
+    border:1px solid blanchedalmond;
+    width:33%;
+    height:100vh;
+    display: flex;
+}
+
+.col-1 { flex-basis: 70%; }
+.col-2 {
+    flex-basis: 15%;
+    justify-content: center;
+
+}
+.col-3 {
+    flex-basis: 15%;
+    justify-content: center;
+
+
+
+}
+
+
+#textBox{
+  width:200px;
+  height:200px;
+}
+#textTitle{
+  width:200px;
+  height:100%;
+}
+
+
+.field_box {
+  display: flex
+  /* background-color: blue; */
+}
+.field_box label{
+  flex-basis: 20%;
+  /* background-color: blue; */
 }

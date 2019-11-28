@@ -7,28 +7,60 @@
   </head>
   <body>
 
-    {{#if user}}
-
-        <h1>Logged in : {{user.username}}</h1>
-        <a href="/logout">logout</a>
-
-    {{else}}
-
-        <a href="/login">Login</a>
-        <br>
-        <a href="/register">Register</a>
-
-    {{/if}}
 
 
 
-    {{#if message}}
-        <div class="">{{message}}</div>
-    {{/if}}
 
 
-    {{{body}}}
-    
+
+
+
+
+
+    <div class='three_column'>
+      <div class='col-1'>
+        {{{body}}}
+
+      </div>
+      <div class='col-2'>
+
+        <div class="">
+          <ul id='navigation'>
+              <li><a href="/">Home</a></li>
+              <li><a href="/gallery">Gallery</a></li>
+              <li><a href="/summary">Summary</a></li>
+              <li>Wave Generator</li>
+              <li>VR</li>
+              <li>AR</li>
+              <li>2d/3d Game</li>
+
+          </ul>
+        </div>
+      </div>
+      <div class='col-3'>
+
+          {{#if user}}
+          <div class="">
+            <h3>Logged in : {{user.username}}</h3>
+            <a href="/logout">logout</a>
+          </div>
+
+
+          {{else}}
+          <div class="">
+            <a href="/login">Login</a>
+            <br>
+            <a href="/register">Register</a>
+          </div>
+
+
+          {{/if}}
+          {{#if message}}
+              <div class="">{{message}}</div>
+          {{/if}}
+      </div>
+  </div>
+
     <script src="/js/script.js" charset="utf-8"></script>
   </body>
 </html>

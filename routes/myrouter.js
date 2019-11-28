@@ -151,8 +151,8 @@ router.post('/summary', function(req, res, next) {
 
 
   req.session.name = name;                      //setting up local var
-  req.session.decodedText = decodedNestedArray
-
+  req.session.decodedText = decodedNestedArray;
+  req.session.text = text;
 
 
   res.redirect('/summary-list');
@@ -169,10 +169,86 @@ router.post('/summary', function(req, res, next) {
 router.get('/summary-list', function(req, res, next) {
   let name = req.session.name;                  //destructure local var
   let decodedText = req.session.decodedText;
+  let text = req.session.text;
 
-  res.render('summary-list', {summary: {name: name, decodedText: decodedText}});
+  res.render('summary-list', {summary: {name: name, decodedText: decodedText, text: text}});
 
 });
+
+
+const fs = require('fs');
+const request = require('request');
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
+
+
+//
+// router.post('/data', function(req, res, next) {
+// console.log(req.body,'reqbody');
+//   req.session.areacode = req.body;
+//   console.log(req.session.areacode, 'areacode req session')
+//   res.redirect('/data')
+// });
+//
+// router.get('/data', function(req, res, next) {
+//   // req.session.areacode = 44065;
+//   let areacode;
+//   if (req.session.areacode) {
+//     console.log(req.session.areacode)
+//     areacode = req.session.areacode;
+//     console.log(areacode)
+//   } else {
+//     areacode = {areacode: 44065}
+//   }
+// // 41001
+//   console.log(areacode.areacode,'arrrrcode')
+//   let num = areacode.areacode
+//   const retrieved = request(`http://coolwx.com/cgi-bin/findbuoy.cgi?id=${num}`, function(error, response, html){
+//     if(error) {
+//       console.log('err occured while requesting');
+//     }
+//     if(!error){
+//       const splitData = html.split("<HR>")[1];
+//       const splitData2 = splitData.split("</PRE>")[0]
+//       const lines = splitData2.split(/\r\n|\n|\r/);
+//
+//       heights = [];
+//       periods = [];
+//       acc = 'Height,Period '
+//       for (let i = 1; i < lines.length - 1; i ++) {
+//         let height = lines[i].substr(71, 4)
+//         let period = lines[i].substr(76, 2)
+//
+//         if (height == '    ' || period == '  '){
+//
+//         }
+//         else{
+//           acc += height
+//           acc += ','
+//           acc += period
+//           acc += '\n'
+//
+//           // console.log(height , period)
+//           // res.send(height)
+//         }
+//       }
+//       res.render('postdata', {areacode:acc})
+//     }
+//   });
+//
+//   // console.log(retrieved);
+//   // res.send(contents.height)
+//
+// });
+
+
+// https://github.com/fitnr/buoyant/blob/master/buoyant/buoy.py
+// https://www.ndbc.noaa.gov/wstat.shtml
+// https://sdf.ndbc.noaa.gov/stations.shtml
+
 
 
 module.exports = router;

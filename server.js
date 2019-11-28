@@ -7,12 +7,16 @@ const passport = require('passport');
 const session = require('express-session');
 const URLSlugs = require('mongoose-url-slugs');
 
+
+
 // learning
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 
 require('./db');
 require('./auth');
+
+
 
 
 app.use(express.urlencoded({ extended: false }));   //body parser

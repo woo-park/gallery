@@ -127,13 +127,13 @@ function setup() {
 }
 
 function get_new_data() {
-    loadTable( 'http://i6.cims.nyu.edu/~wp503/interactive/wave/wavedata/getdata.php', parse_new_data );
+    loadTable( 'https://wooyongpark.com/data', parse_new_data );
 }
 
-
+// http://i6.cims.nyu.edu/~wp503/interactive/wave/wavedata/getdata.php
 // okay trying make it searchable
 function fetchNewData() {
-  loadTable('http://i6.cims.nyu.edu/~wp503/interactive/wave/wavedata/getdata.php', function(res){
+  loadTable('https://wooyongpark.com/mydata', function(res){
     console.log(res);
   })
 }

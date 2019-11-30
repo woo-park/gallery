@@ -128,12 +128,14 @@ function setup() {
 
 function get_new_data() {
     loadTable( 'https://wooyongpark.com/data', parse_new_data );
+    console.log('initial polling done')
 }
 
 // http://i6.cims.nyu.edu/~wp503/interactive/wave/wavedata/getdata.php
 // okay trying make it searchable
 function fetchNewData() {
-  loadTable('https://wooyongpark.com/mydata', function(res){
+  loadTable('https://wooyongpark.com/data', function(res){
+    console.log('polling')
     console.log(res);
   })
 }

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WaveLines Documentation</title>
+    <style>
+        body{
+            margin:0;
+            background-color: azure;
+        }
+        #container{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            height: 100vh;
+        }
+        
+        p{
+            line-height: 2 ;
+        }
+
+        #pics{
+            display:flex;
+            flex-direction: column;
+            /* justify-content: center; */
+            align-items: center;
+            margin: 0;
+            height: 100vh;
+        }
+        img{
+            width:600px;
+            padding:20px;
+            
+        }
+        #documentation{
+            margin-left:10px;
+            width: 600px;
+            height:100vh;
+        }
+    </style>
+</head>
+<body>
+    <div id='container'>
+        <div id = 'documentation'>
+            <h1>WaveLines Documentation</h1>
+            <h3>Woo Park</h3>
+            
+            <h5>Proposal</h5>
+            <p>
+                First of all, I would like to create a data visualization that pulls data from not only users' input but also external datasets. If not, I want to use the customized CSV datasets that are composed of the swell, the wind speed, the time period between sets, and etc.
+
+                And then, I want to re-render this wave visualization into a 3-d object. My ultimate goal is to show the wave from various perspectives, left, center, right, and maybe from the bottom.
+                
+                I have not figured out how to gamify this yet. But I will use the users' interactions as the main data resource for this project.
+            </p>
+
+            <h5>Summary</h5>
+            <p>
+                It’s a visualization of wave based on real data at Rockaway beach. There is an app that I look at it almost everyday. It’s called magic-seaweed. It’s an app that shows wave chart, but it’s just numbers and very basic sketch of a wave. So I wanted to make it more exciting than just boring numbers.
+            </p>
+            <p>
+                On the canvas there are window.innerWidth amount of lines. It is drawing one line on the left, and then shifting one to the right. That one line is drawn based on the three things. Line is drawing based on a sine curve as the outline. Amplitude is applied to the sine curve, which is drawn from the dataset. Offset of the line changes according to the tide(high or low). Last but not least, angle changes as the amplitude changes.
+            </p>
+            <p>
+                As a result, each wave is different in height and length, using noise_value. Time in this example, (for showing purposes), 1 hr is equal to 10 sec. Low tide, which is the lowest point of offset, is around 04:00am and 16:00pm here.
+            </p>
+            <p>
+                Data is polled from a website and updates every 15 minutes. I am blending canvas with background image. Two things are happening in the background. A feature that changes 0 opacity(black) to 255 opacity(white). Another filter that changes from red to yellow. 
+            </p>
+
+            <ol>
+                Amplitude
+            
+                <li>Created an array of empty 500 values called 'y'.</li>
+                <li>Started giving values to y[0] and pushed back y[0] value to y[1]
+                    <ol>
+                        <li>y[0] to y[1] ... y[index.length -1 ] to y[index.length]</li>
+                    </ol>
+                </li>
+                <li>Added color range on the wave based on their index position.</li>
+                <li>Added opacity on the wave based on their index position.</li>
+                <li>Added function that changes angle whenever the amplitude of the wave changes.
+                    <ol>
+                        <li>if the amplitude(height) is high, the angle has to become small.</li>
+                        <li>if the amplitude is small, the angle has to get bigger.</li>
+                    </ol>
+                </li>
+            </ol>
+
+            <ol>
+                Noise
+                
+                <li>Adding value from the noise curve was better than adding random value because it's more organic.</li>
+                <li>First, noise value was applied to each line.</li>
+                <li>Second, this wasn't what I wanted. I wanted a more subtle change. </li>
+                <li>Third, a new noise value was added to each line. I had to add a noise value to one segment of the wave.</li>
+                <li>Then I was able to cut the wave into many segments. </li>
+                <li>Found very bottom & top point of the curve.</li>
+                <li>Lines between one top point to the next top point was one segment of the wave.</li>
+                <li>Adding noise value to the periods of the wave. This makes each wave different and unique (height & lengthwise).</li>
+            </ol>
+
+            <ol>CSV data
+                
+                <li>Based on the sine curve, and the CSV data, I was able to count hours.</li>
+                <li>Hour counting variable is linked with the sine curve.</li>
+                <li>Based on the hour and the CSV data, I was able to tell high-tide and low-tide.</li>
+                <li>Using map function, the offset of waves were adjusted</li>
+                <li>The background needed a function that changes color from dark to bright. </li>
+                <li>The background needed a function that changes color from red->orange->yellow->white at 6:00 am</li>
+                <li>The basic table was added to the HTML. </li>
+                <li>The chart was added through javascript so that the chart changes whenever the new CSV data comes in.</li>
+            </ol>
+
+            <ol>Basic interface 
+                
+                <li>Preloaded two data sets so that the user can pick either 'today' or 'tomorrow.'</li>
+                <li>Made the wave corresponds based on the input 'today' or 'tomorrow'</li>
+                <li>Added toggle function on the chart where the user can hide and view as they wish.</li>
+                <li>A perspective was added. It responds based on the user's mouseX and mouseY.</li>
+                <li>Added 'more' or 'less' lines so that the drawing is a bit more optimized and efficient.</li>
+                <li>Table highlights according to the current hour counter.</li>
+            </ol>
+
+
+
+
+
+
+
+            
+        </div>
+        <div id = 'pics'>
+                <!-- <img src="wavepic.jpg" alt="img1">
+                <img src="wavepic0.jpg" alt="img2"> -->
+                <img src="wavepic1.png" alt="img3">
+                <img src="wavepic2.png" alt="img4">
+                <img src="wavepic3.png" alt="img5">
+                <img src="wavepic4.png" alt="img6">
+                <img src="wavepic5.png" alt="img7">
+                <img src="wavepic6.png" alt="img8">
+                <img src="wavepic7.png" alt="img9">
+                <img src="wavepic8.png" alt="img10">
+                <img src="wavepic9.png" alt="img11">
+                <img src="wavepic10.png" alt="img12">
+                <img src="wavepic11.png" alt="img13">
+            </div>
+        
+        
+
+
+    </div>
+
+
+</body>
+</html>

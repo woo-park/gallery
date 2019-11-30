@@ -178,6 +178,19 @@ router.get('/summary-list', function(req, res, next) {
 
 const fs = require('fs');
 const request = require('request');
+
+
+//wow i dont even have to set these up
+// router.get('/wave', function(req, res, next) {
+//   console.log(__dirname,'dirname')
+//   res.sendFile(path.join(__dirname + '/wave/index.html'));
+//
+//
+// });
+
+
+
+
 // app.use(function(req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "*");
 //   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ten More Days - Avicii</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="css/style.css">
+    <style media="screen">
+
+    *{
+              box-sizing:content-box;
+              margin:0;
+              padding:0;
+    }
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        background-color:black;
+    }
+
+    #frame {
+      height: 600px;
+      width: auto;
+
+      margin: auto;
+      /* border:1px dashed red; */
+      display: flex;
+      flex-shrink: 0;
+      /* not sure what this does */
+      align-items:center;
+      justify-content: space-evenly;
+      perspective: 2500px;
+      /* !important */
+      /* make this larger as you add more videos to it */
+    }
+
+    .scene {
+      height:600px;
+      width:auto;
+
+      /* border:0.4px solid white; */
+      /* box-sizing: content-box; */
+      transition: all 500ms ease-in-out;
+      position: relative;
+    }
+
+    .videos{
+      width:auto;
+      /* auto because video is proportioned by the width */
+      height:100%;
+    }
+
+    div{
+      overflow:hidden;
+    }
+    .sideBlock{
+      width:200px;
+      /* need to change let length as well */
+      height:100%;
+      background-color:darkslategrey;
+      /* opacity:0.5; */
+      transition: all 500ms ease-in-out;
+      box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+      /* box-shadow:5px 5px blue, 10px 10px red, 10px 10px green; */
+      z-index: -1;
+      filter: blur(4px);
+    }
+
+    .sideBlockLeft{
+      transform-origin:left;
+    }
+    .sideBlockRight{
+      transform-origin:right;
+    }
+
+    div.description {
+      position: absolute;
+      bottom:10px;
+      left:10px;
+    }
+
+    .description p{
+      color:white;
+    }
+
+    #menu{
+
+      position: fixed;
+      top:0px;
+      right:0px;
+      z-index: 999;
+      /* background-color: olive; */
+
+
+      /* box-shadow: inset 0 0 0 200px rgba(255,255,255,0.3);
+      filter: blur(10px); */
+
+    }
+
+    div.backdrop{
+      width:250px;
+      height:100vh;
+      position: fixed;
+      top:0px;
+      z-index:998;
+      opacity:0.8;
+      right:20px;
+      background-color: olive;
+      mix-blend-mode:exclusion;
+      animation: 3s linear 0s forwards slideDown
+    }
+
+    ul{
+      height:100vh;
+      opacity: 1;
+      overflow-y: scroll;
+    }
+
+    .links li a {
+        text-decoration: none;
+        color:azure
+    }
+    .links li a:hover{
+        color: rosybrown;
+    }
+    .links{
+        list-style: none;
+    }
+    .links li{
+        padding:8px;
+        animation: 3s linear 0s forwards slideDown
+    }
+    @keyframes slideDown {
+        0% { margin-top: -200%}
+        50% { margin-top: -100%; }
+        100% { margin-top: 0%; }
+    }
+    .indent{
+        margin-left: 100px;
+    }
+
+
+    .crossout{
+      text-decoration: line-through;
+    }
+    </style>
+  </head>
+
+  <body>
+      <div id="menu">
+          <ul class='links'>
+              <li class="crossout"><a href="../380index">380index</a></li>
+              <!-- not done -->
+
+              <li><a href="../wallBall">Wall Ball</a></li>
+              <li><a href="../cartesian">Cartesian Photoshop</a></li>
+              <li class ="indent"><a href="../cartesian/selfportrait">Self Portrait</a></li>
+              <li><a href="../penguine">Penguine Game</a></li>
+              <li><a href="../snowfield">VR Snowfield</a></li>
+
+              <li class="crossout"><a href="../facialTracking">AR Facial Tracking</a></li>
+              <!-- not done -->
+
+              <li><a href="../vrFeather">VR Feather Game</a></li>
+              <li><a href="../speechControl">Speech Control</a></li>
+              <li><a href="../citizenScience">Citizen Science Blog</a></li>
+              <li><a href="../wave">Wave Generator</a></li>
+              <li><a href="../2d3d">2d Painting to 3d</a></li>
+              <li><a href="../flower">Plant Flower</a></li>
+              <li><a href="../processing">Processing Prototypes</a></li>
+
+
+              <li class="crossout"><a href="../ethonography">Ethonography Blog</a></li>
+              <!-- not done -->
+              <li class="crossout"><a href="../coffee">Coffee Beans Blog</a></li>
+              <!-- not done -->
+
+              <li><a href="../hypertext">Hypertext (Interactive Novel)</a></li>
+
+              <li><a href="../webglThreejs">WebGL Three.js</a></li>
+              <li><a href="../physicsThreejs">WebGL Physi.js</a></li>
+              <!-- not done -->
+              <li><a href="../svgIcons">Svg Icons</a></li>
+              <!-- not done -->
+              <li><a href="../vanillaJavascript">Vanilla Javascript</a></li>
+              <li><a href="../css3Painting">Plane CSS3 Painting</a></li>
+              <li><a href="../canvasPixels">Canvas Video Pixels</a></li>
+              <li><a href="../css3Animation">Plane CSS3 Animation</a></li>
+              <li class="crossout"><a href="../d3">D3</a></li>
+              <!-- not done -->
+
+              <li><a href="">Alt Tag Generator</a></li>
+              <li><a href="">Real Time VR Multiplayer Maze</a></li>
+          </ul>
+      </div>
+      <div class="backdrop">
+
+      </div>
+
+      <div id="frame">
+        <div class="sideBlock sideBlockLeft"></div>
+
+        <div class="scene">
+            <video class="videos" autoplay loop muted src="images/sonspot.mp4">
+            </video>
+            <div class="description">
+              <a href="#">Link</a>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </div>
+
+        <div class="sideBlock sideBlockRight"></div>
+        <div class="sideBlock sideBlockLeft"></div>
+
+        <div class="scene">
+            <video class="videos" autoplay loop muted src="images/fan.mp4"></video>
+            <div class="description">
+              <a href="#">Link</a>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </div>
+
+        <div class="sideBlock sideBlockRight"></div>
+        <div class="sideBlock sideBlockLeft"></div>
+
+        <div class="scene">
+            <video class="videos" autoplay loop muted src="images/fan.mp4"></video>
+            <div class="description">
+              <a href="#">Link</a>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </div>
+
+        <div class="sideBlock sideBlockRight"></div>
+        <div class="sideBlock sideBlockLeft"></div>
+
+        <div class="scene">
+            <video class="videos" autoplay loop muted src="images/fan.mp4"></video>
+            <div class="description">
+              <a href="#">Link</a>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </div>
+
+        <div class="sideBlock sideBlockRight"></div>
+        <div class="sideBlock sideBlockLeft"></div>
+
+        <div class="scene">
+            <video class="videos" autoplay loop muted src="images/spot1.mp4"></video>
+            <div class="description">
+              <a href="#">Link</a>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </div>
+
+
+        <div class="sideBlock sideBlockRight"></div>
+
+      </div>
+
+
+
+    <script type="text/javascript">
+      let sideBlock = document.querySelectorAll('.sideBlock');
+      let videos = document.querySelectorAll('.videos');
+      let scene = document.querySelectorAll('.scene');
+
+      videos.forEach((each) => {
+        each.addEventListener("mouseenter", function( event ) {
+
+
+          console.log(event.target.parentElement.nextElementSibling)//but need to check if it exists
+          console.log(event.target.parentElement.previousElementSibling)
+
+          let rightSideBlock = event.target.parentElement.nextElementSibling
+          let leftSideBlock =  event.target.parentElement.previousElementSibling
+          let rotateAmount = 40;
+          leftSideBlock.style.transform = `rotateY(${rotateAmount}deg)`
+
+          console.log(leftSideBlock.style,'style')
+          rightSideBlock.style.transform = `rotateY(-${rotateAmount}deg)`
+
+
+          let length = 200;
+          let pushback = length *
+              (Math.sin(rotateAmount * Math.PI / 180) / Math.sin(90 * Math.PI / 180))
+          console.log(pushback)
+          event.target.parentElement.style.transform = `translateZ(-${pushback}px)`;
+
+        })
+
+        each.addEventListener("mouseout", function( event ) {
+
+          event.target.parentElement.style.transform = "translateZ(0px)";
+
+          let leftSideBlock = event.target.parentElement.nextElementSibling
+          let rightSideBlock =  event.target.parentElement.previousElementSibling
+
+          leftSideBlock.style.transform = "rotateY(0deg)  translateZ(0px)"
+          rightSideBlock.style.transform = "rotateY(0deg)  translateZ(0px)"
+
+        })
+      })
+
+
+    </script>
+
+    <!-- <script src="js/script.js"></script> -->
+  </body>
+</html>

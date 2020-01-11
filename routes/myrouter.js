@@ -181,13 +181,22 @@ router.get('/summary-list', function(req, res, next) {
 const fs = require('fs');
 
 
-//wow i dont even have to set these up
+// //wow i dont even have to set these up
 // router.get('/wave', function(req, res, next) {
-//   console.log(__dirname,'dirname')
+//   console.log(__dirname,'dirname');
 //   res.sendFile(path.join(__dirname + '/wave/index.html'));
-//
-//
 // });
+//
+//
+//
+// //wow i dont even have to set these up
+// router.get('/assignment03', function(req, res, next) {
+//   console.log(__dirname,'dirname');
+//   res.sendFile(path.join(__dirname + '/assignment03/index.html'));
+// });
+
+
+
 
 
 
@@ -274,6 +283,10 @@ console.log(req.body,'reqbody');
 });
 
 let acc;
+let areacode;               //lets set default
+areacode = {areacode: 52200}
+
+
 router.get('/data', function(req, res, next) {
   // req.session.areacode = 44065;
   let areacode;
@@ -282,7 +295,7 @@ router.get('/data', function(req, res, next) {
     areacode = req.session.areacode;
     console.log(areacode)
   } else {
-    areacode = {areacode: 44065}
+    areacode = {areacode: 52200}
   }
 // 41001
 
@@ -302,6 +315,7 @@ router.get('/data', function(req, res, next) {
       periods = [];
       acc = 'Height,Period '
       for (let i = 1; i < lines.length - 1; i ++) {
+
         let height = lines[i].substr(71, 4)
         let period = lines[i].substr(76, 2)
 
@@ -322,7 +336,7 @@ router.get('/data', function(req, res, next) {
       // req.session.acc = acc;
 
       //!important undo this
-      res.render('data', {layout: false ,areacode:acc})
+      res.render('data', {layout: false , areacode: acc})
       // res.redirect('/mydata');
     }
   });
@@ -331,9 +345,138 @@ router.get('/data', function(req, res, next) {
   // res.send(contents.height)
 });
 
+let my_lat_lon = null;
+router.post('/mydata', function(req, res, next) {
+  console.log(req.body,'reqbody');
+  req.session.areacode = req.body;
+  console.log(req.session.areacode, 'areacode req session')
+  // res.redirect('/mydata')//original
+  res.redirect('/wave')
+
+
+    let areacode;
+    if (req.session.areacode) {
+      console.log(req.session.areacode)
+      areacode = req.session.areacode;
+      console.log(areacode)
+    } else {
+      areacode = {areacode: 52200}
+    }
+  // 41001
+    console.log(areacode.areacode,'arrrrcode')
+
+
+    /*
+    moved this under post handle bc the areacode gets posted here, retrieved new data, parse, then accumulate on to acc
+    -> acc bc it is global,
+    -> get request -> renders the most recent pushed post areacode
+    */
+
+    let num = areacode.areacode
+
+    console.log(num)
+    const retrieved = request(`http://coolwx.com/cgi-bin/findbuoy.cgi?id=${num}`, function(error, response, html){
+      if(error) {
+        console.log('err occured while requesting');
+      }
+      if(!error){
+        const splitData = html.split("<HR>")[1];
+        const splitData2 = splitData.split("</PRE>")[0]
+        const lines = splitData2.split(/\r\n|\n|\r/);
+
+        heights = [];
+        periods = [];
+        acc = 'Height,Period '
+        for (let i = 1; i < lines.length - 1; i ++) {
+          let lat_lon = lines[i].substr(13, 11)
+          console.warn(lat_lon,'lat and longitude')
+          my_lat_lon = lat_lon;
+
+          let height = lines[i].substr(71, 4)
+          let period = lines[i].substr(76, 2)
+
+          if (height == '    ' || period == '  '){
+
+          }
+          else{
+            acc += height
+            acc += ','
+            acc += period
+            acc += '\n'
+
+            // console.log(height , period)
+            // res.send(height)
+          }
+        }
+
+        // req.session.acc = acc;
+
+        //!important undo this
+        // res.render('mydata', {layout: false , areacode: acc})   //!important changed this to mydata from data
+        // res.redirect('/mydata');
+      }
+    });
+
+});
+
 router.get('/mydata', function(req, res, next) {
 
-  res.render('mydata', {layout: false, areacode:acc})
+
+//
+  let areacode;
+  if (req.session.areacode) {
+    console.log(req.session.areacode)
+    areacode = req.session.areacode;
+    console.log(areacode)
+  } else {
+    areacode = {areacode: 52200}
+  }
+// 41001
+  console.log(areacode.areacode,'arrrrcode')
+//
+//
+//   let num = areacode.areacode
+//   console.log(num)
+//   const retrieved = request(`http://coolwx.com/cgi-bin/findbuoy.cgi?id=${num}`, function(error, response, html){
+//     if(error) {
+//       console.log('err occured while requesting');
+//     }
+//     if(!error){
+//       const splitData = html.split("<HR>")[1];
+//       const splitData2 = splitData.split("</PRE>")[0]
+//       const lines = splitData2.split(/\r\n|\n|\r/);
+//
+//       heights = [];
+//       periods = [];
+//       acc = 'Height,Period '
+//       for (let i = 1; i < lines.length - 1; i ++) {
+//         let height = lines[i].substr(71, 4)
+//         let period = lines[i].substr(76, 2)
+//
+//         if (height == '    ' || period == '  '){
+//
+//         }
+//         else{
+//           acc += height
+//           acc += ','
+//           acc += period
+//           acc += '\n'
+//
+//           // console.log(height , period)
+//           // res.send(height)
+//         }
+//       }
+//
+//       // req.session.acc = acc;
+//
+//       //!important undo this
+//       res.render('mydata', {layout: false , areacode: acc})   //!important changed this to mydata from data
+//       // res.redirect('/mydata');
+//     }
+//   });
+
+// been causing err here --
+  res.render('mydata', {layout: false, areacode: acc, my_lat_lon: my_lat_lon});
 });
 
 

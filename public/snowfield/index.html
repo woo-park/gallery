@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="UTF-8">
+
+		<!-- P5 libraries -->
+		<script language="javascript" type="text/javascript" src="./p5/p5.min.js"></script>
+
+		<!-- A-Frame libraries -->
+		<script language="javascript" type="text/javascript" src="./p5//aframe.min.js"></script>
+
+		<!-- AFrameP5 library -->
+		<script language="javascript" type="text/javascript" src="./p5/aframep5.js"></script>
+
+		<!-- P5 Sketch -->
+		<script language="javascript" type="text/javascript" src="./sketch.js"></script>
+
+		<!-- custom styles -->
+		<style>
+			body {
+				padding: 0;
+				margin: 0;
+			}
+		</style>
+	</head>
+	<body>
+
+		<!-- container to hold our VR scene - make sure to give this element an ID of 'VRScene' -->
+	    <a-scene id="VRScene">
+
+
+				<a-assets id="VRAssets">
+
+					<img src="./equirectangular_snow.jpg" id="sky1"></a-assets>
+						<img src="./snow_tile.jpg" id="ground">
+
+						<a-asset id="house_obj" src="./cabin/model.obj"></a-asset>
+						<a-asset id="house_mtl" src="./cabin/materials.mtl"></a-asset>
+
+
+				</a-assets>
+
+				<a-sky id="theSky" src="#sky1" color="rgb(255,255,255)"></a-sky>
+
+
+	    </a-scene>
+
+	</body>
+</html>

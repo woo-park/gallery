@@ -1,12 +1,12 @@
 <!doctype html>
 <html>
   <head>
-    <link href="https://fonts.googleapis.com/css?family=Jomolhari&display=swap" rel="stylesheet"> 
-    <link href="https://fonts.googleapis.com/css?family=Jomolhari|Playfair+Display+SC&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Jomolhari&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Jomolhari|Playfair+Display+SC&display=swap" rel="stylesheet">
     <script src="./p5/p5.min.js"></script>
     <script src="./p5/p5.dom.js"></script>
     <script src="./p5/p5.sound.min.js"></script>
-    
+
     <title>WaveLines</title>
     <style>
 
@@ -19,10 +19,10 @@
       padding:0;
       /* background:url("back3.jpg") center; */
       /* background:url("back2.jpg") center; */
-      
+
       /* background:url("back2-2.jpg") center; */
-   
-    }   
+
+    }
 
     #container {
       width:100%;
@@ -36,7 +36,7 @@
       /* opacity: 0.9; */
       mix-blend-mode: soft-light;
       border: 3px solid #222222;
-      
+
     }
     #doclink{
       text-decoration: none;
@@ -54,7 +54,7 @@
       /* display:none; */
 
       position: absolute;
-      top:120px;
+      top:180px;
       left:10px;
       z-index: 999;
 
@@ -71,15 +71,15 @@
       /* maybe width is needed */
       width: 330px;
       padding-top:10px;
-      
-      -moz-transition: all 1s; 
-      -webkit-transition: all 1s;  
+
+      -moz-transition: all 1s;
+      -webkit-transition: all 1s;
       transition: all 1s;
-      
+
       border-radius: 5px;
       display: flex;
       flex-direction: column;
-      height:1fr; 
+      height:1fr;
       /* can change manually here 700px */
       /* hack */
       /* padding-bottom:100px; */
@@ -114,6 +114,7 @@
 
       /* maybe width is needed */
       width: 330px;
+      height: 150px;
 
       transition: all 1s;
       border-radius: 5px;
@@ -122,7 +123,7 @@
       /* border: 3px solid #222222; */
       box-shadow: 10px 10px 5px black;
     }
-   
+
     #formsheet > div{
       /* background:url("back7.jpg") reverse; */
       background-size: cover;
@@ -130,18 +131,23 @@
 
       display: flex;
       flex-direction: column;
-      height: 60px; 
+      height: 60px;
 
       justify-content: center;
       align-items: center;
       border-radius: 5px;
       /* margin-top: 20px; */
-      
-      
+
+
     }
     #formsheet > div div {
       padding:2px;
+      margin-top:5px;
     }
+    #formsheet > div div input:hover {
+      background-color: blue;
+    }
+
     .backleft{
       /* opacity: 0.4; */
       color: azure ;
@@ -162,13 +168,13 @@
       cursor:pointer;
       font-size:16px;
       font-weight: bold;
-      
+
       /* margin:0 auto; */
       display:flex;
       /* width:1em; */
       justify-content: center;
       align-items: center;
-      
+
       /* border:1px solid black; */
       /* border: solid; */
       border-radius: 5px;
@@ -180,7 +186,7 @@
       height:30px;
     }
 
-    #close_sign > span{   
+    #close_sign > span{
       display:block;
       transform: rotate(-45deg);
     }
@@ -222,7 +228,7 @@
         <div id = "chart">
           <legend>Wave Chart</legend>
           <table>
-            <caption><strong><i>Rockaway Beach</i></strong></caption>
+            <caption><strong><i id="currentBeach">Location:&nbsp</i></strong></caption>
               <thead>
                 <tr>
                   <th scope="col">&nbsp;</th>
@@ -312,21 +318,23 @@
                 </tr>
               </tfoot>
           </table>
-          
+
         </div>
-        
+
         <div id="close_sign"><span id = 'x'>&#43;</span></div>
       </div>  <!-- end of id instruction -->
       <div id="formsheet">
         <div>
             <!-- <p>Select to see next couple days</p> -->
-            <form class="backleft">
-              <select class='invert backleft' id="mySelect" type="button" onclick="choosing()" value="Click Me!">
-                <option>Live Data</option>
-                <option>Sample</option>
-              </select>
-              <input class='invert backright' type="button" onclick="getSubmit()" value="Show">
-            </form>
+            <div class="">
+              <form class="backleft">
+                <select class='invert backleft' id="mySelect" type="button" onclick="choosing()" value="Click Me!">
+                  <option>Live Data</option>
+                  <option>Sample</option>
+                </select>
+                <input class='invert backright' type="button" onclick="getSubmit()" value="Show">
+              </form>
+            </div>
             <div>
               <input class='enable_btn backleft' type="button" onclick="disable()" value="Resume">
               <input class='enable_btn backright' type="button" onclick="enable()" value="Pause">
@@ -336,12 +344,24 @@
               <input class='backright' type="button" onclick="more_lines()" value="Less">
             </div>
             <div><a id='doclink' href="./documentation/index.html">Documentation</a></div>
+            <div class="">
+              <form class="" action="/mydata" method="POST" id="areaPost">
+                <select class="backleft" name="areacode" id="areacode">
+                  <option  value="52200" id='temp_option'>52200</option>
+                  <option  value="51209">51209</option>
+                </select>
+                <input id="locationSubmitBtn" class="backleft" type="submit" name="" value="submit">
+              </form>
+            </div>
+
+
+
         </div>
         <!-- <input id="cheating" type="button" onclick="cheatMode()" value="Cheat Mode"> -->
         <!-- <p id="demo"></p> -->
       </div> <!-- end of id level -->
     </div>  <!-- end of container-->
-  
+
     <script src="sketch.js"></script>
   </body>
 </html>

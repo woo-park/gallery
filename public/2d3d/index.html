@@ -1,0 +1,1847 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Demo Page</title>
+
+    <script src="./p5/p5.min.js" type="text/javascript"></script>
+    <script src="./p5/p5.dom.js" type="text/javascript"></script>
+    <script src="./p5/p5.sound.min.js" type="text/javascript"></script>
+
+    <!-- <script src="sketch.js" type="text/javascript"></script> -->
+
+    <style>
+      body{
+        overflow:hidden;
+        margin:0;
+        padding:0;
+      }
+      #container {
+        display: flex;
+        margin: 0;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        background-color:black;
+      }
+
+      #p5_loading {
+        width: 500px;
+        height: 500px;
+        border: 5px solid chocolate;
+        font-size: 200%;
+        text-align: center;
+        margin: auto;
+
+        /* mark this div as relatively positioned - this won't move it, but
+           it will cause the div to 'remember' its position on the page -
+           this is important since any child divs will need this information
+           in order to position themselves correctly */
+        position: relative;
+      }
+
+      #progress_bar {
+        background-color: slateblue;
+        height: 25px;
+        width: 0%;
+        position: absolute;
+
+        top: 250px;
+        left: 0px;
+      }
+
+      body{
+        overflow: hidden;
+        /* border: 1px solid black; */
+      }
+
+      /* middle front*/
+      #canvas1{
+        opacity:1;
+        position: absolute;
+        z-index:-990;
+        /* transform: translateY(119px) translateZ(-15px) rotateX(98.2deg)  */
+        /* background-color: aqua; */
+        transform: translateY(250px) rotateX(90deg);
+
+
+      }
+
+      /* right */
+      #canvas2{
+        opacity:1;
+        position: absolute;
+        z-index:-990;
+        /* transform: translateX(-129px) translateY(-82px) translateZ(-55px) rotateY(300deg); */
+        /* background-color: blue; */
+        transform:  translateX(250px) rotateY(-90deg)
+      }
+
+      /* left */
+      #canvas3{
+        opacity:1;
+        position: absolute;
+        z-index:-990;
+        /* transform: translateX(129px) translateY(-82px) translateZ(-55px) rotateY(-300deg); */
+        /* background-color:blueviolet; */
+        transform: translateX(-250px) rotateY(-270deg);
+      }
+
+      /* center */
+      #canvas4{
+        opacity:1;
+        position: absolute;
+        /* z-index:-900; */
+        /* transform: translateZ(-280px) translateY(-87px) */
+        /* background-color: grey; */
+        z-index:-990;
+        transform:  translateZ(-250px);
+      }
+
+      /* top */
+      #canvas5{
+        opacity:1;
+        position: absolute;
+        /* background-color:cadetblue; */
+        z-index:-990;
+        /* transform: translateY(-242.5px) translateZ(-11px) rotateX(-107.1deg); */
+
+        /* transform: translateY(116px) translateZ(-30px) rotateX(100deg)  */
+        transform:  translateY(-250px) rotateX(-90deg);
+      }
+
+      #canvas_container {
+        transform-style: preserve-3d;
+        perspective: 340px;
+        display: flex;
+        margin: 0;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        transform: rotateX(20deg) rotateY(10deg);
+      }
+
+      #level {
+        position: absolute;
+        top:100px;
+        left:100px;
+        z-index: 999;
+        /* border: 3px solid black; */
+        border-radius: 10px;
+        padding:4px;
+        color:azure;
+        background-color:black;
+        opacity:0.7;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        height:1fr;
+        justify-content: center;
+        align-items: center;
+
+
+        /* background-color:black; */
+
+      }
+      #level > div{
+        /* padding-top:4px; */
+      }
+
+      #cheating{
+        background-color:black;
+        color:white;
+      }
+      .invert{
+        margin-bottom:8px;
+        background-color:black;
+        color:azure;
+      }
+      input{
+        border-radius: 5px;
+      }
+      #instruction{
+        position: absolute;
+        top:300px;
+        left:100px;
+        z-index: 999;
+        /* border: 3px solid black; */
+        border-radius: 10px;
+        padding:4px;
+        color:azure;
+        background-color:black;
+        opacity:0.7;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        width: 400px;
+        height:1fr;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #close{
+        cursor:pointer;
+        width:15px;
+        text-align: center;
+        /* margin:0 auto; */
+        border:1px solid white;
+        margin-top:10px;
+      }
+      #close:hover {
+        background-color: azure;
+        color:black;
+      }
+      #inbox{
+        padding:20px;
+        text-align: justify;
+        border:1px solid white;
+        border-radius: 5px;
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="p5_loading" class="loadingclass">Wait for it... KaBOOM!
+        <div id="progress_bar"></div>
+      </div>
+      <div id="canvas_container">
+        <div id="canvas3"></div>
+        <div id="canvas1"></div>
+        <div id="canvas2"></div>
+        <div id="canvas4"></div>
+        <div id="canvas5"></div>
+      </div>
+      <div id="level">
+        <p>Select Difficulty Level</p>
+
+        <form>
+          <select class='invert' id="mySelect" type="button" onclick="choosing()" value="Click Me!">
+            <option>Level1</option>
+            <option>Level2</option>
+            <option>Level3</option>
+          </select>
+          <input class='invert' type="button" onclick="getOption()" value="Play">
+        </form>
+        <div>
+          <input class='invert' type="button" onclick="disable()" value="Resume Game">
+          <input class='invert' type="button" onclick="enable()" value="Pause Game">
+        </div>
+
+
+
+
+
+        <input id="cheating" type="button" onclick="cheatMode()" value="Cheat Mode">
+        <p id="demo"></p>
+      </div>
+      <div id="instruction">
+        <div id="close">X</div>
+        <p id="inbox">
+          This is a game called "Eat Bubble" where you avoid the enemies' attack and try to eat as many bubbles as possible.
+          There are three difficulty levels to choose from -- level 1 being the easiest (most bubbles) and 3 the hardest (fewest bubbles). The user could adjust the difficulty level based on personal preferences at any time
+          There's also a cheat mode, where you can get rid of all the enemies and get focused on eating bubbles only.
+          The game will document your personal highest record and keep track of the bubbles eaten for the current round, as well as the amount of lives you still have for this particular round.
+          Have fun with this game :) Inspiration from M.C. Escher!
+          <br>
+          <br>
+          <strong><i>Instructions:</i></strong> use the arrow keys to move the player. The player is the white bacteria whereas the enemies are the violet ones. Avoid the enemies and eat as many bubbles as you can!
+        </p>
+        <p>(click on the <strong><i>X</i></strong> above to close this window)</p>
+      </div>>
+    </div>
+    <script src="./src/sketch.js"></script>
+    <script>
+    //variables
+    function cheatMode(){
+      //call some boolean that turns off enemies
+      let toggle_color = document.getElementById("cheating");
+      if(cheat) {
+        toggle_color.style.backgroundColor = 'black'
+        toggle_color.style.color = 'white'
+      } else {
+        toggle_color.style.backgroundColor = 'chocolate';
+        toggle_color.style.color = 'white'
+        // toggle_color.style.color = 'black'
+      }
+
+      cheat = !cheat;
+
+    }
+
+    let close_intro = document.getElementById("instruction");
+    let close_x = document.getElementById('close');
+
+    close_x.addEventListener('click', () => {
+      console.log('clicked')
+      close_intro.style.zIndex = -999;
+    })
+    // function closing() {
+
+    // }
+
+    let level1;
+    let level2;
+    let level3;
+    // let choosing;
+
+    pause_key = false;
+    function choosing() {
+      pause = true;
+      pause_key = true;
+    }
+
+    function getOption() {
+
+      var obj = document.getElementById("mySelect");
+      var picked = obj.options[obj.selectedIndex].text;
+      // document.getElementById("demo").innerHTML = picked;
+      if (picked == 'Level1'){
+        pause = true;
+        level2 = false;
+        level3 = false;
+        points = 0;
+        life = 10;
+
+        setTimeout(() => {
+          level1 = true;
+        }, 500);
+
+        // if (document.activeElement instanceof HTMLElement)  //nice works
+        // document.activeElement.blur();
+
+
+        pause = false;
+      } else if (picked == 'Level2') {
+        pause = true;
+
+        level3 = false;
+        level1 = false;
+        points = 0;
+        life = 10;
+
+        setTimeout(() => {
+          level2 = true;
+        }, 500);
+
+        // if (document.activeElement instanceof HTMLElement)
+        // document.activeElement.blur();
+
+
+
+        pause = false;
+      } else if (picked == 'Level3') {
+        pause = true;
+
+        level2 = false;
+        level1 = false;
+        points = 0;
+        life = 10;
+
+        setTimeout(() => {
+          level3 = true;
+        }, 500);
+        // if (document.activeElement instanceof HTMLElement)
+        // document.activeElement.blur();
+
+        pause = false;
+      }
+      console.log('1', level1, '2', level2,  '3', level3 );
+      pause_key = false;
+    }
+
+
+    function disable() {
+      pause = false;
+      pause_key = false;
+
+        // document.getElementById("demo").innerHTML = pause
+    }
+
+    function enable() {
+
+      pause = true;
+      pause_key = true;
+        // document.getElementById("demo").innerHTML = pause
+    }
+    let object_number = 20;     //setting the default number of objects
+
+    let player1;
+    let player2;
+    let player3;
+    let player4;
+    let player5;
+
+    let player1_bool = true;
+    let player2_bool = false;
+    let player3_bool = false;
+    let player4_bool = false;
+    let player5_bool = false;
+
+    let translatedX = false;
+    let translatedY = false;
+
+    // let currentCanvas = 2
+    // let newCanvas = undefined
+
+
+    let new_posX = 0;
+    let new_posY = 0;
+    let toggle = false;
+
+
+    //variables
+    let user_left, user_right;
+    let enemy_left, enemy_right;
+    let floor_background;
+    let key_graphic;
+    let keys = [];
+    let keys2 = [];
+    let keys3 = [];
+    let keys4 = [];
+    let keys5 = [];
+
+    let points = 0;
+    var counter = 0;
+    var maxCounter = 0;
+
+    let pause = true;
+    let cheat = false;
+    //   setTimeout(() => {
+    //     pause = true;
+    //     setTimeout(() => {
+    //       pause = false;
+    //     }, 1000);
+    //   }, 1000);
+
+
+    let ran_x;
+    let ran_y;
+
+    let life = 10;
+
+    let opp1;
+    let opp2;
+    let opp3;
+    let opp4;
+    let opp5;
+
+    let bubs;
+    bubs = points;
+
+
+    //sound
+    let kaching;
+
+    //!question : i can't load them here? do i need to load them every sktech?
+    // function preload () {
+    //     user_left = loadImage('images/user_left.png');
+    //     user_right = loadImage('images/user_right.png');
+    //     enemy_left = loadImage('images/enemy_left.png');
+    //     enemy_right = loadImage('images/enemy_right.png');
+    //     floor_background = loadImage('images/floor_background.jpg');
+    //     key_graphic = loadImage('images/key_graphic.png');
+    // }
+
+    class Objects {
+
+      constructor(size, xPos, yPos, xSpeed, ySpeed){
+        this.size = size;
+        this.xPos = xPos;
+        this.yPos = yPos;
+        this.xSpeed = xSpeed;
+        this.ySpeed = ySpeed;
+
+        // this.red = random(0, 255)
+      }
+
+      move() {
+        this.xPos += this.xSpeed;
+        this.yPos += this.ySpeed;
+
+        if(this.xPos > 500 || this.xPos < 0) {
+          this.xSpeed *= -1;
+        }
+
+        if(this.yPos > 500 || this.yPos < 0) {
+          this.ySpeed *= -1;
+        }
+      }
+
+      reset() {
+        this.xPos = Math.floor((Math.random() * 500) + 1);
+        this.yPos = Math.floor((Math.random() * 500) + 1);
+      }
+    }
+
+    class Opp {
+      constructor(size = 1, xPos = 250, yPos = 250, xSpeed = 1, ySpeed = 1){
+        this.size = size;
+        this.xPos = xPos;
+        this.yPos = yPos;
+        this.xSpeed = xSpeed;
+        this.ySpeed = ySpeed;
+
+        this.myGraphic = enemy_left;
+
+        this.xDest = Math.floor((Math.random() * 500) + 1);
+        this.yDest = Math.floor((Math.random() * 500) + 1);
+      }
+
+    }
+
+    class Player {                            // #############################################################
+        constructor(xPos = 250, yPos = 250) {
+          // initial pos
+          this.xPos = xPos;
+          this.yPos = yPos;
+
+          // default facing left
+          this.graphic_facing = user_left;
+        }
+
+        reset() {
+          this.xPos = Math.floor((Math.random() * 500) + 1);
+          this.yPos =  Math.floor((Math.random() * 500) + 1);
+        }
+
+        update_pos(arg1, arg2) {                         // #############################################################
+          this.xPos = arg1;
+          this.yPos = arg2;
+        }
+
+    }
+
+
+
+    //c1
+    let sketch1 = function(p) {
+
+      p.preload = function () {
+        user_left = p.loadImage('images/char3_small.png');
+        user_right = p.loadImage('images/char3_small.png');
+        enemy_left = p.loadImage('images/char1_small.png');
+        enemy_right = p.loadImage('images/char1_small.png');
+        floor_background = p.loadImage('images/background1_resized.png');
+        floor_background2 = p.loadImage('images/background1_resized2.png');
+
+        key_graphic = p.loadImage('images/bubble1.png');
+        kaching = p.loadSound("./kaching.mp3")
+      }
+
+
+      p.setup = function() {
+        let cx = p.createCanvas(500, 500);
+        cx.style('display','block');  // NECCESSARY OR it makes wierd border
+        cx.style('margin','auto');    //
+
+        p.text("South ", p.width/2, p.height);
+        p.text("North ", p.width/2, p.height - 100);
+        p.text("West ", p.width/2 - 100, p.height - 50);
+        p.text("East ", p.width/2 + 100, p.height - 50);
+
+        ran_x = Math.floor((Math.random() * 500) + 1);
+        ran_y = Math.floor((Math.random() * 500) + 1);
+
+
+        p.background(0);
+
+        p.imageMode(p.CENTER);
+
+        player1 = new Player(ran_x, ran_y);
+        // this will display our player
+        player1.display = function() {
+          // draw our player at their current position with the correct graphic
+          p.push()
+          p.translate(this.xPos, this.yPos)
+          //  p.rotate( p.radians(-180) )
+          p.image(this.graphic_facing, 0, 0);
+          p.pop();
+          // p.image(this.graphic_facing, this.xPos, this.yPos);
+        }
+
+        // this will move our character
+        player1.move = function() {
+          // figure out which key was pressed
+
+          if(pause_key == true) {
+
+          } else {
+            if (p.keyIsDown(p.LEFT_ARROW)) {
+              this.xPos -= 5;
+              this.graphic_facing = user_left;
+            }
+            if (p.keyIsDown(p.RIGHT_ARROW)) {
+              this.xPos += 5;
+              this.graphic_facing = user_right;
+            }
+            if (p.keyIsDown(p.UP_ARROW)) {
+              this.yPos -= 5;
+            }
+            if (p.keyIsDown(p.DOWN_ARROW)) {
+              this.yPos += 5;
+            }
+          }
+        }
+
+
+        for(let i = 0; i < object_number; i ++) {      //object setup
+          let randomX = p.random(0, 500)
+          let randomY = p.random(0, 500)
+          keys[i] = new Objects(20, randomX, randomY, 2, 2)
+
+          keys[i].display = function () {
+
+            p.image(key_graphic, this.xPos, this.yPos);
+
+          }
+
+          keys[i].collision = function (x, y){                           // pass in players pos x and y !important
+            if (p.dist(x, y, this.xPos, this.yPos) < 50) {   //50 detection point
+
+              this.xPos = p.random(0, p.width);               //moving to random pos after colli
+              this.yPos = p.random(0, p.height);
+
+
+              // setTimeout(() => {
+              //     kaching.stop()
+              // }, 6000);
+
+              return true;
+            }
+            return false;
+          }
+
+
+        }
+        opp1 = new Opp();
+          // reset function
+        opp1.reset = function () {
+          this.xPos = 250;
+          this.yPos = 250;
+
+          // pick a new destination too
+          // this.xDest = player1.xPos;
+          // this.yDest = player1.yPos;
+
+          this.xDest = p.random(0,p.width);
+          this.yDest = p.random(0,p.height);
+        }
+        opp1.display = function () {
+          p.image(this.myGraphic, this.xPos, this.yPos);
+        }
+        opp1.move = function () {
+
+          // how far away from our destination are we?
+          var xDistance = this.xDest - this.xPos;
+          var yDistance = this.yDest - this.yPos;
+
+          // move 2% of the way there
+          this.xPos += 0.06 * xDistance;    //so following
+          this.yPos += 0.04 * yDistance;
+
+          // update graphic based on direction
+          if (xDistance < 0) {
+            this.myGraphic = enemy_left;
+          }
+          else {
+            this.myGraphic = enemy_right;
+          }
+
+          // have we made it to our destination?
+          if (p.dist(this.xPos, this.yPos, this.xDest, this.yDest) < 25) {
+            // pick a new destination
+            this.xDest = p.random(0,p.width);
+            this.yDest = p.random(0,p.height);   //but check boolean
+
+            //do something - decrease life
+          }
+        }
+          // collision function
+        opp1.detectHit = function (x, y) {
+          if (p.dist(x,y, this.xPos, this.yPos) < 50) {
+            return true;
+          }
+          return false;
+        }
+
+      } // end of setup
+
+
+      p.draw = function() {
+        p.image(floor_background2, 250, 250);
+        p.fill(255);
+        // p.text("$$$: " + points, 300, 420);
+
+        if (pause) {
+
+        } else {
+          // opp1.reset();  // no needed since made the initial starting point random
+
+          if(cheat == true) {
+
+          } else {
+            opp1.move();
+            opp1.display();
+
+            if (opp1.detectHit(player1.xPos, player1.yPos)){//if return true
+              life -= 1;
+
+              player1.reset();
+              opp1.reset();
+            }
+          }
+
+          if (level1) {
+            object_number = 20
+          } else if (level2) {
+            object_number = 10
+          } else if (level3){
+            object_number = 3
+          }
+
+          for(let i = 0; i < object_number; i ++) {    //object draw
+
+            keys[i].display()
+
+            if(player1_bool && keys[i].collision(player1.xPos, player1.yPos)){
+              // console.log('collision made!!')
+              kaching.play();
+              points += 1;
+            }
+
+              keys[i].move()
+
+
+          }
+
+          if(player1_bool == true) {
+            if (translatedX !== false) {
+              // console.log("translating to this position: " + translatedX, translatedY);
+              // console.log('here gettting translated X', translatedX);
+              player1.update_pos(translatedX, translatedY);
+              translatedX = false;
+              translatedY = false;
+            }
+
+            player1.move();
+            player1.display();
+          }
+
+          if( player1_bool && player1.xPos > p.width ){    // to right -- scene 2
+            player1_bool = false;
+            player3_bool = false;
+            player4_bool = false;
+            player5_bool = false;
+
+            toggle = true;            //from false to true
+
+  //          new_posX = p.width/2;    //updating newpos var // from 0 to --  ############################################################# hard code
+  //          new_posY = p.height - 100;
+            translatedX = player1.yPos;
+            translatedY = Math.abs(p.map(player1.xPos,0,500,0,500)) - 45;
+
+            console.log("leaving canvas 1 -> canvas 2")
+
+            player2_bool = true;
+
+          }
+          if ( player1_bool && player1.xPos < 0 ) {   // to left -- scene 3
+            player1_bool = false;
+            player2_bool = false;
+            player4_bool = false;
+            player5_bool = false;
+
+            // translatedX = player1.yPos;
+            translatedX = p.map(player1.yPos, 0, 500, 500, 0);      // yas it works
+            // console.log(player1.yPos,' to ', translatedX);
+            translatedY = p.map(player1.xPos, 0, 500, 500, 0) - 40; //low to high   // a little hack
+            console.log(translatedX, ': translatedX')
+            console.log(translatedY, ': translatedY')
+
+            console.log("leaving canvas 1 -> canvas 3")
+
+            player3_bool = true;
+          }
+          if (player1_bool && player1.yPos > p.height) {   //to bottom --
+            player1.yPos = player1.yPos - 200
+            console.log('outta bound')
+
+          }
+          if (player1_bool && player1.yPos < 0) {     // to top -- scene 4
+
+            player1_bool = false;
+            player5_bool = false;
+            player3_bool = false;
+            player2_bool = false;
+
+
+            // translatedX = player1.yPos;
+            // translatedX = p.map(player1.yPos, 0, 500, 500, 0);      // yas it works
+            translatedX = player1.xPos;
+
+            translatedY = p.map(player1.yPos, 0, 500, 500, 0);
+            // console.log(player1.yPos,' to ', translatedY);
+            console.log(translatedY, ': translatedY')
+
+            console.log("leaving canvas 1 -> canvas 4")
+
+            player4_bool = true;
+
+          }
+
+
+          // p.fill(0)
+          // p.ellipse(0,0,50,50)
+        }
+      }// end of draw
+    };
+    new p5(sketch1, 'canvas1');
+
+
+    //c2
+    let sketch2 = function(p) {
+      p.preload = function () {
+        user_left = p.loadImage('images/char3_small.png');
+        user_right = p.loadImage('images/char3_small.png');
+        enemy_left = p.loadImage('images/char1_small.png');
+        enemy_right = p.loadImage('images/char1_small.png');
+        floor_background = p.loadImage('images/background1_resized.png');
+        key_graphic = p.loadImage('images/bubble1.png');
+        kaching = p.loadSound("./kaching.mp3")
+      }
+
+      function resesh(){
+        p.setup = function() {
+          let cx = p.createCanvas(500, 500);
+          cx.style('display','block');  // unnecessary
+          cx.style('margin','auto');    //
+
+          p.text("South ", p.width/2, p.height);
+          p.text("North ", p.width/2, p.height - 100);
+          p.text("West ", p.width/2 - 100, p.height - 50);
+          p.text("East ", p.width/2 + 100, p.height - 50);
+
+
+          p.background(0);
+
+          p.imageMode(p.CENTER);
+
+          ran_x = Math.floor((Math.random() * 500) + 1);
+          ran_y = Math.floor((Math.random() * 500) + 1);
+
+
+          player2 = new Player(ran_x, ran_y);   //default 250 250
+
+          // this will display our player
+          player2.display = function() {
+            // draw our player at their current position with the correct graphic
+            p.push()
+            p.translate(this.xPos, this.yPos)
+            // p.tint(255, 1);
+//            p.rotate( p.radians(-90) )
+            p.image(this.graphic_facing, 0, 0);
+            p.pop();
+          }
+
+          // this will move our character
+          player2.move = function() {
+            // figure out which key was pressed
+            if(pause_key == true) {
+
+            } else {
+              if (p.keyIsDown(p.LEFT_ARROW)) {
+              this.xPos -= 5;
+              this.graphic_facing = user_left;
+              }
+              if (p.keyIsDown(p.RIGHT_ARROW)) {
+                this.xPos += 5;
+                this.graphic_facing = user_right;
+              }
+              if (p.keyIsDown(p.UP_ARROW)) {
+                this.yPos -= 5;
+              }
+              if (p.keyIsDown(p.DOWN_ARROW)) {
+                this.yPos += 5;
+              }
+            }
+
+          }
+
+          for(let i = 0; i < object_number; i ++) {      //object setup
+            let randomX = p.random(0, 500)
+            let randomY = p.random(0, 500)
+            keys2[i] = new Objects(20, randomX, randomY, 2, 2)
+
+            keys2[i].display = function () {
+              p.image(key_graphic, this.xPos, this.yPos);
+            }
+
+            keys2[i].collision = function (x, y){                           // pass in players pos x and y !important
+              if (p.dist(x, y, this.xPos, this.yPos) < 50) {   //50 detection point
+                console.log(x, y)
+                this.xPos = p.random(0, p.width);               //moving to random pos after colli
+                this.yPos = p.random(0, p.height);
+
+                return true;
+              }
+              return false;
+            }
+          }
+
+            // if(new_posX != 0) {player2.update_pos(new_posX, new_posY);}// ##########################################################################################################################
+          opp2 = new Opp();
+            // reset function
+          opp2.reset = function () {
+            this.xPos = 250;
+            this.yPos = 250;
+
+            // pick a new destination too
+            // this.xDest = player1.xPos;
+            // this.yDest = player1.yPos;
+
+            this.xDest = p.random(0,p.width);
+            this.yDest = p.random(0,p.height);
+          }
+          opp2.display = function () {
+            p.image(this.myGraphic, this.xPos, this.yPos);
+          }
+          opp2.move = function () {
+
+            // how far away from our destination are we?
+            var xDistance = this.xDest - this.xPos;
+            var yDistance = this.yDest - this.yPos;
+
+            // move 2% of the way there
+            this.xPos += 0.06 * xDistance;    //so following
+            this.yPos += 0.04 * yDistance;
+
+            // update graphic based on direction
+            if (xDistance < 0) {
+              this.myGraphic = enemy_left;
+            }
+            else {
+              this.myGraphic = enemy_right;
+            }
+
+            // have we made it to our destination?
+            if (p.dist(this.xPos, this.yPos, this.xDest, this.yDest) < 25) {
+              // pick a new destination
+              this.xDest = p.random(0,p.width);
+              this.yDest = p.random(0,p.height);   //but check boolean
+
+              //do something - decrease life
+            }
+          }
+            // collision function
+          opp2.detectHit = function (x, y) {
+            if (p.dist(x,y, this.xPos, this.yPos) < 50) {
+              return true;
+            }
+            return false;
+          }
+
+
+
+          p.textSize(17);
+        }//end of setup
+      }
+      resesh();
+
+
+      p.draw = function() {
+        p.image(floor_background, 250, 250);
+        p.fill(255);
+
+
+
+        if (bubs > points) {
+
+        } else {
+          bubs = points;
+        }
+
+        p.text("RUN     For Your Life",270, p.height/2 - 60)
+        p.text("Collected Bubbles: " + points, 270, p.height/2);
+        p.text("Your Highest Record: " + bubs, 270 , p.height/2 + 20)
+        p.text("Life: " + life, 270, p.height/2 - 20);
+
+
+        if (pause) {
+
+        } else {
+
+          if(cheat == true) {
+
+          } else {
+            opp2.move();
+            opp2.display();
+
+            if (opp2.detectHit(player2.xPos, player2.yPos)){//if return true
+              life -= 1;
+
+              player2.reset();
+              opp2.reset();
+            }
+          }
+
+          for(let i = 0; i < object_number; i ++) {    //object draw
+
+            keys2[i].display()
+
+            if(player2_bool && keys2[i].collision(player2.xPos, player2.yPos)){
+              //console.log('collision made!!')
+              kaching.play();
+              points += 1;
+            }
+            keys2[i].move()
+          }
+
+
+          if(player2_bool == true) {
+
+          // #########################################################################################################################
+            if (translatedX !== false) {
+              console.log("translating to this position: " + translatedX, translatedY)
+              player2.update_pos(translatedX, translatedY);
+              translatedX = false;
+              translatedY = false;
+            }
+            player2.move();
+            player2.display();
+          }
+
+          // ##########################################################################################################################
+
+          if(player2_bool && player2.xPos > p.width ){       //west
+            player2.xPos = player2.xPos - 200;
+            console.log('outta bound')
+          }
+          if (player2_bool && player2.xPos < 0 ) {   // to left - scene 4
+            player2_bool = false;
+            player3_bool = false;
+            player1_bool = false;
+            player5_bool = false;
+
+
+            translatedX = p.map(player2.xPos, 0, 500, 500, 0);  // p.map(player2.xPos, 0, 500, 500, 0) //450
+            translatedY = player2.yPos;
+              // yas it works p.map(player1.yPos, 0, 500, 500, 0);
+            // console.log(player2.yPos,' to ', translatedX);
+            console.log("leaving canvas 2 -> canvas 4")
+
+
+            player4_bool = true;
+          }
+          if (player2_bool && player2.yPos < 0) {  //to top - scene 5
+            player2_bool = false;
+            player3_bool = false;
+            player4_bool = false;
+            player1_bool = false;
+
+            translatedX = p.map(player2.yPos, 0, 500, 500, 0) - 45;
+            translatedY = p.map(player2.xPos, 0, 500, 500, 0);
+
+            player5_bool = true;
+          }
+          if (player2_bool && player2.yPos > p.height) {    //to south - scene 1
+            player2_bool = false;
+            player3_bool = false;
+            player5_bool = false;
+            player4_bool = false;
+
+            translatedX = p.map(player2.yPos, 0, 500, 0, 500) - 45;
+            translatedY = player2.xPos;
+              // yas it works p.map(player1.yPos, 0, 500, 500, 0);
+            // console.log(player2.yPos,' to ', translatedX);
+            console.log("leaving canvas 2 -> canvas 1")
+
+            player1_bool = true;
+          }
+
+          // p.fill(0)
+          // p.ellipse(0,0,150,150)
+
+          // p.fill(0,255,0)
+          // p.ellipse(500,0,150,150)
+        }
+      }
+    };
+    new p5(sketch2, 'canvas2');
+
+
+
+    // c3
+    let sketch3 = function(p) {
+
+      p.preload = function () {
+        user_left = p.loadImage('images/char3_small.png');
+        user_right = p.loadImage('images/char3_small.png');
+        enemy_left = p.loadImage('images/char1_small.png');
+        enemy_right = p.loadImage('images/char1_small.png');
+        floor_background = p.loadImage('images/background1_resized.png');
+        key_graphic = p.loadImage('images/bubble1.png');
+        kaching = p.loadSound("./kaching.mp3")
+      }
+
+      p.setup = function() {
+        let cx = p.createCanvas(500, 500);
+        cx.style('display','block');  // unnecessary
+        cx.style('margin','auto');    //
+
+        p.text("South ", p.width/2, p.height);
+        p.text("North ", p.width/2, p.height - 100);
+        p.text("West ", p.width/2 - 100, p.height - 50);
+        p.text("East ", p.width/2 + 100, p.height - 50);
+
+
+        p.background(0);
+
+        p.imageMode(p.CENTER);
+
+        ran_x = Math.floor((Math.random() * 500) + 1);
+        ran_y = Math.floor((Math.random() * 500) + 1);
+
+
+        player3 = new Player(ran_x, ran_y);   //default 250 250
+
+        // this will display our player
+        player3.display = function() {
+
+          // draw our player at their current position with the correct graphic
+          p.image(this.graphic_facing, this.xPos, this.yPos);
+        }
+
+        // this will move our character
+        player3.move = function() {
+          // figure out which key was pressed
+          if(pause_key == true) {
+
+          } else {
+            if (p.keyIsDown(p.LEFT_ARROW)) {
+              this.xPos -= 5;
+              this.graphic_facing = user_left;
+            }
+            if (p.keyIsDown(p.RIGHT_ARROW)) {
+              this.xPos += 5;
+              this.graphic_facing = user_right;
+            }
+            if (p.keyIsDown(p.UP_ARROW)) {
+              this.yPos -= 5;
+            }
+            if (p.keyIsDown(p.DOWN_ARROW)) {
+              this.yPos += 5;
+            }
+          }
+        }
+
+        for(let i = 0; i < object_number; i ++) {      //object setup
+          let randomX = p.random(0, 500)
+          let randomY = p.random(0, 500)
+          keys3[i] = new Objects(20, randomX, randomY, 2, 2)
+
+          keys3[i].display = function () {
+            p.image(key_graphic, this.xPos, this.yPos);
+          }
+
+          keys3[i].collision = function (x, y){                           // pass in players pos x and y !important
+            if (p.dist(x, y, this.xPos, this.yPos) < 50) {   //50 detection point
+
+              this.xPos = p.random(0, p.width);               //moving to random pos after colli
+              this.yPos = p.random(0, p.height);
+
+              return true;
+            }
+            return false;
+          }
+        }
+
+        opp3 = new Opp();
+            // reset function
+        opp3.reset = function () {
+          this.xPos = 250;
+          this.yPos = 250;
+
+          // pick a new destination too
+          // this.xDest = player1.xPos;
+          // this.yDest = player1.yPos;
+
+          this.xDest = p.random(0,p.width);
+          this.yDest = p.random(0,p.height);
+        }
+        opp3.display = function () {
+          p.image(this.myGraphic, this.xPos, this.yPos);
+        }
+        opp3.move = function () {
+
+          // how far away from our destination are we?
+          var xDistance = this.xDest - this.xPos;
+          var yDistance = this.yDest - this.yPos;
+
+          // move 2% of the way there
+          this.xPos += 0.06 * xDistance;    //so following
+          this.yPos += 0.04 * yDistance;
+
+          // update graphic based on direction
+          if (xDistance < 0) {
+            this.myGraphic = enemy_left;
+          }
+          else {
+            this.myGraphic = enemy_right;
+          }
+
+          // have we made it to our destination?
+          if (p.dist(this.xPos, this.yPos, this.xDest, this.yDest) < 25) {
+            // pick a new destination
+            this.xDest = p.random(0,p.width);
+            this.yDest = p.random(0,p.height);   //but check boolean
+
+            //do something - decrease life
+          }
+        }
+          // collision function
+        opp3.detectHit = function (x, y) {
+          if (p.dist(x,y, this.xPos, this.yPos) < 50) {
+            return true;
+          }
+          return false;
+        }
+
+      } // end of setup
+
+
+
+      p.draw = function() {
+        p.image(floor_background, 250, 250);
+        p.fill(255);
+        // p.text("$$$: " + points, 300, 420);
+
+        if (pause) {
+
+        } else {
+
+          if(cheat == true) {
+
+          } else {
+            opp3.move();
+            opp3.display();
+
+            if (opp3.detectHit(player3.xPos, player3.yPos)){//if return true
+              life -= 1;
+
+              player3.reset();
+              opp3.reset();
+            }
+          }
+
+          for(let i = 0; i < object_number; i ++) {    //object draw
+
+          keys3[i].display()
+
+          if(player3_bool && keys3[i].collision(player3.xPos, player3.yPos)){
+              // console.log('collision made!!')
+              kaching.play();
+              points += 1;
+            }
+            keys3[i].move()
+          }
+
+          if(player3_bool == true) {                         //######################################################
+            if (translatedX !== false) {
+              console.log("translating to this position: " + translatedX, translatedY)
+              player3.update_pos(translatedX, translatedY);
+              translatedX = false;
+              translatedY = false;
+            }
+
+            player3.move();
+            player3.display();
+
+          }
+
+          if(player3_bool && player3.xPos > p.width ){  // to right -- scene 4
+            player3_bool = false;
+            player2_bool = false;
+            player1_bool = false;
+            player5_bool = false;
+
+            translatedX = p.map(player3.xPos, 0, 500, 500, 0);    // high num to low num
+            translatedY = player3.yPos;
+            // console.log(translatedX, ': translatedX');
+            console.log("leaving canvas 3 -> canvas 4");
+
+            player4_bool = true;
+
+          }
+          if (player3_bool && player3.xPos < 0 ) {     // outta bound
+            player3.xPos = player3.xPos + 200
+            console.log('outta bound')
+
+          }
+          if (player3_bool && player3.yPos < 0) { // to top -- scene 5
+            player3_bool = false;
+            player2_bool = false;
+            player4_bool = false;
+            player1_bool = false;
+
+            translatedX = p.map( player3.yPos, 0, 500, 0, 500)+45;  // low num to low num// avoid confliction
+            translatedY = p.map( player3.xPos, 0, 500, 0, 500);  //high num to high num
+            console.log("leaving canvas 3 -> canvas 5");
+
+            player5_bool = true;
+          }
+          if (player3_bool && player3.yPos > p.height) {  // to bottom -- scene 1
+
+            player3_bool = false;
+            player4_bool = false;
+            player2_bool = false;
+            player5_bool = false;
+
+            translatedX = Math.abs(p.map(player3.yPos, 0, 500, 500, 0));    // high num to low num
+            translatedY = Math.abs(p.map(player3.xPos, 0, 500, 500, 0));   // high num to low num and vice versa
+            // console.log(translatedX, ': translatedX');
+            // console.log(translatedY, ': translatedY');
+            console.log("leaving canvas 3 -> canvas 1");
+
+
+            player1_bool = true;
+          }
+
+        }
+
+
+
+
+        // p.fill(0)       //black
+        // p.ellipse(0,0,150,150)  // 0,0
+
+        // p.fill(0,255,0) //greeen
+        // p.ellipse(500,0,150,150) // 500, 0
+      }
+    };
+
+    new p5(sketch3, 'canvas3');
+
+
+    // c4
+    let sketch4 = function(p) {
+
+      p.preload = function () {
+        user_left = p.loadImage('images/char3_small.png');
+        user_right = p.loadImage('images/char3_small.png');
+        enemy_left = p.loadImage('images/char1_small.png');
+        enemy_right = p.loadImage('images/char1_small.png');
+        floor_background = p.loadImage('images/background1_resized.png');
+        key_graphic = p.loadImage('images/bubble1.png');
+        kaching = p.loadSound("./kaching.mp3")
+      }
+
+      p.setup = function() {
+        let cx = p.createCanvas(500, 500);
+        cx.style('display','block');  // unnecessary
+        cx.style('margin','auto');    //
+
+        p.text("South ", p.width/2, p.height);
+        p.text("North ", p.width/2, p.height - 100);
+        p.text("West ", p.width/2 - 100, p.height - 50);
+        p.text("East ", p.width/2 + 100, p.height - 50);
+
+
+        p.background(0);
+
+        p.imageMode(p.CENTER);
+
+        ran_x = Math.floor((Math.random() * 500) + 1);
+        ran_y = Math.floor((Math.random() * 500) + 1);
+
+
+        player4 = new Player(ran_x, ran_y);   //default 250 250
+
+        // this will display our player
+        player4.display = function() {
+
+          // draw our player at their current position with the correct graphic
+          p.image(this.graphic_facing, this.xPos, this.yPos);
+        }
+
+        // this will move our character
+        player4.move = function() {
+          // figure out which key was pressed
+          if(pause_key == true) {
+
+          } else {
+            if (p.keyIsDown(p.LEFT_ARROW)) {
+              this.xPos -= 5;
+              this.graphic_facing = user_left;
+            }
+            if (p.keyIsDown(p.RIGHT_ARROW)) {
+              this.xPos += 5;
+              this.graphic_facing = user_right;
+            }
+            if (p.keyIsDown(p.UP_ARROW)) {
+              this.yPos -= 5;
+            }
+            if (p.keyIsDown(p.DOWN_ARROW)) {
+              this.yPos += 5;
+            }
+          }
+        }
+
+        for(let i = 0; i < object_number; i ++) {      //object setup
+          let randomX = p.random(0, 500)
+          let randomY = p.random(0, 500)
+          keys4[i] = new Objects(20, randomX, randomY, 2, 2)
+
+          keys4[i].display = function () {
+            p.image(key_graphic, this.xPos, this.yPos);
+          }
+
+          keys4[i].collision = function (x, y){                           // pass in players pos x and y !important
+            if (p.dist(x, y, this.xPos, this.yPos) < 50) {   //50 detection point
+
+              this.xPos = p.random(0, p.width);               //moving to random pos after colli
+              this.yPos = p.random(0, p.height);
+
+              return true;
+            }
+            return false;
+          }
+        }
+
+        opp4 = new Opp();
+            // reset function
+        opp4.reset = function () {
+          this.xPos = 250;
+          this.yPos = 250;
+
+          // pick a new destination too
+          // this.xDest = player1.xPos;
+          // this.yDest = player1.yPos;
+
+          this.xDest = p.random(0,p.width);
+          this.yDest = p.random(0,p.height);
+        }
+        opp4.display = function () {
+          p.image(this.myGraphic, this.xPos, this.yPos);
+        }
+        opp4.move = function () {
+
+          // how far away from our destination are we?
+          var xDistance = this.xDest - this.xPos;
+          var yDistance = this.yDest - this.yPos;
+
+          // move 2% of the way there
+          this.xPos += 0.06 * xDistance;    //so following
+          this.yPos += 0.04 * yDistance;
+
+          // update graphic based on direction
+          if (xDistance < 0) {
+            this.myGraphic = enemy_left;
+          }
+          else {
+            this.myGraphic = enemy_right;
+          }
+
+          // have we made it to our destination?
+          if (p.dist(this.xPos, this.yPos, this.xDest, this.yDest) < 25) {
+            // pick a new destination
+            this.xDest = p.random(0,p.width);
+            this.yDest = p.random(0,p.height);   //but check boolean
+
+            //do something - decrease life
+          }
+        }
+          // collision function
+        opp4.detectHit = function (x, y) {
+          if (p.dist(x,y, this.xPos, this.yPos) < 50) {
+            return true;
+          }
+          return false;
+        }
+
+      }//end of setup
+
+      p.draw = function() {
+        p.image(floor_background, 250, 250);
+        p.fill(255);
+        // p.text("$$$: " + points, 300, 420);
+        if (life <= 0) {
+            p.textSize(40);
+            p.text("Game Over", p.width/2 - 50, p.height/2-30);
+            pause = true;
+            pause_key = true;
+        }
+
+        if (pause) {
+
+        } else {
+
+
+          if(cheat == true) {
+
+          } else {
+            opp4.move();
+            opp4.display();
+
+            if (opp4.detectHit(player4.xPos, player4.yPos)){//if return true
+              life -= 1;
+
+              player4.reset();
+              opp4.reset();
+            }
+          }
+
+
+          for(let i = 0; i < object_number; i ++) {    //object draw
+
+            keys4[i].display()
+
+            if(player4_bool && keys4[i].collision(player4.xPos, player4.yPos)){
+              // console.log('collision made!!')
+              kaching.play();
+              points += 1;
+            }
+            keys4[i].move()
+          }
+
+          if(player4_bool == true) {
+            if (translatedX !== false) {
+              console.log("translating to this position: " + translatedX, translatedY)
+              player4.update_pos(translatedX, translatedY);
+              translatedX = false;
+              translatedY = false;
+            }
+
+            player4.move();
+            player4.display();
+
+
+
+          }
+
+          if( player4_bool && player4.xPos > p.width ){  // to right -- scene 2
+            player4_bool = false;
+            player3_bool = false;
+            player5_bool = false;
+            player1_bool = false;
+
+            translatedX = p.map(player4.xPos, 0, 500, 500, 0);    // high num to low num
+            translatedY = player4.yPos;
+            // console.log(translatedX, ': translatedX');
+            console.log("leaving canvas 4 -> canvas 2");
+
+            player2_bool = true;
+
+          }
+          if ( player4_bool && player4.xPos < 0 ) {     // to left -- scene 3
+            player4_bool = false;
+            player5_bool = false;
+            player2_bool = false;
+            player1_bool = false;
+
+            translatedX = p.map(player4.xPos, 0, 500, 500, 0);    // low num to high num
+            translatedY = player4.yPos;
+            // console.log(translatedX, ': translatedX');
+            console.log("leaving canvas 4 -> canvas 3");
+
+            player3_bool = true;
+
+          }
+          if ( player4_bool && player4.yPos < 0) {  // to top -- scene 5
+            player4_bool = false;
+            player3_bool = false;
+            player2_bool = false;
+            player1_bool = false;
+
+
+            translatedX = p.map( player4.xPos, 0, 500, 0, 500);//low num to low num // avoid confliction
+            translatedY = p.map( player4.yPos, 0, 500, 500, 0);  //high num to high num
+            console.log("leaving canvas 4 -> canvas 5");
+
+            player5_bool = true;
+
+          }
+          if ( player4_bool && player4.yPos > p.height) {  // to bottom -- scene 1
+            player4_bool = false;
+            player3_bool = false;
+            player2_bool = false;
+            player5_bool = false;
+
+            translatedX = player4.xPos;
+            translatedY = p.map(player4.yPos, 0, 500, 500, 0); // high num to low num
+            // console.log(translatedY, ': translatedY');
+            console.log("leaving canvas 4 -> canvas 1");
+
+            player1_bool = true;
+          }
+        }
+
+        // p.fill(0)       //black //low num
+        // p.ellipse(0,0,150,150)  // 0,0
+
+        // p.fill(0,255,0) //greeen //high num
+        // p.ellipse(500,0,150,150) // 500, 0
+
+
+
+      }
+
+
+
+
+
+    };
+    new p5(sketch4, 'canvas4');
+
+     // c5
+     let sketch5 = function(p) {
+
+      p.preload = function () {
+        user_left = p.loadImage('images/char3_small.png');
+        user_right = p.loadImage('images/char3_small.png');
+        enemy_left = p.loadImage('images/char1_small.png');
+        enemy_right = p.loadImage('images/char1_small.png');
+        floor_background = p.loadImage('images/background1_resized.png');
+        floor_background3 = p.loadImage('images/background1_resized3.png');
+
+        key_graphic = p.loadImage('images/bubble1.png');
+        kaching = p.loadSound("./kaching.mp3")
+      }
+
+      p.setup = function() {
+        let cx = p.createCanvas(500, 500);
+        cx.style('display','block');  // unnecessary
+        cx.style('margin','auto');    //
+
+        p.text("South ", p.width/2, p.height/2);
+        p.text("North ", p.width/2, p.height/2 - 100);
+        p.text("West ", p.width/2 - 100, p.height - 50);
+        p.text("East ", p.width/2 + 100, p.height - 50);
+
+        p.background(0);
+
+        p.imageMode(p.CENTER);
+
+        ran_x = Math.floor((Math.random() * 500) + 1);
+        ran_y = Math.floor((Math.random() * 500) + 1);
+
+
+        player5 = new Player(ran_x, ran_y);   //default 250 250
+
+        // this will display our player
+        player5.display = function() {
+
+          // draw our player at their current position with the correct graphic
+          p.image(this.graphic_facing, this.xPos, this.yPos);
+        }
+
+        // this will move our character
+        player5.move = function() {
+          // figure out which key was pressed
+          if(pause_key == true) {
+
+          } else {
+            if (p.keyIsDown(p.LEFT_ARROW)) {
+              this.xPos -= 5;
+              this.graphic_facing = user_left;
+            }
+            if (p.keyIsDown(p.RIGHT_ARROW)) {
+              this.xPos += 5;
+              this.graphic_facing = user_right;
+            }
+            if (p.keyIsDown(p.UP_ARROW)) {
+              this.yPos -= 5;
+            }
+            if (p.keyIsDown(p.DOWN_ARROW)) {
+              this.yPos += 5;
+            }
+          }
+        }
+
+        for(let i = 0; i < object_number; i ++) {      //object setup
+          let randomX = p.random(0, 500)
+          let randomY = p.random(0, 500)
+          keys5[i] = new Objects(20, randomX, randomY, 2, 2)
+
+          keys5[i].display = function () {
+            p.image(key_graphic, this.xPos, this.yPos);
+          }
+
+          keys5[i].collision = function (x, y){                           // pass in players pos x and y !important
+            if (p.dist(x, y, this.xPos, this.yPos) < 50) {   //50 detection point
+
+              this.xPos = p.random(0, p.width);               //moving to random pos after colli
+              this.yPos = p.random(0, p.height);
+
+              return true;
+            }
+            return false;
+          }
+        }
+
+        opp5 = new Opp();
+            // reset function
+        opp5.reset = function () {
+          this.xPos = 250;
+          this.yPos = 250;
+
+          // pick a new destination too
+          // this.xDest = player1.xPos;
+          // this.yDest = player1.yPos;
+
+          this.xDest = p.random(0,p.width);
+          this.yDest = p.random(0,p.height);
+        }
+        opp5.display = function () {
+          p.image(this.myGraphic, this.xPos, this.yPos);
+        }
+        opp5.move = function () {
+
+          // how far away from our destination are we?
+          var xDistance = this.xDest - this.xPos;
+          var yDistance = this.yDest - this.yPos;
+
+          // move 2% of the way there
+          this.xPos += 0.06 * xDistance;    //so following
+          this.yPos += 0.04 * yDistance;
+
+          // update graphic based on direction
+          if (xDistance < 0) {
+            this.myGraphic = enemy_left;
+          }
+          else {
+            this.myGraphic = enemy_right;
+          }
+
+          // have we made it to our destination?
+          if (p.dist(this.xPos, this.yPos, this.xDest, this.yDest) < 25) {
+            // pick a new destination
+            this.xDest = p.random(0,p.width);
+            this.yDest = p.random(0,p.height);   //but check boolean
+
+            //do something - decrease life
+          }
+        }
+          // collision function
+        opp5.detectHit = function (x, y) {
+          if (p.dist(x,y, this.xPos, this.yPos) < 50) {
+            return true;
+          }
+          return false;
+        }
+
+
+
+
+
+
+      }//end of setup
+
+      p.draw = function() {
+        p.image(floor_background3, 250, 250);
+        p.fill(255);
+        p.textSize(30)
+        // p.text("$$$: " + points, 300, 420);
+
+        if (pause) {
+
+        } else {
+          if(cheat == true) {
+
+          } else {
+            opp5.move();
+            opp5.display();
+
+            if (opp5.detectHit(player5.xPos, player5.yPos)){//if return true
+              life -= 1;
+
+              player5.reset();
+              opp5.reset();
+            }
+          }
+
+
+          for(let i = 0; i < object_number; i ++) {    //object draw
+
+            keys5[i].display()
+
+            if(player5_bool && keys5[i].collision(player5.xPos, player5.yPos)){
+              // console.log('collision made!!')
+              kaching.play();
+              points += 1;
+            }
+            keys5[i].move()
+          }
+
+          if(player5_bool == true) {
+            if (translatedX !== false) {
+              console.log("translating to this position: " + translatedX, translatedY)
+              player5.update_pos(translatedX, translatedY);
+              translatedX = false;
+              translatedY = false;
+            }
+
+            player5.move();
+            player5.display();
+
+          }
+
+          if( player5_bool && player5.xPos > p.width ){  // to right -- scene 2
+            player5_bool = false;
+            player4_bool = false;
+            player3_bool = false;
+            player1_bool = false;
+
+            translatedX = p.map( player5.yPos, 0, 500, 500, 0);           //low num to high num
+            translatedY = p.map( player5.xPos, 0, 500, 500, 0) + 45 ;   //low num to high num // avoid confliction
+            console.log("leaving canvas 5 -> canvas 2");
+
+            player2_bool = true;
+
+          }
+          if ( player5_bool && player5.xPos < 0 ) {     // to left -- scene 3
+            player5_bool = false;
+            player4_bool = false;
+            player2_bool = false;
+            player1_bool = false;
+
+            translatedX = p.map( player5.yPos, 0, 500, 0, 500);  //high num to high num
+            translatedY = p.map( player5.xPos, 0, 500, 0, 500) + 45 ;//low num to low num // avoid confliction
+            console.log("leaving canvas 5 -> canvas 3");
+
+            player3_bool = true;
+
+          }
+          if (player5_bool && player5.yPos < 0) {  // to bottom -- scene 1
+            player5.yPos = player5.yPos + 200;
+            console.log('outta bound')
+
+          }
+          if (player5_bool && player5.yPos > p.height) {  // to top -- scene 4
+            player5_bool = false;
+            player3_bool = false;
+            player2_bool = false;
+            player1_bool = false;
+
+            translatedX = p.map( player5.xPos, 0, 500, 0, 500);  //high num to high num
+            translatedY = p.map( player5.yPos, 0, 500, 500, 0);//low num to high num //no confliction
+            console.log("leaving canvas 5 -> canvas 4");
+
+            player4_bool = true;
+          }
+
+          // p.fill(0)
+          // p.ellipse(0,0,150,150)
+
+          // p.fill(0,255,0)
+          // p.ellipse(500,0,150,150)
+        }
+      }
+
+    };
+    new p5(sketch5, 'canvas5');
+
+    </script>
+  </body>
+</html>

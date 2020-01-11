@@ -1,0 +1,763 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Demo Page</title>
+    <script src="../p5/p5.min.js" type="text/javascript"></script>
+    <script src="../p5/p5.dom.js" type="text/javascript"></script>
+    <script src="../p5/p5.sound.min.js" type="text/javascript"></script>
+
+    <!-- <script src="sketch.js" type="text/javascript"></script> -->
+
+    <style>
+      #container {
+        display: flex;
+        margin: 0;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #p5_loading {
+        width: 500px;
+        height: 500px;
+        border: 5px solid black;
+        font-size: 200%;
+        text-align: center;
+        margin: auto;
+
+        /* mark this div as relatively positioned - this won't move it, but
+           it will cause the div to 'remember' its position on the page -
+           this is important since any child divs will need this information
+           in order to position themselves correctly */
+        position: relative;
+      }
+
+      #progress_bar {
+        background-color: slateblue;
+        height: 25px;
+        width: 0%;
+        position: absolute;
+        
+        top: 250px;
+        left: 0px;
+      }
+
+      body{
+        overflow: hidden;
+        /* border: 1px solid black; */
+      }
+
+      /* middle front*/
+      #canvas1{
+        transform: translateY(119px) translateZ(-15px) rotateX(98.2deg) 
+        
+      }
+
+      /* right */
+      #canvas2{
+        transform: translateX(-129px) translateY(-82px) translateZ(-55px) rotateY(300deg);
+        
+      }
+
+      /* left */
+      #canvas3{
+        
+        transform: translateX(129px) translateY(-82px) translateZ(-55px) rotateY(-300deg);
+        
+      }
+
+      /* center */
+      #canvas4{   
+        position: absolute;
+        z-index:-900;
+        transform: translateZ(-280px) translateY(-87px)
+      }
+
+      /* top */
+      #canvas5{
+        position: absolute;
+        z-index:-900;
+        transform: translateY(-242.5px) translateZ(-11px) rotateX(-107.1deg);
+        
+        /* transform: translateY(116px) translateZ(-30px) rotateX(100deg)  */
+
+      }
+
+      #canvas_container {
+        transform-style: preserve-3d;
+        perspective: 300px;
+        display: flex;
+        margin: 0;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+      }
+
+      
+
+      
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <!-- <div id="p5_loading" class="loadingclass">Wait for it... KaBOOM!
+        <div id="progress_bar"></div>
+      </div> -->
+      <div id="canvas_container">
+        <div id="canvas3"></div>
+        <div id="canvas1"></div>
+        <div id="canvas2"></div>
+        <div id="canvas4"></div>
+        <div id="canvas5"></div>
+      </div>
+    </div>
+
+    <script>
+    //variables
+    
+
+    let player1;
+    let player2;
+    let player3;
+    let player4;
+    let player5;
+
+    let player1_bool = true;
+    let player2_bool = false;
+    let player3_bool = false;
+    let player4_bool = false;
+    let player5_bool = false;
+
+    // let currentCanvas = 2
+    // let newCanvas = undefined
+
+    
+    let new_posX = 0;
+    let new_posY = 0;
+    let toggle = false;
+
+
+    //variables
+    let user_left, user_right;
+    let enemy_left, enemy_right;
+    let floor_background;
+    let key_graphic;
+    let keys = [];
+    let points = 0;
+    var counter = 0;
+    var maxCounter = 0;
+
+  
+    //!question : i can't load them here? do i need to load them every sktech?
+    // function preload () {
+    //     user_left = loadImage('images/user_left.png');
+    //     user_right = loadImage('images/user_right.png');
+    //     enemy_left = loadImage('images/enemy_left.png');
+    //     enemy_right = loadImage('images/enemy_right.png');
+    //     floor_background = loadImage('images/floor_background.jpg');
+    //     key_graphic = loadImage('images/key_graphic.png');
+    // }
+
+
+    class Player {                            // #############################################################
+        constructor(xPos = 250, yPos = 250) {
+          // initial pos
+          this.xPos = xPos;
+          this.yPos = yPos;
+
+          // default facing left
+          this.graphic_facing = user_left;
+        }
+
+        // reset(new_posX, new_posY) {
+        //   this.xPos = new_posX;
+        //   this.yPos = new_posY;
+        // }
+
+        update_pos(arg1, arg2) {                         // #############################################################
+          this.xPos = arg1;
+          this.yPos = arg2;
+        }
+      }
+
+
+
+    //c1
+    let sketch1 = function(p) {
+
+      p.preload = function () {
+        user_left = p.loadImage('images/user_left.png');
+        user_right = p.loadImage('images/user_right.png');
+        enemy_left = p.loadImage('images/enemy_left.png');
+        enemy_right = p.loadImage('images/enemy_right.png');
+        floor_background = p.loadImage('images/floor_background.jpg');
+        key_graphic = p.loadImage('images/key_graphic.png');
+      }
+    
+    
+      p.setup = function() {
+        let cx = p.createCanvas(500, 500);
+        // cx.style('display','block');  // unnecessary
+        // cx.style('margin','auto');    //
+        
+        p.text("South ", p.width/2, p.height); 
+        p.text("North ", p.width/2, p.height - 100); 
+        p.text("West ", p.width/2 - 100, p.height - 50); 
+        p.text("East ", p.width/2 + 100, p.height - 50); 
+
+
+        p.background(0);
+
+        p.imageMode(p.CENTER);
+        
+        player1 = new Player();
+        // this will display our player
+        player1.display = function() {
+          // draw our player at their current position with the correct graphic
+          p.image(this.graphic_facing, this.xPos, this.yPos);
+        }
+
+        // this will move our character
+        player1.move = function() {
+          // figure out which key was pressed
+          if (p.keyIsDown(p.LEFT_ARROW)) {
+            this.xPos -= 5;
+            this.graphic_facing = user_left;
+          }
+          if (p.keyIsDown(p.RIGHT_ARROW)) {
+            this.xPos += 5;
+            this.graphic_facing = user_right;
+          }
+          if (p.keyIsDown(p.UP_ARROW)) {
+            this.yPos -= 5;
+          }
+          if (p.keyIsDown(p.DOWN_ARROW)) {
+            this.yPos += 5;
+          }
+        }
+        
+      }
+      
+      
+      p.draw = function() {
+        p.image(floor_background, 250, 250);
+        p.fill(255);
+        p.text("Points: " + points, 300, 420); 
+       
+        
+        if(player1_bool == true) {
+          player1.move();
+          player1.display();
+        }
+
+        if( player1.xPos > p.width ){    // to right -- scene 2
+          player1_bool = false;
+          player3_bool = false;
+          player4_bool = false;
+          player5_bool = false;
+
+          toggle = true;            //from false to true
+
+          new_posX = p.width/2;    //updating newpos var // from 0 to --  ############################################################# hard code 
+          new_posY = p.height - 100;
+          
+          player2_bool = true;
+          
+        }
+        if ( player1.xPos < 0 ) {   // to left -- scene 3
+          player1_bool = false;
+          player2_bool = false;
+          player4_bool = false;
+          player5_bool = false; 
+
+          player3_bool = true;
+        }
+        if (player1.yPos > p.height) {   //to bottom -- 
+          player1.yPos = player1.yPos - 100
+          console.log('outta bound')
+
+        }
+        if (player1.yPos < 0) {     // to top -- scene 4
+
+          player1_bool = false;
+          player5_bool = false;
+          player3_bool = false;
+          player2_bool = false;
+
+          player4_bool = true;
+         
+        }
+        
+      }
+    };
+    new p5(sketch1, 'canvas1');
+
+
+    //c2
+    let sketch2 = function(p) {
+      p.preload = function () {
+        user_left = p.loadImage('images/user_left.png');
+        user_right = p.loadImage('images/user_right.png');
+        enemy_left = p.loadImage('images/enemy_left.png');
+        enemy_right = p.loadImage('images/enemy_right.png');
+        floor_background = p.loadImage('images/floor_background.jpg');
+        key_graphic = p.loadImage('images/key_graphic.png');
+      }
+      
+      function resesh(){
+        p.setup = function() {
+          let cx = p.createCanvas(500, 500);
+          cx.style('display','block');  // unnecessary
+          cx.style('margin','auto');    //
+          
+          p.text("South ", p.width/2, p.height); 
+          p.text("North ", p.width/2, p.height - 100); 
+          p.text("West ", p.width/2 - 100, p.height - 50); 
+          p.text("East ", p.width/2 + 100, p.height - 50); 
+
+
+          p.background(0);
+
+          p.imageMode(p.CENTER);
+
+          
+
+          player2 = new Player(new_posX, new_posY);   //default 250 250
+          
+          // this will display our player
+          player2.display = function() {
+            // draw our player at their current position with the correct graphic
+            p.image(this.graphic_facing, this.xPos, this.yPos);
+          }
+
+          // this will move our character
+          player2.move = function() {
+            // figure out which key was pressed
+            if (p.keyIsDown(p.LEFT_ARROW)) {
+              this.xPos -= 5;
+              this.graphic_facing = user_left;
+            }
+            if (p.keyIsDown(p.RIGHT_ARROW)) {
+              this.xPos += 5;
+              this.graphic_facing = user_right;
+            }
+            if (p.keyIsDown(p.UP_ARROW)) {
+              this.yPos -= 5;
+            }
+            if (p.keyIsDown(p.DOWN_ARROW)) {
+              this.yPos += 5;
+            }
+          }
+          
+            // if(new_posX != 0) {player2.update_pos(new_posX, new_posY);}// ##########################################################################################################################
+        }
+      }
+      resesh();
+      
+      
+      p.draw = function() {
+        p.image(floor_background, 250, 250);
+        p.fill(255);
+        p.text("Points: " + points, 300, 420); 
+
+        if(player2_bool == true) {            
+               
+            console.log(new_posX, new_posY,'newpos x and y before ');                     
+                   // ##########################################################################################################################
+            player2.update_pos(new_posX, new_posY);
+
+            player2.move();
+
+            new_posX = player2.xPos;
+            new_posY = player2.yPos;
+
+            console.log(new_posX, new_posY,'newpos x and y after');   
+            
+            player2.xPos = new_posX;
+            player2.yPos = new_posY;
+            
+        
+
+          
+          player2.display();
+
+        }
+
+          // ##########################################################################################################################
+
+
+        
+        if( player2.xPos > p.width ){       //west
+          player2.xPos = player2.xPos - 100;
+          console.log('outta bound')     
+        }
+        if (player2.xPos < 0 ) {   // to left - scene 4
+          player2_bool = false;
+          player3_bool = false;
+          player1_bool = false;
+          player5_bool = false;
+
+          player4_bool = true;
+        }
+        if (player2.yPos < 0) {  //to top - scene 5
+          player2_bool = false;
+          player3_bool = false;
+          player4_bool = false;
+          player1_bool = false;
+
+          player5_bool = true;
+        }
+        if (player2.yPos > p.height) {    //to south - scene 1
+          player2_bool = false;
+          player3_bool = false;
+          player5_bool = false;
+          player4_bool = false;
+
+          player1_bool = true;
+        }
+        
+      }
+    };
+    new p5(sketch2, 'canvas2');
+
+
+
+    // // c3
+    // let sketch3 = function(p) {
+      
+    //   p.preload = function () {
+    //     user_left = p.loadImage('images/user_left.png');
+    //     user_right = p.loadImage('images/user_right.png');
+    //     enemy_left = p.loadImage('images/enemy_left.png');
+    //     enemy_right = p.loadImage('images/enemy_right.png');
+    //     floor_background = p.loadImage('images/floor_background.jpg');
+    //     key_graphic = p.loadImage('images/key_graphic.png');
+    //   }
+    
+    //   p.setup = function() {
+    //     let cx = p.createCanvas(500, 500);
+    //     cx.style('display','block');  // unnecessary
+    //     cx.style('margin','auto');    //
+
+    //     p.text("South ", p.width/2, p.height); 
+    //     p.text("North ", p.width/2, p.height - 100); 
+    //     p.text("West ", p.width/2 - 100, p.height - 50); 
+    //     p.text("East ", p.width/2 + 100, p.height - 50); 
+
+        
+    //     p.background(0);
+
+    //     p.imageMode(p.CENTER);
+
+    //     player3 = new Player();
+        
+    //     // this will display our player
+    //     player3.display = function() {
+          
+    //       // draw our player at their current position with the correct graphic
+    //       p.image(this.graphic_facing, this.xPos, this.yPos);
+    //     }
+
+    //     // this will move our character
+    //     player3.move = function() {
+    //       // figure out which key was pressed
+    //       if (p.keyIsDown(p.LEFT_ARROW)) {
+    //         this.xPos -= 5;
+    //         this.graphic_facing = user_left;
+    //       }
+    //       if (p.keyIsDown(p.RIGHT_ARROW)) {
+    //         this.xPos += 5;
+    //         this.graphic_facing = user_right;
+    //       }
+    //       if (p.keyIsDown(p.UP_ARROW)) {
+    //         this.yPos -= 5;
+    //       }
+    //       if (p.keyIsDown(p.DOWN_ARROW)) {
+    //         this.yPos += 5;
+    //       }
+    //     }
+
+
+
+    //   }
+      
+    //   p.draw = function() {
+    //     p.image(floor_background, 250, 250);
+    //     p.fill(255);
+    //     p.text("Points: " + points, 300, 420); 
+        
+
+    //     if(player3_bool == true) {
+    //       player3.move();
+    //       player3.display();
+          
+    //     }
+
+    //     if( player3.xPos > p.width ){  // to right -- scene 4
+    //       player3_bool = false;
+    //       player2_bool = false;
+    //       player1_bool = false;
+    //       player5_bool = false;
+
+    //       player4_bool = true;
+         
+    //     } 
+    //     if (player3.xPos < 0 ) {     // outta bound
+    //       player3.xPos = player3.xPos + 100
+    //       console.log('outta bound')
+
+    //     }
+    //     if (player3.yPos < 0) { // to top -- scene 5
+    //       player3_bool = false;
+    //       player2_bool = false;
+    //       player4_bool = false;
+    //       player1_bool = false;
+
+    //       player5_bool = true;
+    //     }
+    //     if (player3.yPos > p.height) {  // to bottom -- scene 1 
+
+    //       player3_bool = false;
+    //       player4_bool = false;
+    //       player2_bool = false;
+    //       player5_bool = false;
+
+    //       player1_bool = true;
+
+       
+    //     }
+
+    //   }
+
+
+
+
+    // };
+
+    // new p5(sketch3, 'canvas3');
+
+
+    // // c4
+    // let sketch4 = function(p) {
+      
+    //   p.preload = function () {
+    //     user_left = p.loadImage('images/user_left.png');
+    //     user_right = p.loadImage('images/user_right.png');
+    //     enemy_left = p.loadImage('images/enemy_left.png');
+    //     enemy_right = p.loadImage('images/enemy_right.png');
+    //     floor_background = p.loadImage('images/floor_background.jpg');
+    //     key_graphic = p.loadImage('images/key_graphic.png');
+    //   }
+    
+    //   p.setup = function() {
+    //     let cx = p.createCanvas(500, 500);
+    //     cx.style('display','block');  // unnecessary
+    //     cx.style('margin','auto');    //
+
+    //     p.text("South ", p.width/2, p.height); 
+    //     p.text("North ", p.width/2, p.height - 100); 
+    //     p.text("West ", p.width/2 - 100, p.height - 50); 
+    //     p.text("East ", p.width/2 + 100, p.height - 50); 
+
+        
+    //     p.background(0);
+
+    //     p.imageMode(p.CENTER);
+
+    //     player4 = new Player();
+        
+    //     // this will display our player
+    //     player4.display = function() {
+          
+    //       // draw our player at their current position with the correct graphic
+    //       p.image(this.graphic_facing, this.xPos, this.yPos);
+    //     }
+
+    //     // this will move our character
+    //     player4.move = function() {
+    //       // figure out which key was pressed
+    //       if (p.keyIsDown(p.LEFT_ARROW)) {
+    //         this.xPos -= 5;
+    //         this.graphic_facing = user_left;
+    //       }
+    //       if (p.keyIsDown(p.RIGHT_ARROW)) {
+    //         this.xPos += 5;
+    //         this.graphic_facing = user_right;
+    //       }
+    //       if (p.keyIsDown(p.UP_ARROW)) {
+    //         this.yPos -= 5;
+    //       }
+    //       if (p.keyIsDown(p.DOWN_ARROW)) {
+    //         this.yPos += 5;
+    //       }
+    //     }
+
+
+    //   }
+      
+    //   p.draw = function() {
+    //     p.image(floor_background, 250, 250);
+    //     p.fill(255);
+    //     p.text("Points: " + points, 300, 420);
+
+
+    //     if(player4_bool == true) {
+    //       player4.move();
+    //       player4.display();
+          
+    //     }
+
+    //     if( player4.xPos > p.width ){  // to right -- scene 2
+    //       player4_bool = false;
+    //       player3_bool = false;
+    //       player5_bool = false;
+    //       player1_bool = false;
+
+    //       player2_bool = true;
+         
+    //     } 
+    //     if (player4.xPos < 0 ) {     // to left -- scene 3
+    //       player4_bool = false;
+    //       player5_bool = false;
+    //       player2_bool = false;
+    //       player1_bool = false;
+
+    //       player3_bool = true;
+
+    //     } 
+    //     if (player4.yPos < 0) {  // to bottom -- scene 1
+    //       player4_bool = false;
+    //       player3_bool = false;
+    //       player2_bool = false;
+    //       player1_bool = false;
+
+    //       player5_bool = true;
+
+    //     } 
+    //      if (player4.yPos > p.height) {  // to top -- scene 5
+    //       player4_bool = false;
+    //       player3_bool = false;
+    //       player2_bool = false;
+    //       player5_bool = false;
+
+    //       player1_bool = true;
+    //     }
+
+
+
+    //   }
+    
+
+
+
+
+    // };
+    // new p5(sketch4, 'canvas4');
+
+    //  // c5
+    //  let sketch5 = function(p) {
+     
+    //   p.preload = function () {
+    //     user_left = p.loadImage('images/user_left.png');
+    //     user_right = p.loadImage('images/user_right.png');
+    //     enemy_left = p.loadImage('images/enemy_left.png');
+    //     enemy_right = p.loadImage('images/enemy_right.png');
+    //     floor_background = p.loadImage('images/floor_background.jpg');
+    //     key_graphic = p.loadImage('images/key_graphic.png');
+    //   }
+    
+    //   p.setup = function() {
+    //     let cx = p.createCanvas(500, 500);
+    //     cx.style('display','block');  // unnecessary
+    //     cx.style('margin','auto');    //
+
+    //     p.text("South ", p.width/2, p.height); 
+    //     p.text("North ", p.width/2, p.height - 100); 
+    //     p.text("West ", p.width/2 - 100, p.height - 50); 
+    //     p.text("East ", p.width/2 + 100, p.height - 50); 
+        
+    //     p.background(0);
+
+    //     p.imageMode(p.CENTER);
+
+    //     player5 = new Player();
+        
+    //     // this will display our player
+    //     player5.display = function() {
+          
+    //       // draw our player at their current position with the correct graphic
+    //       p.image(this.graphic_facing, this.xPos, this.yPos);
+    //     }
+
+    //     // this will move our character
+    //     player5.move = function() {
+    //       // figure out which key was pressed
+    //       if (p.keyIsDown(p.LEFT_ARROW)) {
+    //         this.xPos -= 5;
+    //         this.graphic_facing = user_left;
+    //       }
+    //       if (p.keyIsDown(p.RIGHT_ARROW)) {
+    //         this.xPos += 5;
+    //         this.graphic_facing = user_right;
+    //       }
+    //       if (p.keyIsDown(p.UP_ARROW)) {
+    //         this.yPos -= 5;
+    //       }
+    //       if (p.keyIsDown(p.DOWN_ARROW)) {
+    //         this.yPos += 5;
+    //       }
+    //     }
+
+
+    //   }
+      
+    //   p.draw = function() {
+    //     p.image(floor_background, 250, 250);
+    //     p.fill(255);
+    //     p.text("Points: " + points, 300, 420); 
+
+    //     if(player5_bool == true) {
+    //       player5.move();
+    //       player5.display();
+
+    //     }
+
+    //     if( player5.xPos > p.width ){  // to right -- scene 2
+    //       player5_bool = false;
+    //       player4_bool = false;
+    //       player3_bool = false;
+    //       player1_bool = false;
+
+    //       player2_bool = true;
+         
+    //     } 
+    //     if (player5.xPos < 0 ) {     // to left -- scene 3
+    //       player5_bool = false;
+    //       player4_bool = false;
+    //       player2_bool = false;
+    //       player1_bool = false;
+
+    //       player3_bool = true;
+
+    //     }
+    //     if (player5.yPos < 0) {  // to bottom -- scene 1
+    //       player5.yPos = player5.yPos - 100;
+    //       console.log('outta bound')
+
+    //     }
+    //     if (player5.yPos > p.height) {  // to top -- scene 4
+    //       player5_bool = false;
+    //       player3_bool = false;
+    //       player2_bool = false;
+    //       player1_bool = false;
+
+    //       player4_bool = true;
+    //     }
+    //   }
+
+    // };
+    // new p5(sketch5, 'canvas5');
+
+    </script>
+  </body>
+</html>

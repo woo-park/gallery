@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="./p5/p5.min.js" type="text/javascript"></script>
+    <script src="./p5/p5.dom.js" type="text/javascript"></script>
+    <script src="./p5/p5.sound.min.js" type="text/javascript"></script>
+      <!-- A-Frame libraries -->
+    <script language="javascript" type="text/javascript" src="./p5/aframe.min.js"></script>
+
+    <!-- AFrameP5 library -->
+    <script language="javascript" type="text/javascript" src="./p5/aframep5-experimental.js"></script>
+
+
+
+  <script src="https://unpkg.com/aframe-look-at-component@0.8.x/dist/aframe-look-at-component.min.js"></script>
+
+  </head>
+
+  <style type="text/css" media="screen">
+
+  /* .racer {
+    position: absolute;
+    left: 0px;
+    font-size: 100px;
+  }
+
+  .player1 {
+    top: 50px;
+  }
+
+  .player2 {
+    top: 300px
+  }
+
+  .play-area {
+    position: relative;
+    width: 800px;
+    height: 500px;
+    border-right: 3px dashed black;
+  }
+
+  button {
+    font-size: 3em;
+  } */
+
+
+  body {
+				padding: 0;
+				margin: 0;
+			}
+  </style>
+
+  <body>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="main-original.js"></script>
+
+    <!-- <button class="player1Btn">Move Tears of Joy &rarr;</button> -->
+    <div class="play-area">
+      <!-- <div class="racer player1">&#128514;</div>
+      <div class="racer player2">&#128561;</div> -->
+    </div>
+    <!-- <button class="player2Btn">Move Face Screaming &rarr;</button> -->
+
+
+
+    <a-scene id="VRScene">
+      <!-- <a-entity material="fog: true"></a-entity> -->
+      <!-- <a-scene fog="type: linear; color: #AAA"></a-scene> -->
+
+      <!-- <a-entity id="rig" position="25 10 0">
+        <a-camera id="camera"></a-camera>
+      </a-entity> -->
+
+      <!-- <a-entity id=“rig”>
+        <a-camera id="camera"></a-camera>
+      </a-entity> -->
+
+      <img src="images/asphalt.png" id="asphalt">
+      <img src="images/grid.png" id="grid">
+
+			<a-asset id="plane_obj" src="images/building/plane/model.obj"></a-asset>
+			<a-asset id="plane_mtl" src="images/building/plane/materials.mtl"></a-asset>
+
+      <!-- from vr-maze -->
+      <img src="images/asphalt.png" id="stone">
+
+        <a-asset id="tree1_obj" src="./objects/tree1/model.obj"></a-asset>
+        <a-asset id="tree1_mtl" src="./objects/tree1/materials.mtl"></a-asset>
+
+        <!-- <a-asset id="tree2_obj" src="./objects/tree2/model.obj"></a-asset>
+        <a-asset id="tree2_mtl" src="./objects/tree2/materials.mtl"></a-asset>
+
+        <a-asset id="tree3_obj" src="./objects/tree3/model.obj"></a-asset>
+        <a-asset id="tree3_mtl" src="./objects/tree3/materials.mtl"></a-asset>
+
+        <a-asset id="tree4_obj" src="./objects/tree4/model.obj"></a-asset>
+        <a-asset id="tree4_mtl" src="./objects/tree4/materials.mtl"></a-asset> -->
+
+        <a-asset id="bush1_obj" src="./objects/bush1/model.obj"></a-asset>
+        <a-asset id="bush1_mtl" src="./objects/bush1/materials.mtl"></a-asset>
+
+        <!-- <img id="stonebrick" src="images/stonebrick.png" /> -->
+        <a-asset id="treasure" src="./objects/treasure/model.obj"></a-asset>
+        <a-asset id="treasure_mtl" src="./objects/treasure/materials.mtl"></a-asset>
+
+        <a-asset id="tornado_obj" src="./objects/tornado/model.obj"></a-asset>
+        <a-asset id="tornado_mtl" src="./objects/tornado/materials.mtl"></a-asset>
+
+      <!--  -->
+      <!-- <a-entity camera="active: true" look-controls position="0 1.6 0" data-aframe-default-camera></a-entity> -->
+      <!-- <a-camera wasd-controls-enabled="false"></a-camera> -->
+    </a-scene>
+  </body>
+</html>

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en-us">
+	<head>
+		<meta charset="UTF-8">
+
+		<!-- P5 libraries -->
+		<script language="javascript" type="text/javascript" src="./p5/p5.min.js"></script>
+
+		<!-- A-Frame libraries -->
+		<script language="javascript" type="text/javascript" src="./p5/aframe.min.js"></script>
+
+		<script src="./p5/p5.sound.min.js"></script>
+
+		<!-- AFrameP5 library -->
+		<script language="javascript" type="text/javascript" src="./p5/aframep5.js"></script>
+
+		<!-- P5 Sketch -->
+		<script language="javascript" type="text/javascript" src="sketch.js"></script>
+
+		<!-- custom styles -->
+		<style>
+			body {
+				padding: 0;
+				margin: 0;
+			}
+		</style>
+	</head>
+	<body>
+
+		<!-- container to hold our VR scene - make sure to give this element an ID of 'VRScene' -->
+	    <a-scene id="VRScene">
+
+	    	<!--
+		       The 'a-assets' container is used to load in any external artwork you may want to use as "textures" for your objects.
+		       Ensure that this element has an ID of 'VRAssets'
+
+		       Textures can be loaded by creating a new 'a-asset' tag inside of the 'a-assets' container.
+		       When doing this you will need to make sure to give your textures a unique ID -
+		       this will be used by p5 to create new objects.
+
+		       Example:
+
+		       <img id="ITEM_ID_GOES_HERE" src="images/gold_block.png">
+			-->
+
+			<a-assets id="VRAssets">
+				<img src="images/grid.png" id="stars">
+				<img src="images/iron_block.png" id="iron">
+				<img src="images/gold_block.png" id="gold">
+				<img src="images/asphalt.png" id="stone">
+
+				<!-- default -->
+				<!-- <a-asset id="robot_obj" src="images/robot/model.obj"></a-asset>
+				<a-asset id="robot_mtl" src="images/robot/materials.mtl"></a-asset> -->
+
+				<!--works but no color - png need to wrap -->
+				<!-- <a-asset id="cactus_obj" src="images/building/cactus/model.obj"></a-asset>
+				<a-asset id="cactus_mtl" src="images/building/cactus/materials.mtl"></a-asset>
+				<img src="images/building/test3/PipeOrganCactus_BaseColor.png" id="cactus"> -->
+
+
+				<!-- works but wrong color - illusion -->
+				<a-asset id="illusion_obj" src="images/building/illusion/model.obj"></a-asset>
+				<a-asset id="illusion_mtl" src="images/building/illusion/materials.mtl"></a-asset>
+
+				<!-- <a-asset id="illusion_mtl2" src="images/building/illusion/materials2.mtl"></a-asset> -->
+
+				<!-- works nicely chair -->
+				<a-asset id="chair_obj" src="images/building/chair/model.obj"></a-asset>
+				<a-asset id="chair_mtl" src="images/building/chair/materials.mtl"></a-asset>
+
+				<!-- works nicely coral -->
+				<a-asset id="coral_obj" src="images/building/coral/model.obj"></a-asset>
+				<a-asset id="coral_mtl" src="images/building/coral/materials.mtl"></a-asset>
+
+				<!-- works wooden house -->
+				<a-asset id="house_obj" src="images/building/house/model.obj"></a-asset>
+				<a-asset id="house_mtl" src="images/building/house/materials.mtl"></a-asset>
+
+				<!-- works table -->
+				<a-asset id="table_obj" src="images/building/table2/model.obj"></a-asset>
+				<a-asset id="table_mtl" src="images/building/table2/materials.mtl"></a-asset>
+
+				<!-- works tile
+				x: 2,
+				y: 0.1,
+				z: 0,
+				rotationX:0,
+				rotationY:180,
+				scaleX:0.05,
+				scaleY:0.05,
+				scaleZ:0.1 -->
+				<a-asset id="tile_obj" src="images/building/tile/model.obj"></a-asset>
+				<a-asset id="tile_mtl" src="images/building/tile/materials.mtl"></a-asset>
+
+				<!-- works book1 -->
+				<a-asset id="book1_obj" src="images/building/book1/model.obj"></a-asset>
+				<a-asset id="book1_mtl" src="images/building/book1/materials.mtl"></a-asset>
+
+				<!-- doesn't work panel -->
+				<!-- <a-asset id="panel_obj" src="images/building/panel/model.obj"></a-asset>
+				<a-asset id="panel_mtl" src="images/building/panel/materials.mtl"></a-asset> -->
+
+				<!-- works pillow -->
+				<a-asset id="pillow_obj" src="images/building/pillow/model.obj"></a-asset>
+				<a-asset id="pillow_mtl" src="images/building/pillow/materials.mtl"></a-asset>
+
+				<!-- doesnot work calendar - texture wrong-->
+				<!-- <a-asset id="calendar_obj" src="images/building/calendar/model.obj"></a-asset>
+				<a-asset id="calendar_mtl" src="images/building/calendar/materials.mtl"></a-asset> -->
+				<!-- calendar = new OBJ({
+					asset: 'calendar_obj',
+					mtl: 'calendar_mtl',
+					x: 0,
+					y: 1.82,		// 0.01 down
+					z: 0,
+					rotationX:0,
+					rotationY:180,
+					scaleX:0.02,
+					scaleY:0.02,
+					scaleZ:0.02
+				});
+				world.add(calendar); -->
+
+				<!-- works feather -->
+				<a-asset id="feather_obj" src="images/building/feather/model.obj"></a-asset>
+				<a-asset id="feather_mtl" src="images/building/feather/materials.mtl"></a-asset>
+
+				<!-- works book3 -->
+				<!-- <a-asset id="table_obj" src="images/building/book3/model.obj"></a-asset>
+				<a-asset id="table_mtl" src="images/building/book3/materials.mtl"></a-asset> -->
+
+			</a-assets>
+
+			<a-sky src="#stars"></a-sky>
+
+
+	    </a-scene>
+
+	</body>
+</html>

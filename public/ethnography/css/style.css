@@ -1,0 +1,210 @@
+@charset "utf-8";
+@font-face{
+  font-family: 'Goudy';
+  src:url('goudy.woff') format('woff');
+}
+
+/* when  ur making an icon - IT SHOULD BE 32PX BY 32PX VERY SMALL */
+
+*{
+  font-family:'Goudy', Helvetica, sans-serif;
+  margin:0;
+  padding:0;
+}
+ul, li{list-style: none;}
+h1, h2, h3{
+  font-size:1.2em;
+
+}
+
+h1{
+  font-weight:bold;
+}
+
+p{
+  text-indent:2em;
+  line-height:130%;
+  text-align:justify;
+}
+
+
+a:link, a:visited{
+  color:#000000;
+  text-decoration:none;
+}
+
+a:hover, a:focus{
+  opacity:0.7;
+}
+
+#wrapper{
+  width:100%;
+  margin:0 auto;
+  display:grid;
+  grid:
+    [header-start] "header header header" 3em
+    [nav-start] "links links links" 4em
+    [image-start] "image image image" auto
+    [content-start] "main main main"  auto
+    [image-smalldisplay] "image_sd image_sd image_sd" auto
+    [footer-start] "footer footer footer" 3em
+    /[main] 1fr;
+  }
+header{
+  grid-area:header;
+  display:flex;
+  height:3em;
+  align-items:center;
+  margin:auto;
+}
+nav{
+    grid-area:links;
+    width:100%;
+  }
+div.pics{
+  grid-area:image_sd;
+}
+
+div.pics_layout{
+  display:grid;
+/* grid-auto-flow: dense rows; doesn'twork*/
+  grid-template-columns:auto;
+  grid-template-rows:auto;
+  justify-content: center;
+}
+
+div.pics_layout img{
+
+  justify-self:center;
+  margin:1em 0em;
+  align-self:center;
+  /* padding:1em; */
+  max-width:100%;
+  height:auto;
+}
+/* for fun - switching around */
+img.selected{
+  grid-row:1/2;
+  grid-column:1/2;
+}
+
+main{
+  grid-area: main;
+}
+#container > h2{
+
+  text-align:center;
+  background-color:#999999;
+  margin-bottom:1em;
+}
+footer{
+  grid-area:footer;
+  margin:auto;
+}
+
+/* NEED HEIGHT ALL THE TIME especially with flex, unless align items will not work properly */
+ul.nav_list{
+ width:100%;
+  height:4em;
+  display:flex;
+
+
+  background-color:#222222;
+  align-items:center;
+    list-style:none;
+  /* justify-content:space-around; */
+}
+
+li.nav_item{
+  /* flex:1 1 auto; doesn't work */
+  /* display:block; */
+  margin:0 1em;
+  /* background-color:#999999; */
+}
+li.nav_item a{
+  color:#ffffff;
+}
+li.logo{
+  margin-right: auto;
+}
+h4{
+  font-size:1.5em;
+  text-align:center;
+  margin-bottom:.7em;
+  margin-top:2em;
+}
+figure{
+  text-align:center;
+  margin-bottom:2em;
+}
+
+
+@media only screen and (min-width:1300px){
+  img{
+    display:block;
+    margin: 0 auto;
+    border:1px solid #999999;
+  margin-top:1em;
+  margin-bottom:1em;
+}
+
+  h1, h2{
+    font-size:2em;
+  }
+  p{
+    line-height:200%;
+    padding-bottom:1em;
+  }
+  main{
+    width:100%;
+    /* padding-left:1em;
+    padding-right:1em; */
+    background:skyblue;
+  }
+  #container{
+    width:100%;
+  }
+  /* div.pics_layout{
+
+    display:grid;
+    grid-gap:2em;
+    grid-template-rows:1fr;
+    grid-template-columns:1fr;
+  } */
+  div.pics{
+    grid-area:image;
+  }
+  .paragraphs{
+    /* width:100%; */
+    display: grid;
+    grid-template-rows:auto;
+    grid-template-columns:1fr 1fr;
+    grid-gap:2.5em;
+    margin-right:1em;
+    margin-left:1em;
+  }
+
+  /* .left_col{   this doesn't work - wrong
+    width:100%;
+
+  }
+  .right_col{
+    width:100%;
+  } */
+  h4{
+    font-size:1.5em;
+    text-align:center;
+    margin-bottom:.7em;
+    margin-top:2em;
+  }
+  figure{
+    text-align:center;
+    margin-bottom:2em;
+  }
+}
+
+
+
+  /*
+  grid-template-rows:50px 1fr 2em 2fr 2em 3fr;
+  grid-template-columns:1fr 2em 1fr 2em 1fr; */

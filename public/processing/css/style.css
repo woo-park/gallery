@@ -1,0 +1,447 @@
+@charset "utf-8";
+@font-face {
+  font-family:'Goudy'; src:url('goudy.woff') format('woff');
+}
+*{
+  margin: 0; padding:0; font-family:'Goudy', Helvetica;
+}
+ul{
+  list-style:none;
+}
+h1 a:link, h1 a:visited, nav a:link, nav a:visited{
+  color:#000000; text-decoration:none;
+}
+h1{
+  font-weight:bold; text-align:center;
+}
+p{
+  line-height:150%; text-align:justify;
+}
+a:hover, a:focus{
+  opacity:0.7;
+}
+
+
+img.logo{
+  position:absolute;
+  margin-left:-55px;
+  width:30px;
+  height:inherit;
+}
+  span#logo{
+
+
+  }
+
+
+/* smallest window size */
+
+
+footer{background:#090505}
+#footer>p>a{display:block;
+    text-align: center;
+    line-height: 100%;
+    color:ivory;
+    text-decoration: none;
+
+    }
+
+
+/* these two are same things but this is shortcut */
+#layout{
+  display:grid;
+  grid:
+  [header-start] "header" 100%
+  [nav-start] "nav" 100%
+  [section-start] "section" 350px
+  [main-start] "main" 1fr
+  [footer-start] "footer" 50px
+            /[main]1fr;
+}
+
+#header{grid-area:header;}
+#para{grid-area:section;}
+#nav{grid-area:nav;}
+#main{grid-area:main;}
+#footer{grid-area:footer;}
+
+#footer>p>a{display:block;
+    text-align: center;
+    line-height: 100%;
+    }
+
+h1, h2, h3, h4, h5{
+  font-size:1.2em;
+}
+
+/* nav */
+ul#nav_list li{
+  border:1px solid gray;
+  border-radius:5px;
+  padding:0.5em;
+  margin:0.4em;
+  text-align:center;
+}
+
+ul#nav_list li a{
+  display:block;
+
+}
+#main{
+  display:grid;
+/* this should create two columns and many rows according to the div created in main */
+  grid:
+  [space1-start] "gap1 space1-1 gap2" 1fr
+  [space2-start] "gap1 space1-2 gap2" 1fr
+  [space3-start] "gap1 space2-1  gap2" 1fr
+  [space4-start] "gap1 space2-2  gap2" 1fr
+  [space5-start] "gap1 space3-1  gap2" 1fr
+  [space6-start] "gap1 space3-2  gap2" 1fr
+  [space7-start] "gap1 space4-1  gap2" 1fr
+  [space8-start] "gap1 space4-2  gap2" 1fr
+  [space9-start] "gap1 space5-1  gap2" 1fr
+  [space10-start] "gap1 space5-2  gap2" 1fr
+  [space11-start] "gap1 space6-1  gap2" 1fr
+  [space12-start] "gap1 space6-2  gap2" 1fr
+            /[gap] 0.3em [space1] 1fr [gap] 0.3em;
+}
+
+div.mouseover:hover {
+  opacity:0.6;
+}
+.dog{
+}
+.lineThru{
+
+}
+#space1-1{
+
+  margin:auto;
+  grid-area:space1-1;
+}
+#space1-2{
+  grid-area:space1-2;
+}
+#space2-1{
+  grid-area:space2-1;
+}
+#space2-2{
+  grid-area:space2-2;
+}
+#space3-1{
+  grid-area:space3-1;
+}
+#space3-2{
+  grid-area:space3-2;
+}
+#space4-1{
+  grid-area:space4-1;
+}
+#space4-2{
+  grid-area:space4-2;
+}
+#space5-1{
+  grid-area:space5-1;
+}
+#space5-2{
+  grid-area:space5-2;
+}
+#space6-1{
+  grid-area:space6-1;
+}
+#space6-2{
+  grid-area:space6-2;
+}
+
+
+header{background:ivory;}
+nav{background:ivory;}
+main{background-image:url("../images/space3.jpg")
+};
+footer{background:#090505;}
+
+section{background:#090505;
+  width:100%;}
+article{width:80%; margin:auto;}
+
+p{text-indent:1em;
+  line-height:120%;
+  color:ivory;
+  padding:2em;}
+
+
+
+/* larger website  */
+
+@media only screen and (min-width:833px) {
+  h1, h2, h3, h4, h5{
+    font-size:2em;
+  }
+
+  img.logo{
+    position:absolute;
+    margin-left:-55px;
+    width:30px;
+    height:inherit;
+    margin-top:9px;
+  }
+
+  #layout{
+    display:grid;
+    /* top bottom length */
+    /* is there a way to give main-start a minimum height */
+    /* I gave main-start 100% because 1fr was giving error */
+    grid-template-rows:[header-start] 50px [nav-start] 1fr [section-start] 150px [main-start] 100% [footer-start] 50px;
+    grid-template-columns:[main]1fr [side-bar] 20%;
+
+    /* you can name the grids now */
+    grid-template-areas:
+    "header header"
+    "nav nav"
+    "section section"
+    "main main"
+    "footer footer";
+  }
+
+  #header{grid-area:header;}
+  section#para{grid-area:section;}
+  #nav{grid-area:nav}
+  #main{grid-area:main;}
+  #footer{grid-area:footer;}
+
+  #footer>p>a{display:block;
+      text-align: center;
+      line-height: 100%;
+      }
+
+
+/* main */
+  #main{
+    display:grid;
+/* this should create two columns and many rows according to the div created in main */
+    grid:
+    [space1-start] "gap1 space1-1 space1-2 gap2" 1fr
+    [space2-start] "gap1 space2-1 space2-2 gap2" 1fr
+    [space3-start] "gap1 space3-1 space3-2 gap2" 1fr
+    [space4-start] "gap1 space4-1 space4-2 gap2" 1fr
+    [space5-start] "gap1 space5-1 space5-2 gap2" 1fr
+    [space6-start] "gap1 space6-1 space6-2 gap2" 1fr
+    /[gap] 1em [space1] 1fr [space2] 1fr [gap] 1em;
+  }
+
+  div.mouseover:hover {
+    opacity:0.6;
+  }
+
+  #space1-1{
+    grid-area:space1-1;
+  }
+  #space1-2{
+    grid-area:space1-2;
+  }
+  #space2-1{
+    grid-area:space2-1;
+  }
+  #space2-2{
+    grid-area:space2-2;
+  }
+  #space3-1{
+    grid-area:space3-1;
+  }
+  #space3-2{
+    grid-area:space3-2;
+  }
+  #space4-1{
+    grid-area:space4-1;
+  }
+  #space4-2{
+    grid-area:space4-2;
+  }
+  #space5-1{
+    grid-area:space5-1;
+  }
+  #space5-2{
+    grid-area:space5-2;
+  }
+  #space6-1{
+    grid-area:space6-1;
+  }
+  #space6-2{
+    grid-area:space6-2;
+  }
+
+/* nav */
+
+
+  ul#nav_list{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    /* align-content:center; */
+  }
+
+  ul#nav_list li{
+    flex: 0 1 auto;
+    border:1px solid gray;
+    border-radius:5px;
+    padding:0.5em;
+    margin:0.4em;
+  }
+/*
+  ul li.logo{
+    margin-right: auto;
+  } */
+
+/* color scheme */
+  header{background:ivory;}
+  nav{background:ivory;
+      border-top:2px double black;
+    }
+
+
+  section{background:#090505;
+    width:100%;}
+  article{width:80%; margin:auto;}
+
+  p{text-indent:2em;
+    line-height:150%;
+    color:ivory;
+    padding:2em;}
+  main{background-image:url("../images/space3.jpg")}
+  footer{background:#090505;}
+
+}
+
+
+@media only screen and (min-width:1080px){
+  h1, h2, h3, h4, h5{
+    font-size:2em;
+  }
+
+  #layout{
+    display:grid;
+    /* top bottom length */
+    /* is there a way to give main-start a minimum height */
+    /* I gave main-start 100% because 1fr was giving error */
+    grid-template-rows:[header-start] 50px [section-start] 150px [nav-start] 1fr [main-start] 100% [footer-start] 50px;
+    grid-template-columns:[main]1fr [side-bar] 20%;
+
+    /* you can name the grids now */
+    grid-template-areas:
+    "header header"
+    "section section"
+    "nav nav"
+    "main main-sidebar"
+    "footer footer";
+  }
+
+  #header{grid-area:header;}
+  #para{grid-area:section;}
+  #nav{grid-area:main-sidebar;}
+  #main{grid-area:main;}
+  #footer{grid-area:footer;}
+
+  #footer>p>a{display:block;
+      text-align: center;
+      line-height: 100%;
+      }
+
+
+/* main */
+  #main{
+    display:grid;
+/* this should create two columns and many rows according to the div created in main */
+    grid:
+    [space1-start] "gap1 space1-1 space1-2 gap2" 1fr
+    [space2-start] "gap1 space2-1 space2-2 gap2" 1fr
+    [space3-start] "gap1 space3-1 space3-2 gap2" 1fr
+    [space4-start] "gap1 space4-1 space4-2 gap2" 1fr
+    [space5-start] "gap1 space5-1 space5-2 gap2" 1fr
+    [space6-start] "gap1 space6-1 space6-2 gap2" 1fr
+    /[gap] 1em [space1] 1fr [space2] 1fr [gap] 1em;
+  }
+
+  div.mouseover:hover {
+    opacity:0.6;
+  }
+
+  #space1-1{
+    grid-area:space1-1;
+  }
+  #space1-2{
+    grid-area:space1-2;
+  }
+  #space2-1{
+    grid-area:space2-1;
+  }
+  #space2-2{
+    grid-area:space2-2;
+  }
+  #space3-1{
+    grid-area:space3-1;
+  }
+  #space3-2{
+    grid-area:space3-2;
+  }
+  #space4-1{
+    grid-area:space4-1;
+  }
+  #space4-2{
+    grid-area:space4-2;
+  }
+  #space5-1{
+    grid-area:space5-1;
+  }
+  #space5-2{
+    grid-area:space5-2;
+  }
+  #space6-1{
+    grid-area:space6-1;
+  }
+  #space6-2{
+    grid-area:space6-2;
+  }
+
+/* nav */
+  #nav{
+    width:100%;
+  }
+
+
+  ul#nav_list{
+    display:flex;
+    width:20%;
+    flex-direction: column;
+    position:fixed;
+    /* justify-content:center; */
+  }
+
+  ul#nav_list li{
+    /* flex: 0 1 auto; */
+    /* width:100%; */
+    border:1px solid gray;
+    border-radius:5px;
+    padding:0.5em;
+    margin:0.4em;
+  }
+
+
+  nav ul li a:link, a:visited{
+    color:ivory; text-decoration:none;
+  }
+
+
+  /* header{background:ivory;} */
+  section{background:#090505;}
+  p{color:ivory;
+    text-indent:2em;}
+  nav{background:#090505;}
+  main{background-image:url("../images/space3.jpg");
+
+  footer{background:#090505;
+    }
+
+  h1 a{
+    color:#090505;
+  }
+}

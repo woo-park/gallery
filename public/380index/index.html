@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <style media="screen">
+      .box{
+        border:1px solid purple;
+        width:199px;
+        background:cyan;
+        height:100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id = "header">
+          <h1 id = "intro"><a href="#">Drawing on the Web</a></h1>
+          <nav id="nav">
+            <ul id = "overall_menu">
+              <li><a class = "menu1" href="#">HTML and CSS</a>
+                <ul class = "show">
+                    <li class = "li_2"><a href="htmlcss/index.html">Link to <em>HTML and CSS</em></a></li>
+                    <li class = "li_2">mix-blend-mode:difference</li>
+                    <li class = "li_2">audio</li>
+                    <li class = "li_2">video</li>
+                    <li class = "li_2">source src="red.mp3" type="audio/mpeg"</li>
+                    <li class = "li_2">background-image: url('all-colors.png')</li>
+                    <li class = "li_2">background-size:cover</li>
+                    <li class = "li_2">
+                      <form id="form1">
+                          <input id="textform" type="text" name="text">
+                            <input type="submit" id="submitbutton" value="Add Note">
+                      </form>
+                    </li>
+                </ul>
+              </li>
+              <li><a class = "menu1" href="#">SVG</a>
+                <ul class = "show">
+                    <li class = "li_2"><a href="svgicon/index.html">Link to <em>SVG</em></a>
+                    </li>
+                    <li class = "li_2">
+                      <form id="form2">
+                          <input class="textform" type="text" name="text">
+                            <input type="submit" class="submitbutton" value="Add Note">
+                      </form>
+                    </li>
+                </ul>
+              </li>
+              <li><a class = "menu1" href="cssanimation/index.html">CSS Animation</a>
+                <ul class = "show">
+                    <li class = "li_2"><a href="#">Link to <em>CSS Animation</em></a>
+                    </li>
+                </ul>
+              </li>
+              <li><a class = "menu1" href="#">Version Control and Collaboration</a>
+                <ul class = "show">
+                    <li class = "li_2"><a href="https://github.com/woo-park/">Link to <em>Version Control and Collaboration</em></a>
+                    </li>
+                </ul>
+              </li>
+              <li><a class = "menu1" href="#">JavaScript</a>
+                <ul class = "show">
+                    <li class = "li_2"><a href="./javascript/index.html">Link to <em>JavaScript</em></a>
+                    </li>
+                </ul>
+              </li>
+              <li><a class = "menu1" href="#">HTML Canvas</a>
+                <ul class = "show">
+                    <li class = "li_2"><a href="./htmlcanvas/index.html">Link to <em>HTML Canvas</em></a>
+                    </li>
+                </ul>
+              </li>
+              <li><a class = "menu1" href="#">WebGl</a>
+                <ul class = "show">
+                    <li class = "li_2"><a href="./webgl/index.html">Link to <em>WebGl</em></a>
+                    </li>
+                </ul>
+              </li>
+              <li><a class = "menu1" href="#">Final Project</a>
+                <ul class = "show">
+                    <li class = "li_2"><a href="./three/threejs_repo/navigation.html">Link to <em>Final Project</em></a>
+                    </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>   <!-- header -->
+      <div id="main">
+        <div id="lesson1">
+          <p>Drag the bar to change its width:</p>
+          <div id="dragbar" style="background:slategray;width:60px;height:20px;">
+          </div>
+          <script type="text/javascript" src="js/mousemotion_script.js"></script>
+        </div>
+        <div id="lesson2">
+          <!-- create class dot in style -->
+          <script type="text/javascript" src="js/mouseclick_script.js"></script>
+        </div>
+        <div id="lesson3">
+          <button type="button" name="button">button A</button>
+          <button type="button" name="button">button B</button>
+          <button type="button" name="button">button C</button>
+          <script type="text/javascript" src="js/targetbutton_script.js">
+
+          </script>
+        </div>
+        <div id="lesson4">
+          <p id="para_l4">A paragraph with a <button id="button_l4">button</button> </p>
+          <script type="text/javascript" src="js/stoppropagation_script.js"></script>
+        </div>
+        <div id="lesson5">
+          <script type="text/javascript" src="js/elt_function.js">
+
+          </script>
+        </div>
+
+        <!-- <a class ="link" href="htmlcss/index2.html">htmlcss/index2.html</a> -->
+      </div>  <!-- main -->
+      <div id="footer">
+        <h3>Woo Park</h3>
+      </div>
+    </div>  <!-- wrapper -->
+    <script type="text/javascript" src="js/script.js"></script>
+  </body>
+</html>
+
+
+
+
+<!--
+HTML and CSS Drawing
+
+The second part of this assignment is an opportunity for you to combine images and
+media in the browser to create an original, multilayered, HTML and CSS drawing.
+How you go about this is open to interpretation but here are a few requirements.
+
+    Create a new subdirectory of your “380” or “drawing” directory for this project.
+    Your drawing should take up the full browser window.
+    There should be multiple, separate layers of imagery on the page (i.e. foreground, background, and in-between).
+    Your drawing should include time-based media in the form of video or animation.
+    Your drawing should include background music or sound using the HTML audio element.
+
+While the HTML and CSS code should be your own, feel free to incorporate found
+images and media into the project. This page is intended to be seen and experienced
+more than read; as such, you should limit HTML text on the page.
+ -->

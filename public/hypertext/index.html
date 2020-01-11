@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      @font-face {
+        font-family: 'GoudyStM-webfont';
+        /* src: url('GoudyStM-webfont.eot'); */
+        src: local('☺'), url('GoudyStM-webfont.woff') format('woff'), url('GoudyStM-webfont.ttf') format('truetype'), url('GoudyStM-webfont.svg') format('svg');
+        /* font-weight: 900; */
+        font-style: normal;
+      }
+      @font-face {
+        font-family: 'fanwood-webfont';
+        /* src: url('fanwood-webfont.eot'); */
+        src: local('☺'), url('fanwood-webfont.woff') format('woff'), url('fanwood-webfont.ttf') format('truetype'), url('fanwood-webfont.svg') format('svg');
+        /* font-weight: 900; */
+        font-style: normal;
+      }
+
+     *{margin:0;
+       box-sizing:border-box;
+       /* margin-left:.2em; */
+       /* box-sizing didn't do anything so check again */
+       font-family: 'GoudyStM-webfont';
+       /* font-family: 'fanwood-webfont'; */
+     }
+      /* .border_box{
+       border:1px solid black;
+       width:200px;
+       height:200px;
+      } */
+     
+      .box{
+        /* background-color:slategrey; */
+        display:flex;
+        /* align-items:center; */
+        margin:auto;
+        justify-content:center;
+        width:max-content;
+        /* text-align: center; */
+        height:20px;
+        /* border:1px dashed slategrey; */
+      }
+      #timebar{
+        background-color:#03040c;
+        height:20px;
+        width:0px;
+      }
+      #wrapper{
+        
+        width:auto;
+        height:100vh;
+        
+      }
+      body{
+        background-color:ivory;
+        transition: all 900ms ease-in-out;
+      }
+      #collectbtn{
+        position:relative;
+        width:max-content;
+      }
+      .textwidth{
+        /* width:max-content; */
+        /* cursor: pointer; */
+        
+        /* display:inline-block; */
+      }
+      *{background-color:inherit;
+        
+      }
+      input {
+        
+        /* border:1px solid black; */
+        /* border-bottom:1px solid black; */
+        /* border-radius: 4px; */
+        box-sizing: content-box;
+        text-align: center;
+        border-color:black;
+        /* border-radius:4px; */
+        
+      }
+      button{
+        /* border:none; */
+        /* border:1px solid black; */
+        border-radius:20px;
+        cursor: pointer;
+      }
+
+
+      /* creating grid */
+      #wrapper {
+        /* position: relative; */
+        display:grid;
+        height:100vh;        
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-rows:1fr;
+        /* grid-auto-columns:1fr; */
+        /* grid-auto-rows:100px; */
+        overflow:hidden;
+      }
+      #username{
+        width:100%;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+/*      
+        position:absolute;
+        top: -5rem;
+        left:150%; */
+      }
+      /* #language_des{
+        width:100%;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+      } */
+      #left_sidebar{
+        width:100%;
+        /* position: fixed; */
+        display:flex;
+        flex-flow: column;
+        margin:0;
+        /* justify-content: center; */   
+         /* this was keep making thing shift down */
+        align-items: center;
+        position: relative;
+        top:220px;
+
+        /* border:1px solid black; */
+      }
+      #right_sidebar{
+        width:100%;
+        display:flex;
+        flex-flow: column;
+        margin:0;
+        /* justify-content: center; */
+        /* this was keep making thing shift down */
+        align-items: center;
+        /* text-align: right; */
+        position: relative;
+        top:220px;
+
+        /* border:1px solid grey; */
+      }
+      #centerbar{
+        width:100%;
+        
+        
+        position:relative;
+        
+        top:180px;
+
+        /* border:1px solid black; */
+      }
+      /* #centerbar > div{
+        position: absolute;
+      } */
+
+    </style>
+  </head>
+  <body id="bgColor">
+    <div class="fontColor" id="wrapper">
+
+      <div id="left_sidebar">
+          
+
+          <div class="fontColor" id="main"></div>
+          <!-- name -->
+      </div>
+      
+      <div id ="centerbar">
+          <div id="username">
+              Username&nbsp;:&nbsp;<input id="textarea" type="text"></input>
+              &nbsp;&nbsp;Primary Language&nbsp;:&nbsp;<input id="description"></input>
+              &nbsp;&nbsp; <button id="adduser">Add Player</button> 
+              
+          </div>
+          
+          <div id="story_box"></div>
+      </div>
+    
+      <div id="right_sidebar">
+       
+        <div id="side" class="night"></div> 
+
+        <div id="side2" class="textwidth activity"></div>
+        <div id="side3" class="textwidth language"></div>
+        <div id="side4" class="textwidth"></div>
+        <div id="side5" class="textwidth"></div>
+        <div id="side6" class="textwidth"></div>
+        <div id="side7" class="textwidth"></div>
+        <div id="side8" class="textwidth"></div>
+        <div id="side9" class="textwidth"></div>
+        
+
+        <div id="timer"></div>
+        <div id="timebar"></div>
+        <div id="collectbtn">lightsout</div>
+        
+      </div>
+
+    </div>
+
+
+    <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>

@@ -193,4 +193,5 @@ io.on('connect', (socket) => {
 
 
 const PORT = process.env.PORT || 4444;
+console.log('starting on sever' + PORT);
 server.listen(PORT);

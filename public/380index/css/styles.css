@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One');
+
+*{text-decoration: none;
+  font-family: Fjalla+One ,Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;}
+#header{
+  background-image: linear-gradient(to bottom right, white, gray);
+}
+#main{
+  width:100%;
+  height:710px;
+  background-color: black;
+}
+#footer{
+  background-color:black;
+  color:ivory;
+}
+
+
+a{color: #000000;}
+a:hover, a:focus{opacity: 0.5;}
+h1,h3{text-align:center;}
+/* a.link{color:ivory;} */
+ul#overall_menu{
+  display:flex;
+  justify-content:space-between;
+  list-style:none;
+  list-style-position:inside;
+  }
+ul#overall_menu li{
+
+  width:100%;
+  /* flex:0 1 auto; */
+}
+ul.show{
+  margin-top:20px;
+}
+
+li.li_2{display: block;}
+/* ul.show{display:none; */
+        /* display:inline; */
+      /* } */
+.count{
+  display:block;
+  list-style:square;
+}
+#main{
+  color:white;
+}

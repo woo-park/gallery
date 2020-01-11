@@ -1,0 +1,203 @@
+[
+      {
+        "id" : 1,
+        "text" : "`Next thing ${pick} knows`"
+      },{
+        "id" :2,
+        "text" : "`${pick} is put up in a bunk bed`"
+      },{
+        "id" :3,
+        "text" : "`looking at the ceiling. ${pick} touches the ceiling with hands`"
+      },{
+        "id":4,
+        "text" : "`first time feeling trapped inside`"
+      },{
+        "id":5,
+        "text" : "`digital alarm starts ringing. pitch is getting higher and higher`"
+      },{
+        "id":6,
+        "text" : "`walks down the ladder to turn off the alarm`"
+      },{
+        "id":7,
+        "text" : "`${pick} looks through clothes in suitcase and picks an outfit`"
+      },{
+        "id":8,
+        "text" : "`goes to orientation and meets with other students who are also new to school and the states`"
+      },{
+        "id":9,
+        "text" : "`${pick} is in the 7th grade`"
+      },{
+        "id":10,
+        "text" : "`in this new place, new environment, new house`"
+      },{
+        "id":11,
+        "text" : "`${pick} must get along with others and make this place home`"
+      },{
+        "id":12,
+        "text" : "`thrown into this new world`"
+      },{
+        "id":13,
+        "text" : "`${pick} might like it`"
+      },{
+        "id":14,
+        "text" : "`might love it`"
+      },{
+        "id":15,
+        "text" : "`might hate it`"
+      },{
+        "id":16,
+        "text" : "`since being part of the community, ${pick} is required to do anything the school asks for`"
+      },{
+        "id":17,
+        "text" : "`${pick} is not alone,`"
+      },{
+        "id":18,
+        "text" : "`but definitely feels alone`"
+      },{
+        "id":19,
+        "text" : "`the white wooden fence keeps ${pick} inside the school`"
+      },{
+        "id":20,
+        "text" : "`its everywhere`"
+      },{
+        "id":21,
+        "text" : "`fences are not tall, but they have sharp, pointy tops`"
+      },{
+        "id":22,
+        "text" : "` `"
+      },{
+        "id":23,
+        "text" : "`Someone asks, do you translate when you hear English? Or do you understand it right away?`"
+      },{
+        "id":24,
+        "text" : "`${pick} says, ‘I don’t know’`"
+      },{
+        "id":25,
+        "text" : "`one asks again, well then do you think in English or in ${lang}?`"
+      },{
+        "id":26,
+        "text" : "`And ${pick} replies, I just say it`"
+      },{
+        "id":27,
+        "text" : "`${pick} thinks about this for a while`"
+      },{
+        "id":28,
+        "text" : "` `"
+      },{
+        "id":29,
+        "text" : "`${pick} goes to American history class`"
+      },{
+        "id":30,
+        "text" : "`${pick} has a quiz today`"
+      },{
+        "id":31,
+        "text" : "`the quiz is on the current event that was discussed during class`"
+      },{
+        "id":32,
+        "text" : "`fails it miserably`"
+      },{
+        "id":33,
+        "text" : "`${pick} doesn’t know what to tell to parents because everyone else seems to be doing fine`"
+      },{
+        "id":34,
+        "text" : "`maybe ${pick} is not the brightest kid after all`"
+      },{
+        "id":35,
+        "text" : "` `"
+      },{
+        "id":36,
+        "text" : "`It’s a break time`"
+      },{
+        "id":37,
+        "text" : "`${pick} sees other kids going outside. ${pick} looks out the window from the second floor. `"
+      },{
+        "id":38,
+        "text" : "`${pick}'s never seen a grass field as large as this`"
+      },{
+        "id":39,
+        "text" : "`${pick} thinks -i will stick out even more if i go out there -`"
+      },{
+        "id":40,
+        "text" : "`other kids are playing touch football and basketball on mini hoop.`"
+      },{
+        "id":41,
+        "text" : "`as of now, ${pick} doesn’t have a friend to talk to during a break.`"
+      },{
+        "id":42,
+        "text" : "`${pick} is not sure what to do, but just stares out the window. And ${pick} wonders what are the rules for football`"
+      },{
+        "id":43,
+        "text" : "` `"
+      },{
+        "id":44,
+        "text" : "`people think ${pick} is a shy`"
+      },{
+        "id":45,
+        "text" : "`${pick} is not shy. it's just taking a while for ${pick} to adjust to the environmment.`"
+      },{
+        "id":46,
+        "text" : "`it's break time again.`"
+      },{
+        "id":47,
+        "text" : "`${pick} misses talking to old friends. so ${pick} turns on a computer.`"
+      },{
+        "id":48,
+        "text" : "`${pick} tries to go on a ${lang} portal to use ${lang} email account. `"
+      },{
+        "id":49,
+        "text" : "`however, except for some english words, all the characters are broken.`"
+      },{
+        "id":50,
+        "text" : "` '@#@23!$%4!@@!#!#@!@#!@#@!'`"
+      },{
+        "id":51,
+        "text" : "`so ${pick} goes on another ${lang} portal and then types the ${lang} character in english.`"
+      },{
+        "id":52,
+        "text" : "`'wkfwlso?'`"
+      },{
+        "id":53,
+        "text" : "`on the bottom of the page, the portal asks if ${pick} meant to say 'How are you?' `"
+      },{
+        "id":54,
+        "text" : "``"
+      },{
+        "id":55,
+        "text" : "`finally ${pick} can send an email to an old friend with a little bit of hack`"
+      },{
+        "id":56,
+        "text" : "``"
+      },{
+        "id":57,
+        "text" : "`after school, before going to bed, ${pick} can use the cord-less home phone `"
+      },{
+        "id":58,
+        "text" : "`but ${pick} needs to take turns when using a phone.`"
+      },{
+        "id":59,
+        "text" : "`time is limited to 30 minutes since there are more than 15 kids to share the phone.`"
+      },{
+        "id":60,
+        "text" : "``"
+      },{
+        "id":61,
+        "text" : "`after recieving an email from a friend from home, ${pick} feels alive.`"
+      },{
+        "id":62,
+        "text" : "`every day, after school and sports, ${pick} sees 'friends' getting picked up by the drive way`"
+      },{
+        "id":63,
+        "text" : "`${pick} wonders what they might do when they go back home`"
+      },{
+        "id":64,
+        "text" : "``"
+      },{
+        "id":65,
+        "text" : "``"
+      },{
+        "id":66,
+        "text" : "``"
+      }
+
+
+]

@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang ="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Documentation Guess The Correlation</title>
+        <style>
+
+        </style>
+        <link rel="stylesheet" href="./style.css">
+        <script src="./p5.min.js" type="text/javascript"></script>
+       <script src="./p5.dom.js" type="text/javascript"></script>
+       <script src="./p5.sound.min.js" type="text/javascript"></script>
+
+    </head>
+    <body>
+        <div id="container">
+
+            <div class="div1">
+                    <a href="http://guessthecorrelation.com/">
+                      <svg version="1.1" id="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                           width="410px" height="187px" viewBox="0 0 410 187" enable-background="new 0 0 410 187" xml:space="preserve">
+                          <polyline fill="#1C75BC" points="16.72,14.799 391.499,14.799 391.492,172.333 16.72,172.333 "/>
+                          <rect x="27.925" y="26.005" fill="#010101" width="11.205" height="11.203"/>
+                          <rect x="368.377" y="26.005" fill="#010101" width="11.203" height="11.203"/>
+                          <polygon fill="#2B3990" points="365.842,3.596 340.907,3.596 315.964,3.596 291.029,3.596 291.029,3.596 266.095,3.596
+                          241.153,3.596 216.219,3.596 216.219,3.596 191.282,3.596 166.343,3.596 141.408,3.596 141.406,3.596 116.471,3.596 91.531,3.596
+                          66.597,3.596 66.594,3.596 41.659,3.596 16.72,3.596 16.72,14.799 41.659,14.799 66.594,14.799 66.597,14.799 91.531,14.799
+                          116.471,14.799 141.406,14.799 141.408,14.799 166.343,14.799 191.282,14.799 216.219,14.799 216.219,14.799 241.153,14.799
+                          266.095,14.799 291.029,14.799 291.029,14.799 315.964,14.799 340.907,14.799 365.842,14.799 390.783,14.799 390.783,3.596 "/>
+                          <polygon fill="#2B3990" points="16.718,161.833 16.718,151.328 16.718,140.826 16.718,130.325 16.718,130.322 16.718,119.821
+                          16.718,109.32 16.718,98.818 16.718,98.815 16.718,88.313 16.718,77.812 16.718,67.312 16.718,67.309 16.718,56.807 16.718,46.306
+                          16.718,35.805 16.718,35.802 16.718,25.3 16.718,14.799 5.515,14.799 5.515,25.3 5.515,35.802 5.515,35.805 5.515,46.306
+                          5.515,56.807 5.515,67.309 5.515,67.312 5.515,77.812 5.515,88.313 5.515,98.815 5.515,98.818 5.515,109.32 5.515,119.821
+                          5.515,130.322 5.515,130.325 5.515,140.826 5.515,151.328 5.515,161.833 5.515,172.333 16.718,172.333 "/>
+                          <rect x="368.377" y="150.456" fill="#010101" width="11.203" height="11.204"/>
+                          <rect x="27.925" y="150.456" fill="#010101" width="11.205" height="11.204"/>
+                          <g>
+                          <path fill="#EEEEEE" d="M61.297,86.165v-4.738h-4.738V62.472h4.738v-4.738h18.954v4.738h4.738v4.739h-9.477v-4.739h-9.477v18.954
+                            h9.477v-4.739h-4.738v-4.738h14.215v9.477h-4.738v4.738H61.297z"/>
+                          <path fill="#EEEEEE" d="M96.835,86.165v-4.738h-4.738V57.734h9.477v23.692h9.477V57.734h9.477v23.692h-4.738v4.738H96.835z"/>
+                          <path fill="#EEEEEE" d="M127.635,86.165V57.734h28.431v4.738h-18.954v4.739h14.215v4.738h-14.215v9.477h18.954v4.738H127.635z"/>
+                          <path fill="#EEEEEE" d="M163.174,86.165v-9.477h18.954v-4.738h-18.954v-9.477h4.738v-4.738h23.692v4.738h-18.954v4.739h14.215
+                            v4.738h4.738v9.477h-4.738v4.738H163.174z"/>
+                          <path fill="#EEEEEE" d="M198.712,86.165v-9.477h18.954v-4.738h-18.954v-9.477h4.738v-4.738h23.692v4.738h-18.954v4.739h14.215
+                            v4.738h4.738v9.477h-4.738v4.738H198.712z"/>
+                          <path fill="#EEEEEE" d="M255.573,86.165V62.472h-9.477v-4.738h28.431v4.738h-9.477v23.692H255.573z"/>
+                          <path fill="#EEEEEE" d="M281.635,86.165V57.734h9.477v9.477h9.477v-9.477h9.477v28.431h-9.477V71.949h-9.477v14.215H281.635z"/>
+                          <path fill="#EEEEEE" d="M317.173,86.165V57.734h28.431v4.738h-18.954v4.739h14.216v4.738h-14.216v9.477h18.954v4.738H317.173z"/>
+                          <path fill="#EEEEEE" d="M38.604,127.835v-4.341h-4.341v-17.362h4.341v-4.341h17.362v4.341h4.341v4.34h-8.681v-4.34h-8.682v17.362
+                            h8.682v-4.34h8.681v4.34h-4.341v4.341H38.604z"/>
+                          <path fill="#EEEEEE" d="M71.16,127.835v-4.341h-4.341v-17.362h4.341v-4.341h17.362v4.341h4.341v17.362h-4.341v4.341H71.16z
+                             M84.182,123.494v-17.362H75.5v17.362H84.182z"/>
+                          <path fill="#EEEEEE" d="M99.374,127.835v-26.044h21.703v4.341h4.341v8.681h-4.341v8.681h4.341v4.341h-8.681v-8.681h-8.682v8.681
+                            H99.374z M116.736,114.813v-8.681h-8.682v8.681H116.736z"/>
+                          <path fill="#EEEEEE" d="M131.929,127.835v-26.044h21.703v4.341h4.341v8.681h-4.341v8.681h4.341v4.341h-8.681v-8.681h-8.682v8.681
+                            H131.929z M149.292,114.813v-8.681h-8.682v8.681H149.292z"/>
+                          <path fill="#EEEEEE" d="M164.483,127.835v-26.044h26.044v4.341h-17.363v4.34h13.022v4.341h-13.022v8.681h17.363v4.341H164.483z"/>
+                          <path fill="#EEEEEE" d="M197.039,127.835v-26.044h8.681v21.703h17.363v4.341H197.039z"/>
+                          <path fill="#EEEEEE" d="M229.594,127.835v-21.703h4.341v-4.341h17.362v4.341h4.341v21.703h-8.681v-8.681h-8.682v8.681H229.594z
+                             M246.957,114.813v-8.681h-8.682v8.681H246.957z"/>
+                          <path fill="#EEEEEE" d="M270.83,127.835v-21.703h-8.681v-4.341h26.044v4.341h-8.681v21.703H270.83z"/>
+                          <path fill="#EEEEEE" d="M294.704,127.835v-26.044h8.681v26.044H294.704z"/>
+                          <path fill="#EEEEEE" d="M314.236,127.835v-4.341h-4.341v-17.362h4.341v-4.341h17.362v4.341h4.341v17.362h-4.341v4.341H314.236z
+                             M327.258,123.494v-17.362h-8.681v17.362H327.258z"/>
+                          <path fill="#EEEEEE" d="M342.451,127.835v-26.044h21.703v4.341h4.341v21.703h-8.682v-21.703h-8.681v21.703H342.451z"/>
+                          </g>
+                          <rect x="16.72" y="171.866" fill="#010101" width="374.063" height="11.203"/>
+                          <rect x="391.5" y="14.799" fill="#010101" width="11.203" height="158.064"/>
+                      </svg>
+                    </a>
+                  <!-- <h1><a href="">Guess The Correlation</a></h1> -->
+            </div>
+
+            <div class="div2">
+                <main>
+
+                    <div id="tie_back">
+                      <h3>Tie it back to Citizen Science</h3>
+                      <p>
+                        What is citizen science? It is collective experimentation that is constructed based on curiosities and interests, unlike some science that "tries to squeeze the economic juice from scientific research" (Citizen Scientist, 10). Science has been very crucial part of our lives until now and it will not only continue to be the core but also continue to shape our lives. However, recently, as it is mentioned in Citizen Scientists, scientific researches done by scientists are often conducted due to an economical reason rather than due to an interest of their own. With their efforts, we are able to experience new innovations in our everyday lives. Yet, as a part of citizen scientists, we are here to argue that this isn't enough. Science is not an expertise that scientists can only practice. For many centuries, citizens have practiced and participated in science without a title named 'scientist,' and this was the key that led to creative innovations. (not some economic value)
+                      </p>
+                      <p>
+                         We still need people who will devote all of their time and mind, as their profession, scientists. However, we need people who are willing to participate in their research to grow and thrive. Science will thrive even more when science is "built from the bottom up." Participation matters in any type of research because most of the assumptions are shaped by a large pool of data. The diversity and disagreement found in the data are what produce an accurate result. Thus, we need more assistance from the citizens and work as a collective group.
+                      </p>
+                    </div>
+
+                    <div id="snippet1">
+                      <h3>Snippet: Science Misnomers</h3>
+                      <p>"Historian of science Steven Shapin sees that ‘scientists are interchangeable in a way that creative artists are not... it is the social nature of science that cancels out personal identity and renders it uninteresting and irrelevant." (14) </p>
+                      <ul>
+                        <li>But this completely erases countless of individuals who participated in science silently and anonymously. "Individuals who have been involved in raising important questions about science, society, and politics"</li>
+                        <li>The truth about the world CAN NOT be founded with a systematical & linear approach.</li>
+                      </ul>
+                    </div>
+
+                    <div id="snippet2">
+                      <h3>Snippet: What are some of the things scientists face?</h3>
+                      <ul>
+                        <li>"Scientists are free to a degree"(15)</li>
+                        <li>"Scientists are constrained by an implicit set assumption about what counts as a good scientist" (15)
+                        </li>
+                        <li>"Scientists with public science funding are limited in experiments that they can conduct"(15)</li>
+                      </ul>
+                    </div>
+
+                    <div id="snippet3">
+                      <h3>Scientists should consider this!</h3>
+                      <ul>
+                        <li>Share individual interests</li>
+                        <li>Build new projects based on those individual interests</li>
+                      </ul>
+                    </div>
+
+                    <div id="snippet4">
+                      <h3>Scientists should consider this!</h3>
+                      <ul>
+                        <li>Our diverse knowledge can be brought together by the citizen scientists</li>
+                        <li>"Citizen science is an alternative way of seeing the world and engaging it"(17)</li>
+                        <li>Open question: "Practitioners more than a career?"</li>
+                      </ul>
+                    </div>
+
+                    <div id="snippet5">
+                      <h3>Snippet: What to expect as being Citizen Scientists?</h3>
+                      <ul>
+                        <li>One: "Citizen Scientists exist at all levels and in different places within science"(13)</li>
+                        <li>Two: It's public. It's an interest. It's a community.</li>
+                        <li>Three: Citizen Science can be one of the methods to counterbalance private and public scientific activity.</li>
+                        <li>Four: New opportunities, new challenges, and new ideas!</li>
+                        <li>Five: "Wider discussion of bits of science that are often kept behind closed doors" because uncertainty can often be difficult to share.(22)</li>
+                      </ul>
+                    </div>
+
+                    <div id="snippet6">
+                      <h3>Snippet: What are somethings Citizen Science projects should consider?</h3>
+                      <ul>
+                        <li>The participants should be rewarded with something more than their experience</li>
+                        <li>What can this be? (It doesn't have to be tangible)
+                            <ul>
+                              <li>Allow them to look at data that has been collected(if the participant made a great contribution)</li>
+                              <li>Or allow them to retrieve a snippet of data they've collected!</li>
+                              <li>Share with the citizen scientists</li>
+                              <li>Construct the project in a way that the users allows the user to grow their knowledge </li>
+                              <li>Be more specific with what these data are for!</li>
+                              <li>Update on where they are currently standing(Milestone) </li>
+                            </ul>
+
+                        </li>
+                      </ul>
+                    </div>
+
+
+
+                    <article>
+                      <h3>What were your achievements?</h1>
+                        <p>
+                          Like many other citizen science projects, Guess The Correlation has helped me understand and also how to interpret a scattered plot. When I first encountered the game site, it seemed complicated, but it was not. I became better at interpreting and actively guess the number. For instance, I played this game with a friend. We both guessed the correlation number and shared our predicted numbers to each other. It turned out that my guesses were a lot closer to the true correlation value since I have had more practice than my friend.  To reiterate, because I had been exposed to these types of scattered plots, I was able to retrieve past experiences and memories and use that to make better guesses.
+                        </p>
+                    </article>
+<!-- <p style="text-align:center;"></p> -->
+
+                    <div  id="image_placeholder">
+                      <h1>Setup</h1>
+                      <p style="text-align:center;">Here you can create a temporary character name! The name will be stored until you clear your web's cache inside the cookies. My ID name is Woo_park! Also, you have to choose another nickname if it already exists! This is crucial because it suggests that it keeps your data in their database as well as your game-playing history!</p>
+                      <div id="gameSetup"></div>
+
+                      <h1>Day1</h1>
+                      <p style="text-align:center;">As you can see on day 1, the scores are doesn't get over 22. I started the project without reading the instruction thoroughly, so I was testing what to put inside the input box.</p>
+                      <div id="day01"></div>
+
+                      <h1>Day2</h1>
+                      <p style="text-align:center;">When the plots were spreaded out like these, I had more difficulty guessing the number</p>
+                      <div id="day02"></div>
+
+                      <h1>Day3</h1>
+                      <p style="text-align:center;">I was slowly understanding the patterns, but the score still remained under 10.</p>
+                      <div id="day03"></div>
+
+                      <h1>Day4</h1>
+                      <p style="text-align:center;">As you can see in the first picture, I could not distinguish between 0.20 COR value and 0.50 COR value.</p>
+                      <div id="day04"></div>
+
+                      <h1>Day5</h1>
+                      <p style="text-align:center;">It was easy to tell when COR value was close to 1.</p>
+                      <div id="day05"></div>
+
+                      <h1>Day6</h1>
+                      <p style="text-align:center;">It became slightly easier to accumulate 10 coins.</p>
+                      <div id="day06"></div>
+
+                      <h1>Day7</h1>
+                      <p style="text-align:center;">But, I still faced difficulty when COR value was between 0.2 to 0.6. New Highscore of 27!</p>
+                      <div id="day07"></div>
+
+                      <h1>Day8</h1>
+                      <p style="text-align:center;">Getting 0 coin is easier than it looks.</p>
+                      <div id="day08"></div>
+
+                      <h1>Day9</h1>
+                      <div id="day09"></div>
+
+                      <h1>Day10</h1>
+                      <div id="day10"></div>
+
+                      <h1>Day11</h1>
+                      <p style="text-align:center;">New Highscore of 18</p>
+                      <div id="day11"></div>
+
+                      <h1>Day12</h1>
+                      <p style="text-align:center;">It was first time seeing COR value of 1.00. I guessed 0.99.</p>
+                      <div id="day12"></div>
+
+                      <h1>Day13</h1>
+                      <div id="day13"></div>
+
+                      <h1>Day14</h1>
+                      <div id="day14"></div>
+
+                      <h1>Day15</h1>
+                      <div id="day15"></div>
+
+                      <h1>Day16</h1>
+                      <div id="day16"></div>
+
+                      <h1>Day17</h1>
+                      <div id="day17"></div>
+
+                      <h1>Day18</h1>
+                      <p style="text-align:center;">This is the score board. As it shows here, there are actually a lot of participants in this citizen science project.</p>
+                      <div id="day18"></div>
+
+                      <h1>Day19</h1>
+                      <div id="day19"></div>
+
+                      <h1>Day20</h1>
+                      <div id="day20"></div>
+
+                      <h1>Day21</h1>
+                      <div id="day21"></div>
+
+                      <h1>Day22</h1>
+                      <p style="text-align:center;">New Highscore of 33!</p>
+                      <div id="day22"></div>
+
+                      <h1>Day23</h1>
+                      <div id="day23"></div>
+
+                      <h1>Day24</h1>
+                      <div id="day24"></div>
+
+                      <h1>Day25</h1>
+                      <div id="day25"></div>
+
+                      <h1>Day26</h1>
+                      <div id="day26"></div>
+
+                      <h1>Day27</h1>
+                      <div id="day27"></div>
+
+                      <h1>Day28</h1>
+                      <div id="day28"></div>
+
+                      <h1>Day29</h1>
+                      <div id="day29"></div>
+
+                      <h1>Day30</h1>
+                      <div id="day30"></div>
+
+                      <h1>Day31</h1>
+                      <div id="day31"></div>
+
+                      <h1>Day32</h1>
+                      <div id="day32"></div>
+
+                      <h1>Day33</h1>
+                      <div id="day33"></div>
+
+                      <h1>Day34</h1>
+                      <div id="day34"></div>
+
+                      <h1>Day35</h1>
+                      <p style="text-align:center;">It was actually difficult to break the highscore.</p>
+                      <div id="day35"></div>
+
+                      <h1>Day36</h1>
+                      <div id="day36"></div>
+
+                      <h1>Day37</h1>
+                      <div id="day37"></div>
+
+                      <h1>Day38</h1>
+                      <div id="day38"></div>
+
+                      <h1>Day39</h1>
+                      <p style="text-align:center;">And then I thought of some ways to gain more points. I began guessing COR value more specifically, like 0.43 instead of 0.4 </p>
+                      <div id="day39"></div>
+
+                      <h1>Day40</h1>
+                      <p style="text-align:center;">New Highscore of 37. New Highscore of 79! New Highscore of 84! New Highscore of 108!</p>
+                      <div id="day40"></div>
+
+                      <h1>Day41</h1>
+                      <div id="day41"></div>
+
+                      <h1>Day42</h1>
+                      <div id="day42"></div>
+
+                      <h1>Day43</h1>
+                      <div id="day43"></div>
+
+                      <h1>Day44</h1>
+                      <p style="text-align:center;">New Highscore of 109! Just 1 better than the last one. New Highscore of 115. New highscore of 139!</p>
+                      <div id="day44"></div>
+
+                      <h1>Day45</h1>
+                      <p style="text-align:center;">I was not able to place my name on the score board.</p>
+                      <div id="day45"></div>
+
+
+
+                      <h1>Logs</h1>
+                      <p>Here I am trying to count how many points are plotted in each scattered graph. There are 100 plots per graph.
+                        I am also trying to see if I can accurately analyze the correlation number before submitting.
+                      </p>
+
+                      <div id="myLogs" class="images">
+
+                        <img class="img_class" src="images/logs/02.png" width="350px" height="100%" alt="">
+                      </div>
+
+                    </div>
+
+
+
+                </main>
+            </div>
+
+            <div class="div3" >
+                <nav id="nav">
+
+                    <a href="#"><div class="arrow-up"></div></a>
+
+
+                    <a href="./index.html">Home</a>
+                    <a href="./index.html#purpose">Purpose of Game</a>
+                    <a href="./index.html#goal">Goal</a>
+                    <a href="./index.html#learning">Learning Curve</a>
+                    <a href="./index.html#game_design">About Game</a>
+                    <a href="./index.html#improvement">Some Tips</a>
+                    <a href="./documentation.html#tie_back">Citizen Science</a>
+                    <a href="./documentation.html#snippet1">Snippet</a>
+
+                    <a href="#day01">Documentation</a>
+                    <a href="#day01">&darr;</a>
+                    <div id="days">
+                      <!-- js -->
+                    </div>
+                </nav>
+            </div>
+
+            <div class="div4">
+                <footer>
+                    <p><a href="http://guessthecorrelation.com/">Link to the game</a></p>
+                </footer>
+            </div>
+
+        </div>
+
+
+        <script type="text/javascript">
+
+
+
+          function setup() {
+
+
+          let days_nav = document.getElementById('days')
+
+          for (let i = 1; i <= 44; i++) {
+            let a_node = document.createElement('a');
+            a_node.nodeValue = 'Day'+ nf(i,2);
+            var textnode = document.createTextNode('Day'+ nf(i));
+            a_node.appendChild(textnode)
+            a_node.href = '#day'+ nf(i,2);
+            days_nav.appendChild(a_node)
+          }
+
+
+          let day;
+          let pics_number;
+          let image_placeholder;
+
+          day = 'day01'
+          pics_number = 8
+          image_placeholder = document.getElementById(`${day}`)
+          image_placeholder.classList.add('images');
+
+           for (var i = 1; i <= pics_number; i++) {
+                let image = document.createElement('img');
+                image.classList.add('img_class');
+
+                let filename = nf(i, 2) + ".png";
+                image.src = `./images/${day}/` + filename;
+                image_placeholder.appendChild(image);
+            }
+
+            day = 'day02';
+            pics_number = 4;
+            image_placeholder = document.getElementById(`${day}`)
+            image_placeholder.classList.add('images');
+            for (var i = 1; i <= pics_number; i++) {
+               let image = document.createElement('img');
+               image.classList.add('img_class');
+
+               let filename = nf(i, 2) + ".png";
+               image.src = `./images/${day}/` + filename;
+               image_placeholder.appendChild(image);
+             }
+
+             day = 'day03';
+             pics_number = 5;
+             image_placeholder = document.getElementById(`${day}`)
+             image_placeholder.classList.add('images');
+             for (var i = 1; i <= pics_number; i++) {
+                let image = document.createElement('img');
+                image.classList.add('img_class');
+
+                let filename = nf(i, 2) + ".png";
+                image.src = `./images/${day}/` + filename;
+                image_placeholder.appendChild(image);
+              }
+
+              day = 'day04';
+              pics_number = 4;
+              image_placeholder = document.getElementById(`${day}`)
+              image_placeholder.classList.add('images');
+              for (var i = 1; i <= pics_number; i++) {
+                 let image = document.createElement('img');
+                 image.classList.add('img_class');
+
+                 let filename = nf(i, 2) + ".png";
+                 image.src = `./images/${day}/` + filename;
+                 image_placeholder.appendChild(image);
+               }
+
+               day = 'day05';
+               pics_number = 4;
+               image_placeholder = document.getElementById(`${day}`)
+               image_placeholder.classList.add('images');
+               for (var i = 1; i <= pics_number; i++) {
+                  let image = document.createElement('img');
+                  image.classList.add('img_class');
+
+                  let filename = nf(i, 2) + ".png";
+                  image.src = `./images/${day}/` + filename;
+                  image_placeholder.appendChild(image);
+                }
+
+                day = 'day06';
+                pics_number = 2;
+                image_placeholder = document.getElementById(`${day}`)
+                image_placeholder.classList.add('images');
+                for (var i = 1; i <= pics_number; i++) {
+                   let image = document.createElement('img');
+                   image.classList.add('img_class');
+
+                   let filename = nf(i, 2) + ".png";
+                   image.src = `./images/${day}/` + filename;
+                   image_placeholder.appendChild(image);
+                 }
+
+                 day = 'day07';
+                 pics_number = 4;
+                 image_placeholder = document.getElementById(`${day}`)
+                 image_placeholder.classList.add('images');
+                 for (var i = 1; i <= pics_number; i++) {
+                    let image = document.createElement('img');
+                    image.classList.add('img_class');
+
+                    let filename = nf(i, 2) + ".png";
+                    image.src = `./images/${day}/` + filename;
+                    image_placeholder.appendChild(image);
+                  }
+
+                  day = 'day08';
+                  pics_number = 1;
+                  image_placeholder = document.getElementById(`${day}`)
+                  image_placeholder.classList.add('images');
+                  for (var i = 1; i <= pics_number; i++) {
+                     let image = document.createElement('img');
+                     image.classList.add('img_class');
+
+                     let filename = nf(i, 2) + ".png";
+                     image.src = `./images/${day}/` + filename;
+                     image_placeholder.appendChild(image);
+                   }
+
+                   day = 'day09';
+                   pics_number = 3;
+                   image_placeholder = document.getElementById(`${day}`)
+                   image_placeholder.classList.add('images');
+                   for (var i = 1; i <= pics_number; i++) {
+                      let image = document.createElement('img');
+                          image.classList.add('img_class');
+
+                          let filename = nf(i, 2) + ".png";
+                          image.src = `./images/${day}/` + filename;
+                          image_placeholder.appendChild(image);
+                        }
+
+                        day = 'day10';
+                        pics_number = 3;
+                        image_placeholder = document.getElementById(`${day}`)
+                        image_placeholder.classList.add('images');
+                        for (var i = 1; i <= pics_number; i++) {
+                           let image = document.createElement('img');
+                           image.classList.add('img_class');
+
+                           let filename = nf(i, 2) + ".png";
+                           image.src = `./images/${day}/` + filename;
+                           image_placeholder.appendChild(image);
+                         }
+
+                         day = 'day11';
+                         pics_number = 5;
+                         image_placeholder = document.getElementById(`${day}`)
+                         image_placeholder.classList.add('images');
+                         for (var i = 1; i <= pics_number; i++) {
+                            let image = document.createElement('img');
+                            image.classList.add('img_class');
+
+                            let filename = nf(i, 2) + ".png";
+                            image.src = `./images/${day}/` + filename;
+                            image_placeholder.appendChild(image);
+                          }
+
+                          day = 'day12';
+                          pics_number = 3;
+                          image_placeholder = document.getElementById(`${day}`)
+                          image_placeholder.classList.add('images');
+                          for (var i = 1; i <= pics_number; i++) {
+                             let image = document.createElement('img');
+                             image.classList.add('img_class');
+
+                             let filename = nf(i, 2) + ".png";
+                             image.src = `./images/${day}/` + filename;
+                             image_placeholder.appendChild(image);
+                           }
+
+                           day = 'day13';
+                           pics_number = 3;
+                           image_placeholder = document.getElementById(`${day}`)
+                           image_placeholder.classList.add('images');
+                           for (var i = 1; i <= pics_number; i++) {
+                              let image = document.createElement('img');
+                              image.classList.add('img_class');
+
+                              let filename = nf(i, 2) + ".png";
+                              image.src = `./images/${day}/` + filename;
+                              image_placeholder.appendChild(image);
+                            }
+
+                            day = 'day14';
+                            pics_number = 3;
+                            image_placeholder = document.getElementById(`${day}`)
+                            image_placeholder.classList.add('images');
+                            for (var i = 1; i <= pics_number; i++) {
+                               let image = document.createElement('img');
+                               image.classList.add('img_class');
+
+                               let filename = nf(i, 2) + ".png";
+                               image.src = `./images/${day}/` + filename;
+                               image_placeholder.appendChild(image);
+                             }
+
+                             day = 'day15';
+                             pics_number = 3;
+                             image_placeholder = document.getElementById(`${day}`)
+                             image_placeholder.classList.add('images');
+                             for (var i = 1; i <= pics_number; i++) {
+                                let image = document.createElement('img');
+                                image.classList.add('img_class');
+
+                                let filename = nf(i, 2) + ".png";
+                                image.src = `./images/${day}/` + filename;
+                                image_placeholder.appendChild(image);
+                              }
+
+                              day = 'day16';
+                              pics_number = 2;
+                              image_placeholder = document.getElementById(`${day}`)
+                              image_placeholder.classList.add('images');
+                              for (var i = 1; i <= pics_number; i++) {
+                                 let image = document.createElement('img');
+                                 image.classList.add('img_class');
+
+                                 let filename = nf(i, 2) + ".png";
+                                 image.src = `./images/${day}/` + filename;
+                                 image_placeholder.appendChild(image);
+                               }
+
+                             day = 'day17';
+                             pics_number = 2;
+                             image_placeholder = document.getElementById(`${day}`)
+                             image_placeholder.classList.add('images');
+                             for (var i = 1; i <= pics_number; i++) {
+                                let image = document.createElement('img');
+                                image.classList.add('img_class');
+
+                                let filename = nf(i, 2) + ".png";
+                                image.src = `./images/${day}/` + filename;
+                                image_placeholder.appendChild(image);
+                              }
+
+                              day = 'day18';
+                              pics_number = 2;
+                              image_placeholder = document.getElementById(`${day}`)
+                              image_placeholder.classList.add('images');
+                              for (var i = 1; i <= pics_number; i++) {
+                                 let image = document.createElement('img');
+                                 image.classList.add('img_class');
+
+                                 let filename = nf(i, 2) + ".png";
+                                 image.src = `./images/${day}/` + filename;
+                                 image_placeholder.appendChild(image);
+                               }
+
+                               day = 'day19';
+                               pics_number = 1;
+                               image_placeholder = document.getElementById(`${day}`)
+                               image_placeholder.classList.add('images');
+                               for (var i = 1; i <= pics_number; i++) {
+                                  let image = document.createElement('img');
+                                  image.classList.add('img_class');
+
+                                  let filename = nf(i, 2) + ".png";
+                                  image.src = `./images/${day}/` + filename;
+                                  image_placeholder.appendChild(image);
+                                }
+
+                                day = 'day20';
+                                pics_number = 1;
+                                image_placeholder = document.getElementById(`${day}`)
+                                image_placeholder.classList.add('images');
+                                for (var i = 1; i <= pics_number; i++) {
+                                   let image = document.createElement('img');
+                                   image.classList.add('img_class');
+
+                                   let filename = nf(i, 2) + ".png";
+                                   image.src = `./images/${day}/` + filename;
+                                   image_placeholder.appendChild(image);
+                                 }
+
+                                 day = 'day21';
+                                 pics_number = 3;
+                                 image_placeholder = document.getElementById(`${day}`)
+                                 image_placeholder.classList.add('images');
+                                 for (var i = 1; i <= pics_number; i++) {
+                                    let image = document.createElement('img');
+                                    image.classList.add('img_class');
+
+                                    let filename = nf(i, 2) + ".png";
+                                    image.src = `./images/${day}/` + filename;
+                                    image_placeholder.appendChild(image);
+                                  }
+
+                                  day = 'day22';
+                                  pics_number = 5;
+                                  image_placeholder = document.getElementById(`${day}`)
+                                  image_placeholder.classList.add('images');
+                                  for (var i = 1; i <= pics_number; i++) {
+                                     let image = document.createElement('img');
+                                     image.classList.add('img_class');
+
+                                     let filename = nf(i, 2) + ".png";
+                                     image.src = `./images/${day}/` + filename;
+                                     image_placeholder.appendChild(image);
+                                   }
+
+                                   day = 'day23';
+                                   pics_number = 4;
+                                   image_placeholder = document.getElementById(`${day}`)
+                                   image_placeholder.classList.add('images');
+                                   for (var i = 1; i <= pics_number; i++) {
+                                      let image = document.createElement('img');
+                                      image.classList.add('img_class');
+
+                                      let filename = nf(i, 2) + ".png";
+                                      image.src = `./images/${day}/` + filename;
+                                      image_placeholder.appendChild(image);
+                                    }
+
+                                    day = 'day24';
+                                    pics_number = 2;
+                                    image_placeholder = document.getElementById(`${day}`)
+                                    image_placeholder.classList.add('images');
+                                    for (var i = 1; i <= pics_number; i++) {
+                                       let image = document.createElement('img');
+                                       image.classList.add('img_class');
+
+                                       let filename = nf(i, 2) + ".png";
+                                       image.src = `./images/${day}/` + filename;
+                                       image_placeholder.appendChild(image);
+                                     }
+
+                                     day = 'day25';
+                                     pics_number = 1;
+                                     image_placeholder = document.getElementById(`${day}`)
+                                     image_placeholder.classList.add('images');
+                                     for (var i = 1; i <= pics_number; i++) {
+                                        let image = document.createElement('img');
+                                        image.classList.add('img_class');
+
+                                        let filename = nf(i, 2) + ".png";
+                                        image.src = `./images/${day}/` + filename;
+                                        image_placeholder.appendChild(image);
+                                      }
+
+                                      day = 'day26';
+                                      pics_number = 2;
+                                      image_placeholder = document.getElementById(`${day}`)
+                                      image_placeholder.classList.add('images');
+                                      for (var i = 1; i <= pics_number; i++) {
+                                         let image = document.createElement('img');
+                                         image.classList.add('img_class');
+
+                                         let filename = nf(i, 2) + ".png";
+                                         image.src = `./images/${day}/` + filename;
+                                         image_placeholder.appendChild(image);
+                                       }
+
+                                       day = 'day27';
+                                       pics_number = 1;
+                                       image_placeholder = document.getElementById(`${day}`)
+                                       image_placeholder.classList.add('images');
+                                       for (var i = 1; i <= pics_number; i++) {
+                                          let image = document.createElement('img');
+                                          image.classList.add('img_class');
+
+                                          let filename = nf(i, 2) + ".png";
+                                          image.src = `./images/${day}/` + filename;
+                                          image_placeholder.appendChild(image);
+                                        }
+
+                                        day = 'day28';
+                                        pics_number = 3;
+                                        image_placeholder = document.getElementById(`${day}`)
+                                        image_placeholder.classList.add('images');
+                                        for (var i = 1; i <= pics_number; i++) {
+                                           let image = document.createElement('img');
+                                           image.classList.add('img_class');
+
+                                           let filename = nf(i, 2) + ".png";
+                                           image.src = `./images/${day}/` + filename;
+                                           image_placeholder.appendChild(image);
+                                         }
+
+                                         day = 'day29';
+                                         pics_number = 3;
+                                         image_placeholder = document.getElementById(`${day}`)
+                                         image_placeholder.classList.add('images');
+                                         for (var i = 1; i <= pics_number; i++) {
+                                            let image = document.createElement('img');
+                                            image.classList.add('img_class');
+
+                                            let filename = nf(i, 2) + ".png";
+                                            image.src = `./images/${day}/` + filename;
+                                            image_placeholder.appendChild(image);
+                                          }
+
+                                          day = 'day30';
+                                          pics_number = 1;
+                                          image_placeholder = document.getElementById(`${day}`)
+                                          image_placeholder.classList.add('images');
+                                          for (var i = 1; i <= pics_number; i++) {
+                                             let image = document.createElement('img');
+                                             image.classList.add('img_class');
+
+                                             let filename = nf(i, 2) + ".png";
+                                             image.src = `./images/${day}/` + filename;
+                                             image_placeholder.appendChild(image);
+                                           }
+
+                                           day = 'day31';
+                                           pics_number = 1;
+                                           image_placeholder = document.getElementById(`${day}`)
+                                           image_placeholder.classList.add('images');
+                                           for (var i = 1; i <= pics_number; i++) {
+                                              let image = document.createElement('img');
+                                              image.classList.add('img_class');
+
+                                              let filename = nf(i, 2) + ".png";
+                                              image.src = `./images/${day}/` + filename;
+                                              image_placeholder.appendChild(image);
+                                            }
+
+                                            day = 'day32';
+                                            pics_number = 1;
+                                            image_placeholder = document.getElementById(`${day}`)
+                                            image_placeholder.classList.add('images');
+                                            for (var i = 1; i <= pics_number; i++) {
+                                               let image = document.createElement('img');
+                                               image.classList.add('img_class');
+
+                                               let filename = nf(i, 2) + ".png";
+                                               image.src = `./images/${day}/` + filename;
+                                               image_placeholder.appendChild(image);
+                                             }
+
+                                             day = 'day33';
+                                             pics_number = 1;
+                                             image_placeholder = document.getElementById(`${day}`)
+                                             image_placeholder.classList.add('images');
+                                             for (var i = 1; i <= pics_number; i++) {
+                                                let image = document.createElement('img');
+                                                image.classList.add('img_class');
+
+                                                let filename = nf(i, 2) + ".png";
+                                                image.src = `./images/${day}/` + filename;
+                                                image_placeholder.appendChild(image);
+                                              }
+
+                                              day = 'day34';
+                                              pics_number = 1;
+                                              image_placeholder = document.getElementById(`${day}`)
+                                              image_placeholder.classList.add('images');
+                                              for (var i = 1; i <= pics_number; i++) {
+                                                 let image = document.createElement('img');
+                                                 image.classList.add('img_class');
+
+                                                 let filename = nf(i, 2) + ".png";
+                                                 image.src = `./images/${day}/` + filename;
+                                                 image_placeholder.appendChild(image);
+                                               }
+
+                                               day = 'day35';
+                                               pics_number = 1;
+                                               image_placeholder = document.getElementById(`${day}`)
+                                               image_placeholder.classList.add('images');
+                                               for (var i = 1; i <= pics_number; i++) {
+                                                  let image = document.createElement('img');
+                                                  image.classList.add('img_class');
+
+                                                  let filename = nf(i, 2) + ".png";
+                                                  image.src = `./images/${day}/` + filename;
+                                                  image_placeholder.appendChild(image);
+                                                }
+
+                                                day = 'day36';
+                                                pics_number = 1;
+                                                image_placeholder = document.getElementById(`${day}`)
+                                                image_placeholder.classList.add('images');
+                                                for (var i = 1; i <= pics_number; i++) {
+                                                   let image = document.createElement('img');
+                                                   image.classList.add('img_class');
+
+                                                   let filename = nf(i, 2) + ".png";
+                                                   image.src = `./images/${day}/` + filename;
+                                                   image_placeholder.appendChild(image);
+                                                 }
+
+                                                 day = 'day37';
+                                                 pics_number = 1;
+                                                 image_placeholder = document.getElementById(`${day}`)
+                                                 image_placeholder.classList.add('images');
+                                                 for (var i = 1; i <= pics_number; i++) {
+                                                    let image = document.createElement('img');
+                                                    image.classList.add('img_class');
+
+                                                    let filename = nf(i, 2) + ".png";
+                                                    image.src = `./images/${day}/` + filename;
+                                                    image_placeholder.appendChild(image);
+                                                  }
+
+                                                  day = 'day38';
+                                                  pics_number = 1;
+                                                  image_placeholder = document.getElementById(`${day}`)
+                                                  image_placeholder.classList.add('images');
+                                                  for (var i = 1; i <= pics_number; i++) {
+                                                     let image = document.createElement('img');
+                                                     image.classList.add('img_class');
+
+                                                     let filename = nf(i, 2) + ".png";
+                                                     image.src = `./images/${day}/` + filename;
+                                                     image_placeholder.appendChild(image);
+                                                   }
+
+                                                   day = 'day39';
+                                                   pics_number = 1;
+                                                   image_placeholder = document.getElementById(`${day}`)
+                                                   image_placeholder.classList.add('images');
+                                                   for (var i = 1; i <= pics_number; i++) {
+                                                      let image = document.createElement('img');
+                                                      image.classList.add('img_class');
+
+                                                      let filename = nf(i, 2) + ".png";
+                                                      image.src = `./images/${day}/` + filename;
+                                                      image_placeholder.appendChild(image);
+                                                    }
+
+                                                    day = 'day40';
+                                                    pics_number = 8;
+                                                    image_placeholder = document.getElementById(`${day}`)
+                                                    image_placeholder.classList.add('images');
+                                                    for (var i = 1; i <= pics_number; i++) {
+                                                       let image = document.createElement('img');
+                                                       image.classList.add('img_class');
+
+                                                       let filename = nf(i, 2) + ".png";
+                                                       image.src = `./images/${day}/` + filename;
+                                                       image_placeholder.appendChild(image);
+                                                     }
+
+                                                     day = 'day41';
+                                                     pics_number = 2;
+                                                     image_placeholder = document.getElementById(`${day}`)
+                                                     image_placeholder.classList.add('images');
+                                                     for (var i = 1; i <= pics_number; i++) {
+                                                        let image = document.createElement('img');
+                                                        image.classList.add('img_class');
+
+                                                        let filename = nf(i, 2) + ".png";
+                                                        image.src = `./images/${day}/` + filename;
+                                                        image_placeholder.appendChild(image);
+                                                      }
+
+                                                      day = 'day42';
+                                                      pics_number = 1;
+                                                      image_placeholder = document.getElementById(`${day}`)
+                                                      image_placeholder.classList.add('images');
+                                                      for (var i = 1; i <= pics_number; i++) {
+                                                         let image = document.createElement('img');
+                                                         image.classList.add('img_class');
+
+                                                         let filename = nf(i, 2) + ".png";
+                                                         image.src = `./images/${day}/` + filename;
+                                                         image_placeholder.appendChild(image);
+                                                       }
+
+                                                       day = 'day38';
+                                                       pics_number = 1;
+                                                       image_placeholder = document.getElementById(`${day}`)
+                                                       image_placeholder.classList.add('images');
+                                                       for (var i = 1; i <= pics_number; i++) {
+                                                          let image = document.createElement('img');
+                                                          image.classList.add('img_class');
+
+                                                          let filename = nf(i, 2) + ".png";
+                                                          image.src = `./images/${day}/` + filename;
+                                                          image_placeholder.appendChild(image);
+                                                        }
+
+                                                        day = 'day43';
+                                                        pics_number = 1;
+                                                        image_placeholder = document.getElementById(`${day}`)
+                                                        image_placeholder.classList.add('images');
+                                                        for (var i = 1; i <= pics_number; i++) {
+                                                           let image = document.createElement('img');
+                                                           image.classList.add('img_class');
+
+                                                           let filename = nf(i, 2) + ".png";
+                                                           image.src = `./images/${day}/` + filename;
+                                                           image_placeholder.appendChild(image);
+                                                         }
+
+                                                         day = 'day44';
+                                                         pics_number = 8;
+                                                         image_placeholder = document.getElementById(`${day}`)
+                                                         image_placeholder.classList.add('images');
+                                                         for (var i = 1; i <= pics_number; i++) {
+                                                            let image = document.createElement('img');
+                                                            image.classList.add('img_class');
+
+                                                            let filename = nf(i, 2) + ".png";
+                                                            image.src = `./images/${day}/` + filename;
+                                                            image_placeholder.appendChild(image);
+                                                          }
+
+                                                          day = 'day45';
+                                                          pics_number = 3;
+                                                          image_placeholder = document.getElementById(`${day}`)
+                                                          image_placeholder.classList.add('images');
+                                                          for (var i = 1; i <= pics_number; i++) {
+                                                             let image = document.createElement('img');
+                                                             image.classList.add('img_class');
+
+                                                             let filename = nf(i, 2) + ".png";
+                                                             image.src = `./images/${day}/` + filename;
+                                                             image_placeholder.appendChild(image);
+                                                           }
+
+                                                           day = 'gameSetup';
+                                                           pics_number = 4;
+                                                           image_placeholder = document.getElementById(`${day}`)
+                                                           image_placeholder.classList.add('images');
+                                                           for (var i = 1; i <= pics_number; i++) {
+                                                              let image = document.createElement('img');
+                                                              image.classList.add('img_class');
+
+                                                              let filename = nf(i, 2) + ".png";
+                                                              image.src = `./images/${day}/` + filename;
+                                                              image_placeholder.appendChild(image);
+                                                            }
+
+          }
+
+
+        </script>
+    </body>
+</html>

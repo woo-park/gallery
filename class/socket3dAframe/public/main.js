@@ -271,7 +271,7 @@ socket.on('rotatedMyPlayer', function(data) {
 });
 
 
-function emitEvent(arg,obj,time = 1000,) {
+function emitEvent(arg,obj,time = 1000) {
   let send = false;
   if (mouseIsPressed) {
     // console.log('key is pressed')

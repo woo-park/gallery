@@ -1,0 +1,315 @@
+/* centering */
+/* *{
+  margin:0;
+  padding:0;
+} */
+/* body{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+} */
+
+/* #wrapper{
+  display:grid;
+  width:800px;
+  height:auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+
+} */
+.shape1{
+  width:200px;
+  height:200px;
+  display:flex;
+  perspective:600px;
+  position:relative;
+  top:-38px;
+  left:90px;
+  /* top:-20px; */
+  /* border-radius:100px; */
+  /* border:1px dashed black; */
+  transform-style: preserve-3d;
+
+  /* align-items:center; */
+  /* justify-content:center; */
+  /* so you def need this to have rotate function work in children layer */
+}
+div.shape1{
+  transition:border-color 4s;
+}
+div.shape1:hover .triangle_down, div.shape1:hover .triangle_up {
+  border-color:black;
+}
+@keyframes shape1 {
+  from {transform:rotateY(0deg);}
+  to {transform:rotateY(360deg);}
+}
+#shape1{
+  animation-name:shape1;
+  animation-duration:5s;
+  animation-timing-function:linear;
+  animation-iteration-count: infinite;
+}
+@keyframes shape2 {
+  from {transform:rotateY(40deg);}
+  to {transform:rotateY(400deg);}
+}
+#shape2{
+  animation-name:shape2;
+  animation-duration:5s;
+  animation-timing-function:linear;
+  animation-iteration-count: infinite;
+}
+@keyframes shape3 {
+  from {transform:rotateY(80deg);}
+  to {transform:rotateY(440deg);}
+}
+#shape3{
+  animation-name:shape3;
+  animation-duration:5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes shape4 {
+  from {transform:rotateY(120deg);}
+  to {transform:rotateY(480deg);}
+}
+#shape4{
+  animation-name:shape4;
+  animation-duration:5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes shape5 {
+  from {transform:rotateY(160deg);}
+  to {transform:rotateY(520deg);}
+}
+#shape5{
+  animation-name:shape5;
+  animation-duration:5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes shape6 {
+  from {transform:rotateY(200deg);}
+  to {transform:rotateY(560deg);}
+}
+#shape6{
+  animation-name:shape6;
+  animation-duration:5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes shape6 {
+  from {transform:rotateY(200deg);}
+  to {transform:rotateY(560deg);}
+}
+#shape6{
+  animation-name:shape6;
+  animation-duration:5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes shape6 {
+  from {transform:rotateY(200deg);}
+  to {transform:rotateY(560deg);}
+}
+#shape6{
+  animation-name:shape6;
+  animation-duration:5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes shape6 {
+  from {transform:rotateY(200deg);}
+  to {transform:rotateY(560deg);}
+}
+#shape6{
+  animation-name:shape6;
+  animation-duration:5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}@keyframes shape7 {
+  from {transform:rotateY(240deg);}
+  to {transform:rotateY(600deg);}
+}
+#shape7{
+  animation-name:shape7;
+  animation-duration:5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes shape8 {
+  from {transform:rotateY(280deg);}
+  to {transform:rotateY(640deg);}
+}
+#shape8{
+  animation-name:shape8;
+  animation-duration:5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes shape9 {
+  from {transform:rotateY(320deg);}
+  to {transform:rotateY(680deg);}
+}
+#shape9{
+  animation-name:shape9;
+  animation-duration:5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+
+
+.triangle_down{
+  position:absolute;
+  box-sizing:content-box;
+  height:0px;
+  width:0px;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  /* border-top:100px solid grey; */
+   /* erased this bc it was creating 2 triangles */
+  opacity:0.5;
+  /* transform: rotateY(72deg); */
+}
+.tri1{
+  border-top:100px solid lightgrey;
+      /* rotateY- leftside ,rotateX()- angle, translate z - left to right, translate y -top to bot */
+  transform: rotateY(90deg) rotateX(30deg) translateZ(-43px) translateY(25px);
+}
+.tri2{
+  border-top:100px solid slategray;
+  /* rotateY- middleside ,rotateX()- angle, translate z - left to right, translate y -top to bot */
+
+  transform:rotateY(180deg) rotateX(-30deg) translateZ(43px) translateY(25px);
+}
+.tri3{
+  border-top:100px solid gray;
+  /* rotateY- rightside ,rotateX()- angle, translate z - left to right, translate y -top to bot */
+    transform:rotateY(270deg) rotateX(30deg) translateZ(-43px) translateY(25px);
+}
+.tri4{
+  border-top:100px solid black;
+  /* rotateY- rightside ,rotateX()- angle, translate z - left to right, translate y -top to bot */
+    transform:rotateY(360deg) rotateX(-30deg) translateZ(43px) translateY(25px);
+}
+
+.triangle_up{
+  position:absolute;
+  box-sizing:content-box;
+  height:0px;
+  width:0px;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  opacity:0.5;
+}
+div.tri5{
+  border-bottom:100px solid slategray;
+      /* rotateY- leftside ,rotateX()- angle, translate z - left to right, translate y -top to bot */
+  transform: rotateY(90deg) rotateX(-30deg) translateZ(43px) translateY(125px);
+}
+.tri6{
+  border-bottom:100px solid grey;
+      /* rotateY- frontmiddle ,rotateX()- angle, translate z - left to right, translate y -top to bot */
+  transform: rotateY(180deg) rotateX(-30deg) translateZ(43px) translateY(125px);
+}
+.tri7{
+  border-bottom:100px solid darkslategrey;
+      /* rotateY- rightside ,rotateX()- angle, translate z - left to right, translate y -top to bot */
+  transform: rotateY(270deg) rotateX(-30deg) translateZ(43px) translateY(125px);
+}
+.tri8{
+  border-bottom:100px solid dimgrey;
+      /* rotateY- frontmiddle ,rotateX()- angle, translate z - left to right, translate y -top to bot */
+  transform: rotateY(360deg) rotateX(-30deg) translateZ(43px) translateY(125px);
+}
+
+.square{
+  position:absolute;
+
+  box-sizing:content-box;
+  width:100px;
+  height:100px;
+  background:blue;
+  opacity:0.2;
+  transform:rotateX(90deg);
+}
+.squaretop{
+  top:0;
+  left:auto;
+}
+.squarebot{
+  top:173px;
+  left:auto;
+}
+
+/* 3planes */
+#x_plane{
+  /* background-color:blue; */
+}
+#y_plane{
+  /* background-color:yellow; */
+}
+#z_plane{
+  /* background-color:green; */
+}
+
+      .plane{
+        position:absolute;
+        width:100%;
+        height:100%;
+        opacity:0.5;
+      }
+      .plane:nth-child(1){
+        /* x_plane */
+        background-color:blue;
+        /* transform:rotateX(90deg) translateY(150px) translateZ(-80px); */
+        transform:rotateX(90deg) translateZ(-50px);
+      }
+      .plane:nth-child(2){
+        /* y_plane */
+        background-color:yellow;
+        transform:rotateY(90deg) translateZ(-50px);
+      }
+      .plane:nth-child(3){
+        /* z_plane */
+        background-color:green;
+        /* transform:rotateZ(90deg); */
+        transform:translateZ(-50px);
+      }
+
+
+
+  /* .triangle_right{
+     width: 0; height: 0; border-top: 50px solid transparent; border-left: 100px solid red; border-bottom: 50px solid transparent;
+  }
+  .triangle_left{
+    width: 0;height: 0;border-top: 50px solid transparent; border-right: 100px solid red; border-bottom: 50px solid transparent;
+  } */
+
+/* .hexagon{
+  position:relative;
+  width: 54px;
+  box-sizing:content-box;
+  border-width: 50px 18px 0;
+  border-style:solid;
+  border-color: red transparent;
+}
+.hexagon:before {
+  content:'';
+  position:absolute;
+  height: 0;
+  width: 0;
+  top: -85px;
+  left: -18px;
+  border-width: 0 45px 35px;
+  border-style:solid;
+  border-color:transparent transparent red;
+}
+.hexagon{
+  transform:rotateX(90deg);
+
+} */

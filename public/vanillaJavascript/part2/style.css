@@ -1,0 +1,86 @@
+
+*{margin: 0;
+  padding:0;
+}
+/* body{
+  height:100vh;
+  width:100%;
+} */
+
+#hyperlink{
+  /* transform: rotateY(360deg); */
+
+  color:darkblue;
+}
+#mainpage{
+  color:darkgreen;
+}
+
+#wrapper{
+  height:100vh;
+  width:100%;
+  border:1px solid blue;
+  /* margin:0;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center; */
+  background-color:ivory;
+}
+
+a.link{
+  text-decoration:none;
+  color:black;
+
+  /* width:10; */
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  transition: all 300ms linear;
+
+  /* was 300ms at first; perhaps you dont even need this */
+  /* background-color:blue; */
+
+  /* border:1px solid black; */
+}
+
+.logo_area {
+  /* border: 1px dashed black; */
+  /* width:100%; */
+  width:100%;
+  height:auto;
+  /* height:100%; */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:300%;
+  /* background-color:green; */
+
+  /* overflow:hidden; */
+}
+
+.link:active{
+  /* transform: rotateY(360deg); */
+  /* transform: translateZ(500px); */
+}
+.link:hover{
+  /* transform: rotateX(180deg); */
+  opacity: 0.5;
+}
+/* #logo_box:hover #wrapper{
+  perspective:300px;
+} */
+#container{
+
+  display:grid;
+  width:100%;
+  height:100vh;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  perspective: 500px;
+  border:1px double green;
+  /* grid-gap: 1em; */
+  /* margin-left:100px; */
+}

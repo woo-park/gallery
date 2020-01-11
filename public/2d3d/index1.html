@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Demo Page</title>
+    <script src="../p5/p5.min.js" type="text/javascript"></script>
+    <script src="../p5/p5.dom.js" type="text/javascript"></script>
+    <script src="../p5/p5.sound.min.js" type="text/javascript"></script>
+
+    <script src="sketch.js" type="text/javascript"></script>
+
+    <style>
+      #container {
+        display: flex;
+        margin: 0;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #p5_loading {
+        width: 500px;
+        height: 500px;
+        border: 5px solid black;
+        font-size: 200%;
+        text-align: center;
+        margin: auto;
+
+        /* mark this div as relatively positioned - this won't move it, but
+           it will cause the div to 'remember' its position on the page -
+           this is important since any child divs will need this information
+           in order to position themselves correctly */
+        position: relative;
+      }
+
+      #progress_bar {
+        background-color: slateblue;
+        height: 25px;
+        width: 0%;
+        position: absolute;
+        top: 250px;
+        left: 0px;
+      }
+
+      body{
+        overflow: hidden;
+      }
+
+      #container{
+        perspective: 300px;
+      }
+
+      #canvas_container {
+        transform: rotateX(60deg);
+      }
+
+      
+
+      
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="p5_loading" class="loadingclass">Wait for it... KaBOOM!
+        <div id="progress_bar"></div>
+      </div>
+      <div id="canvas_container">
+        
+      </div>
+    </div>
+  </body>
+</html>

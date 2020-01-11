@@ -1,0 +1,70 @@
+<!-- empty left col -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>layout1</title>
+    <style>
+    main {
+        min-width: 80%;
+        display: grid;
+        grid-template-columns: 3fr 3fr;
+        /*  grid-template-columns: repeat(2, 3fr); samething */
+        gap: 1em;
+
+        border:1px solid blanchedalmond;
+    }    
+    main div{
+        border:1px solid blanchedalmond;
+        min-height: 300px;
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+        justify-content: left; 
+
+        border:1px solid blanchedalmond;
+    }
+    
+    footer {
+        text-align: center;
+
+        border:1px solid blanchedalmond;
+    }
+    
+    #container {
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    </style>
+</head>
+<body>
+    <div id="container">
+        <header>
+            <h1>Header left col</h1>
+        </header>
+        <main>
+            <div>a1</div>
+            <div>a2</div>
+
+            <div>b1</div>
+            <div>b2</div>
+
+            <div>c1</div>
+            <div>c2</div>
+
+            <div>d1</div>
+            <div>d2</div>
+        </main>
+    </div>
+    <footer>
+        <span>footer</span>
+    </footer> 
+</body>
+</html>

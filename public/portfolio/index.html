@@ -6,12 +6,14 @@
     <title>Ten More Days - Avicii</title>
     <!-- <link rel="stylesheet" href="styles.css"> -->
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Cardo&display=swap" rel="stylesheet">
     <style media="screen">
 
     *{
               box-sizing:content-box;
               margin:0;
               padding:0;
+              font-family: 'Cardo', serif;
     }
     body {
         margin: 0;
@@ -32,7 +34,7 @@
       /* not sure what this does */
       align-items:center;
       justify-content: space-evenly;
-      perspective: 2500px;
+      perspective: 20000px;
       /* !important */
       /* make this larger as you add more videos to it */
     }
@@ -54,7 +56,7 @@
     }
 
     div{
-      overflow:hidden;
+      /* overflow:hidden; */
     }
     .sideBlock{
       width:200px;
@@ -63,22 +65,27 @@
       background-color:darkslategrey;
       /* opacity:0.5; */
       transition: all 500ms ease-in-out;
-      box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+      box-shadow: inset 0 0 2000px rgba(255, 255, 255, .9);
       /* box-shadow:5px 5px blue, 10px 10px red, 10px 10px green; */
-      z-index: -1;
-      filter: blur(4px);
-    }
+      filter: blur(1px);
 
+      z-index: -1;
+      transition: all 500ms ease-in-out;
+
+      linear-gradient(#e66465, #9198e5);
+    }
     .sideBlockLeft{
       transform-origin:left;
+      background:linear-gradient(0.25turn, #ebf8e1,#000000 );
     }
     .sideBlockRight{
       transform-origin:right;
+      background:linear-gradient(0.25turn, #000000,#ebf8e1);
     }
 
     div.description {
       position: absolute;
-      bottom:10px;
+      bottom:-80px;
       left:10px;
     }
 
@@ -106,9 +113,10 @@
       position: fixed;
       top:0px;
       z-index:998;
-      opacity:0.8;
+      opacity:0.2;
       right:20px;
-      background-color: olive;
+      background-color: white;
+      filter: 5px;
       mix-blend-mode:exclusion;
       animation: 3s linear 0s forwards slideDown
     }
@@ -156,6 +164,7 @@
               <!-- not done -->
 
               <li><a href="../wallBall">Wall Ball</a></li>
+              <!-- not done -->
               <li><a href="../cartesian">Cartesian Photoshop</a></li>
               <li class ="indent"><a href="../cartesian/selfportrait">Self Portrait</a></li>
               <li><a href="../penguine">Penguine Game</a></li>
@@ -186,7 +195,7 @@
               <li><a href="../svgIcons">Svg Icons</a></li>
               <!-- not done -->
               <li><a href="../vanillaJavascript">Vanilla Javascript</a></li>
-              <li><a href="../css3Painting">Plane CSS3 Painting</a></li>
+              <li><a href="../css3Painting">Plane CSS3 Collage</a></li>
               <li><a href="../canvasPixels">Canvas Video Pixels</a></li>
               <li><a href="../css3Animation">Plane CSS3 Animation</a></li>
               <li class="crossout"><a href="../d3">D3</a></li>
@@ -202,61 +211,209 @@
 
       <div id="frame">
         <div class="sideBlock sideBlockLeft"></div>
-
         <div class="scene">
-            <video class="videos" autoplay loop muted src="images/sonspot.mp4">
+            <video class="videos" autoplay loop muted src="vids/altgenerator_1x.mp4">
             </video>
             <div class="description">
-              <a href="#">Link</a>
+              <a href="/">Alt Tag Generator</a>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
         </div>
-
         <div class="sideBlock sideBlockRight"></div>
-        <div class="sideBlock sideBlockLeft"></div>
 
+        <div class="sideBlock sideBlockLeft"></div>
         <div class="scene">
-            <video class="videos" autoplay loop muted src="images/fan.mp4"></video>
+            <video class="videos" autoplay loop muted src="vids/summary_1x.mp4"></video>
             <div class="description">
-              <a href="#">Link</a>
+              <a href="/summary">Most Common Words</a>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
         </div>
-
         <div class="sideBlock sideBlockRight"></div>
-        <div class="sideBlock sideBlockLeft"></div>
 
+        <div class="sideBlock sideBlockLeft"></div>
         <div class="scene">
-            <video class="videos" autoplay loop muted src="images/fan.mp4"></video>
+            <video class="videos" autoplay loop muted src="vids/cssanimation_1x.mp4"></video>
+
             <div class="description">
-              <a href="#">Link</a>
+              <a href="#">Plane CSS3 Animation</a>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
         </div>
-
         <div class="sideBlock sideBlockRight"></div>
-        <div class="sideBlock sideBlockLeft"></div>
 
+        <div class="sideBlock sideBlockLeft"></div>
         <div class="scene">
-            <video class="videos" autoplay loop muted src="images/fan.mp4"></video>
+            <video class="videos" autoplay loop muted src="vids/canvasanimation_1x.mp4"></video>
             <div class="description">
-              <a href="#">Link</a>
+              <a href="/css3Animation">Canvas Video Pixels</a>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
         </div>
-
         <div class="sideBlock sideBlockRight"></div>
-        <div class="sideBlock sideBlockLeft"></div>
 
+        <div class="sideBlock sideBlockLeft"></div>
         <div class="scene">
-            <video class="videos" autoplay loop muted src="images/spot1.mp4"></video>
+            <video class="videos" autoplay loop muted src="vids/csspainting_1x.mp4"></video>
             <div class="description">
-              <a href="#">Link</a>
+              <a href="/css3Painting">Plane CSS3 Collage</a>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
         </div>
+        <div class="sideBlock sideBlockRight"></div>
 
+        <div class="sideBlock sideBlockLeft"></div>
+        <div class="scene">
+            <video class="videos" autoplay loop muted src="vids/live_1x.mp4"></video>
 
+            <div class="description">
+              <a href="#">Words Extrusion</a>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </div>
+        <div class="sideBlock sideBlockRight"></div>
+
+        <div class="sideBlock sideBlockLeft"></div>
+        <div class="scene">
+            <video class="videos" autoplay loop muted src="vids/vanillajs_1x.mp4"></video>
+
+            <div class="description">
+              <a href="/vanillaJavascript">Vanilla Javascript</a>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </div>
+        <div class="sideBlock sideBlockRight"></div>
+
+        <div class="sideBlock sideBlockLeft"></div>
+        <div class="scene">
+            <video class="videos" autoplay loop muted src="vids/webgl_1x.mp4"></video>
+
+            <div class="description">
+              <a href="/webglThreejs">WebGL Three.js</a>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </div>
+        <div class="sideBlock sideBlockRight"></div>
+
+        <div class="sideBlock sideBlockLeft"></div>
+        <div class="scene">
+            <video class="videos" autoplay loop muted src="vids/hypertext_1x.mp4"></video>
+
+            <div class="description">
+              <a href="/hypertext">Hypertext</a>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </div>
+        <div class="sideBlock sideBlockRight"></div>
+
+        <div class="sideBlock sideBlockLeft"></div>
+        <div class="scene">
+            <video class="videos" autoplay loop muted src="vids/processing_1x.mp4"></video>
+
+            <div class="description">
+              <a href="/processing">Processing.js Prototypes</a>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </div>
+        <div class="sideBlock sideBlockRight"></div>
+
+        <div class="sideBlock sideBlockLeft"></div>
+        <div class="scene">
+            <video class="videos" autoplay loop muted src="vids/flower_1x.mp4"></video>
+
+            <div class="description">
+              <a href="/flower">Plant Flower</a>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat null</p>
+            </div>
+        </div>
+        <div class="sideBlock sideBlockRight"></div>
+
+        <div class="sideBlock sideBlockLeft"></div>
+        <div class="scene">
+            <video class="videos" autoplay loop muted src="vids/2d3d_1x.mp4"></video>
+
+            <div class="description">
+              <a href="/2d3d">2D painting to 3D</a>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </div>
+        <div class="sideBlock sideBlockRight"></div>
+
+        <div class="sideBlock sideBlockLeft"></div>
+        <div class="scene">
+            <video class="videos" autoplay loop muted src="vids/wavegenerator_1x_540p.mp4"></video>
+
+            <div class="description">
+              <a href="/wave">Wave Generator</a>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </div>
+        <div class="sideBlock sideBlockRight"></div>
+
+        <div class="sideBlock sideBlockLeft"></div>
+        <div class="scene">
+            <video class="videos" autoplay loop muted src="vids/citizenscience_1x.mp4"></video>
+
+            <div class="description">
+              <a href="/citizenScience">Citizen Science Blog</a>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </div>
+        <div class="sideBlock sideBlockRight"></div>
+
+        <div class="sideBlock sideBlockLeft"></div>
+        <div class="scene">
+            <video class="videos" autoplay loop muted src="vids/vrfeather_1x.mp4"></video>
+
+            <div class="description">
+              <a href="/vrFeather">VR Room</a>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </div>
+        <div class="sideBlock sideBlockRight"></div>
+
+        <div class="sideBlock sideBlockLeft"></div>
+        <div class="scene">
+            <video class="videos" autoplay loop muted src="vids/snowfield_1x.mp4"></video>
+
+            <div class="description">
+              <a href="/snowfield">VR Snowfield</a>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </div>
+        <div class="sideBlock sideBlockRight"></div>
+
+        <div class="sideBlock sideBlockLeft"></div>
+        <div class="scene">
+            <video class="videos" autoplay loop muted src="vids/cartesian_1x.mp4"></video>
+
+            <div class="description">
+              <a href="/cartesian">Cartesian Photoshop</a>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </div>
+        <div class="sideBlock sideBlockRight"></div>
+
+        <div class="sideBlock sideBlockLeft"></div>
+        <div class="scene">
+            <video class="videos" autoplay loop muted src="vids/selfportrait_1s.mp4"></video>
+
+            <div class="description">
+              <a href="/cartesian/selfportrait">Selfportrait Using Cartesian Photoshop</a>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </div>
+        <div class="sideBlock sideBlockRight"></div>
+
+        <div class="sideBlock sideBlockLeft"></div>
+        <div class="scene">
+            <video class="videos" autoplay loop muted src="vids/penguine_1x.mp4"></video>
+
+            <div class="description">
+              <a href="/penguine">Penguin Game</a>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </div>
         <div class="sideBlock sideBlockRight"></div>
 
       </div>
@@ -277,8 +434,10 @@
 
           let rightSideBlock = event.target.parentElement.nextElementSibling
           let leftSideBlock =  event.target.parentElement.previousElementSibling
-          let rotateAmount = 40;
+          let rotateAmount = 50;
           leftSideBlock.style.transform = `rotateY(${rotateAmount}deg)`
+
+
 
           console.log(leftSideBlock.style,'style')
           rightSideBlock.style.transform = `rotateY(-${rotateAmount}deg)`
@@ -288,13 +447,32 @@
           let pushback = length *
               (Math.sin(rotateAmount * Math.PI / 180) / Math.sin(90 * Math.PI / 180))
           console.log(pushback)
+
+          let push = false;
           event.target.parentElement.style.transform = `translateZ(-${pushback}px)`;
+          push = true;
+
+          if (push == true){
+            setTimeout(()=>{
+              event.target.parentElement.style.marginLeft = '-70px'
+              event.target.parentElement.style.marginRight = '-70px'
+              push = false;
+            },1000)
+          }
+
+
 
         })
 
         each.addEventListener("mouseout", function( event ) {
 
-          event.target.parentElement.style.transform = "translateZ(0px)";
+          event.target.parentElement.style.marginLeft = '0px';
+          event.target.parentElement.style.marginRight = '0px';
+
+          // setTimeout(()=>{
+            event.target.parentElement.style.transform = "translateZ(0px)";
+          // },1000)
+
 
           let leftSideBlock = event.target.parentElement.nextElementSibling
           let rightSideBlock =  event.target.parentElement.previousElementSibling

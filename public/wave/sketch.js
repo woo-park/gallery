@@ -145,8 +145,9 @@ function setup() {
 //https://wooyongpark.com/data
 // http://167.172.228.171:3333/mydata
 // http://localhost:3333/mydata
+// 'http://167.172.228.171:3333/mydata'
 function get_new_data() {   //not using
-    loadTable('http://167.172.228.171:3333/mydata', parse_new_data );
+    loadTable('https://wooyongpark.com/mydata', parse_new_data );
     console.log('initial polling done');
 }
 
@@ -164,8 +165,9 @@ function get_new_data() {   //not using
 // okay trying make it searchable
 
 //https://wooyongpark.com/data
+// 'http://167.172.228.171:3333/mydata'
 function fetchNewData() {
-    loadTable('http://167.172.228.171:3333/mydata', function(res){
+    loadTable('https://wooyongpark.com/mydata', function(res){
       console.log('polling');
       console.log(res);
       console.table(res);

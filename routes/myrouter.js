@@ -390,8 +390,6 @@ router.post('/postdata', function(req, res, next) {
   //     res.redirect('/wave')
   //   }
   // });
-
-
 });
 
 let my_lat_lon = null;

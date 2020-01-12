@@ -351,7 +351,7 @@ router.post('/mydata', function(req, res, next) {
   req.session.areacode = req.body;
   console.log(req.session.areacode, 'areacode req session')
   // res.redirect('/mydata')//original
-  res.redirect('/wave')
+  // res.redirect('/wave')
 
 
     let areacode;
@@ -414,6 +414,7 @@ router.post('/mydata', function(req, res, next) {
         //!important undo this
         // res.render('mydata', {layout: false , areacode: acc})   //!important changed this to mydata from data
         // res.redirect('/mydata');
+        res.redirect('/wave')
       }
     });
 

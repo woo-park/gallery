@@ -407,6 +407,9 @@ router.post('/mydata', function(req, res, next) {
             // console.log(height , period)
             // res.send(height)
           }
+          
+          //trying this here
+          res.redirect('/mydata');
         }
 
         // req.session.acc = acc;

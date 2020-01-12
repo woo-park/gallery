@@ -414,6 +414,7 @@ router.post('/mydata', function(req, res, next) {
         //!important undo this
         // res.render('mydata', {layout: false , areacode: acc})   //!important changed this to mydata from data
         // res.redirect('/mydata');
+        console.log('ok')
         res.redirect('/wave')
       }
     });

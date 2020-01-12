@@ -599,10 +599,11 @@ let temp_option = document.getElementById('temp_option');
 console.log(option1.value,'OPTION VAL')
 console.log(temp_option.value,'OPTION TEMP VAL')    //nice it works
 let locationSubmitBtn = document.getElementById('locationSubmitBtn')
-areaPost.addEventListener('submit', (ev) => {
-  // ev.preventDefault();
-
-})
+// areaPost.addEventListener('submit', (ev) => {
+//   // ev.preventDefault();
+//   console.log('posted')
+//
+// })
 
 
 close_btn.addEventListener('click', (event) => {

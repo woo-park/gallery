@@ -351,7 +351,7 @@ router.post('/mydata', function(req, res, next) {
   req.session.areacode = req.body;
   console.log(req.session.areacode, 'areacode req session')
   // res.redirect('/mydata')//original
-  res.redirect('/wave')
+  // res.redirect('/wave')
 
 
     let areacode;
@@ -407,9 +407,8 @@ router.post('/mydata', function(req, res, next) {
             // console.log(height , period)
             // res.send(height)
           }
-          
-          //trying this here
-          res.redirect('/mydata');
+
+
         }
 
         // req.session.acc = acc;
@@ -419,7 +418,7 @@ router.post('/mydata', function(req, res, next) {
         // res.redirect('/mydata');
       }
     });
-
+    res.redirect('/wave')
 });
 
 router.get('/mydata', function(req, res, next) {

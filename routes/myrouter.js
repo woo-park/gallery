@@ -182,10 +182,10 @@ router.get('/summary-list', function(req, res, next) {
 
 
 // //wow i dont even have to set these up
-// router.get('/wave', function(req, res, next) {
-//   console.log(__dirname,'dirname');
-//   res.sendFile(path.join(__dirname + '/wave/index.html'));
-// });
+router.get('/wave', function(req, res, next) {
+  console.log(__dirname,'dirname');
+  res.sendFile(path.join(__dirname + '/wave/index.html'));
+});
 //
 //
 //

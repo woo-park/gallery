@@ -178,7 +178,7 @@ router.get('/summary-list', function(req, res, next) {
 });
 
 
-const fs = require('fs');
+// const fs = require('fs');
 
 
 // //wow i dont even have to set these up
@@ -201,11 +201,6 @@ const fs = require('fs');
 
 
 
-// app.use(function(req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   next();
-// });
 
 
 //
@@ -275,6 +270,8 @@ const fs = require('fs');
 
 
 //whavter my route /data => post request with number => then retrieve the data from /mydata
+
+
 router.post('/data', function(req, res, next) {
 console.log(req.body,'reqbody');
   req.session.areacode = req.body;
@@ -343,6 +340,58 @@ router.get('/data', function(req, res, next) {
 
   // console.log(retrieved);
   // res.send(contents.height)
+});
+
+
+router.post('/postdata', function(req, res, next) {
+  // res.send('test')
+
+  req.session.areacode = req.body;
+
+  let areacode;
+  if (req.session.areacode) {
+    console.log(req.session.areacode, 'req session')
+    areacode = req.session.areacode;
+  } else {
+    areacode = {areacode: 52200}
+  }
+
+  let num = areacode.areacode
+
+  const retrieved = request(`http://coolwx.com/cgi-bin/findbuoy.cgi?id=${num}`, function(error, response, html){
+    if(error) {
+      console.log('err occured while requesting');
+    }
+    if(!error){
+      const splitData = html.split("<HR>")[1];
+      const splitData2 = splitData.split("</PRE>")[0]
+      const lines = splitData2.split(/\r\n|\n|\r/);
+
+      heights = [];
+      periods = [];
+      acc = 'Height,Period '
+      for (let i = 1; i < lines.length - 1; i ++) {
+        let lat_lon = lines[i].substr(13, 11)
+        my_lat_lon = lat_lon;
+
+        let height = lines[i].substr(71, 4)
+        let period = lines[i].substr(76, 2)
+
+        if (height == '    ' || period == '  '){ }
+        else{
+          acc += height
+          acc += ','
+          acc += period
+          acc += '\n'
+        }
+      }
+
+      console.log('ok')
+      res.redirect('/wave')
+    }
+  });
+
+
 });
 
 let my_lat_lon = null;

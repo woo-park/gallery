@@ -31,8 +31,11 @@ router.get('/', function(req, res) {
     console.log('index page session_id is ', req.session.id); // they all share the same id
   }
 
-  res.render('index');
+  // res.render('index');
+  res.redirect('/portfolio')
 });
+
+
 
 
 router.get('/register', function(req, res) {
@@ -394,9 +397,17 @@ router.post('/postdata', function(req, res, next) {
 
 let my_lat_lon = null;
 router.post('/mydata', function(req, res, next) {
-  console.log(req.body,'reqbody');
-  req.session.areacode = req.body;
-  console.log(req.session.areacode, 'areacode req session')
+
+  if(req.body){
+    console.log(req.body,'reqbody');
+    req.session.areacode = req.body;
+    console.log(req.session.areacode, 'areacode req session')
+  }
+  else{
+    console.warn('reqbody doesnot exist');
+  }
+
+
   // res.redirect('/mydata')//original
   // res.redirect('/wave')
 

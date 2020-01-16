@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 
 <html>
   <head>
@@ -20,7 +20,8 @@
         height: 100vh;
         display: flex;
         align-items: center;
-        background-color:black;
+        margin-top:-50px;
+        background-color:#ebf8e1;
     }
 
     #frame {
@@ -33,7 +34,7 @@
       flex-shrink: 0;
       /* not sure what this does */
       align-items:center;
-      justify-content: space-evenly;
+      /* justify-content: space-evenly; */
       perspective: 20000px;
       /* !important */
       /* make this larger as you add more videos to it */
@@ -65,14 +66,14 @@
       background-color:darkslategrey;
       /* opacity:0.5; */
       transition: all 500ms ease-in-out;
-      box-shadow: inset 0 0 2000px rgba(255, 255, 255, .9);
+      /* box-shadow: inset 0 0 2000px rgba(255, 255, 255, .9); */
       /* box-shadow:5px 5px blue, 10px 10px red, 10px 10px green; */
       filter: blur(1px);
 
       z-index: -1;
       transition: all 500ms ease-in-out;
 
-      linear-gradient(#e66465, #9198e5);
+      /* linear-gradient(#e66465, #9198e5); */
     }
     .sideBlockLeft{
       transform-origin:left;
@@ -83,14 +84,24 @@
       background:linear-gradient(0.25turn, #000000,#ebf8e1);
     }
 
+    video{
+
+    }
     div.description {
+      height:200px;
       position: absolute;
-      bottom:-80px;
+      /* bottom:-80px; */
       left:10px;
     }
 
     .description p{
-      color:white;
+      /* color:white; */
+    }
+
+    .description a{
+      /* color:white; */
+      text-decoration: none;
+      color:darkolivegreen;
     }
 
     #menu{
@@ -99,12 +110,30 @@
       top:0px;
       right:0px;
       z-index: 999;
-      /* background-color: olive; */
+
 
 
       /* box-shadow: inset 0 0 0 200px rgba(255,255,255,0.3);
       filter: blur(10px); */
 
+    }
+    #head{
+      /* background-color:blue; */
+
+      width:200px;
+      height:70px;
+      font-size:2rem;
+      font-weight: bold;
+
+      background-color:white;
+      opacity:0.7;
+
+      margin-bottom:10px;
+
+      padding-left:50px;
+      padding-bottom:20px;
+      margin-left:-70px;
+      text-align: center;
     }
 
     div.backdrop{
@@ -113,9 +142,9 @@
       position: fixed;
       top:0px;
       z-index:998;
-      opacity:0.2;
+      opacity:0.5;
       right:20px;
-      background-color: white;
+      background-color: darkolivegreen;
       filter: 5px;
       mix-blend-mode:exclusion;
       animation: 3s linear 0s forwards slideDown
@@ -154,55 +183,70 @@
     .crossout{
       text-decoration: line-through;
     }
+
+    .tech{
+      background-color: olive;
+      color: ebf8e1;
+      padding-right:5px;
+      padding-left:5px;
+      margin-right:5px;
+    }
+
+
     </style>
   </head>
 
   <body>
+
       <div id="menu">
           <ul class='links'>
-              <li class="crossout"><a href="../380index">380index</a></li>
-              <!-- not done -->
+              <li><div id="head">Woo Park  Portfolio</div></li>
 
-              <li><a href="../wallBall">Wall Ball</a></li>
-              <!-- not done -->
-              <li><a href="../cartesian">Cartesian Photoshop</a></li>
-              <li class ="indent"><a href="../cartesian/selfportrait">Self Portrait</a></li>
-              <li><a href="../penguine">Penguine Game</a></li>
-              <li><a href="../snowfield">VR Snowfield</a></li>
 
-              <li class="crossout"><a href="../facialTracking">AR Facial Tracking</a></li>
-              <!-- not done -->
-
-              <li><a href="../vrFeather">VR Feather Game</a></li>
-              <li><a href="../speechControl">Speech Control</a></li>
-              <li><a href="../citizenScience">Citizen Science Blog</a></li>
               <li><a href="../wave">Wave Generator</a></li>
+              <li><a href="#">Alt Tag Generator</a></li>
+              <li><a href="#">Real Time VR Multiplayer Maze</a></li>
+
+              <li><a href="../snowfield">VR Snowfield</a></li>
+              <li><a href="../vrFeather">VR Feather Game</a></li>
+
               <li><a href="../2d3d">2d Painting to 3d</a></li>
               <li><a href="../flower">Plant Flower</a></li>
-              <li><a href="../processing">Processing Prototypes</a></li>
 
+              <li><a href="../webglThreejs/">WebGL Three.js</a></li>
+              <li><a href="../physicsThreejs/navigation.html">WebGL Physi.js</a></li>
 
-              <li class="crossout"><a href="../ethonography">Ethonography Blog</a></li>
-              <!-- not done -->
-              <li class="crossout"><a href="../coffee">Coffee Beans Blog</a></li>
-              <!-- not done -->
+              <li><a href="/summary">Most Common Words</a></li>
+
+              <li><a href="../cartesian">Cartesian Photoshop</a></li>
+              <li class ="indent"><a href="../cartesian/selfportrait">Self Portrait</a></li>
 
               <li><a href="../hypertext">Hypertext (Interactive Novel)</a></li>
 
-              <li><a href="../webglThreejs">WebGL Three.js</a></li>
-              <li><a href="../physicsThreejs">WebGL Physi.js</a></li>
-              <!-- not done -->
-              <li><a href="../svgIcons">Svg Icons</a></li>
-              <!-- not done -->
+
+              <li><a href="#">Words Extrusion</a></li>
+
               <li><a href="../vanillaJavascript">Vanilla Javascript</a></li>
               <li><a href="../css3Painting">Plane CSS3 Collage</a></li>
               <li><a href="../canvasPixels">Canvas Video Pixels</a></li>
               <li><a href="../css3Animation">Plane CSS3 Animation</a></li>
-              <li class="crossout"><a href="../d3">D3</a></li>
-              <!-- not done -->
 
-              <li><a href="">Alt Tag Generator</a></li>
-              <li><a href="">Real Time VR Multiplayer Maze</a></li>
+              <li><a href="../penguine">Penguine Game</a></li>
+              <li><a href="../processing">Processing Prototypes</a></li>
+
+              <li class="crossout"><a href="../380index">380index</a></li>
+              <li class="crossout"><a href="../wallBall">Wall Ball</a></li>
+              <li class="crossout"><a href="../facialTracking">AR Facial Tracking</a></li>
+              <li class="crossout"><a href="../speechControl">Speech Control</a></li>
+              <li class="crossout"><a href="../citizenScience">Citizen Science Blog</a></li>
+              <li class="crossout"><a href="../ethonography">Ethonography Blog</a></li>
+              <li class="crossout"><a href="../coffee">Coffee Beans Blog</a></li>
+              <li class="crossout"><a href="../d3">D3</a></li>
+              <li><a href="../svgIcons">Svg Icons</a></li>
+
+
+
+
           </ul>
       </div>
       <div class="backdrop">
@@ -212,206 +256,256 @@
       <div id="frame">
         <div class="sideBlock sideBlockLeft"></div>
         <div class="scene">
-            <video class="videos" autoplay loop muted src="vids/altgenerator_1x.mp4">
-            </video>
-            <div class="description">
-              <a href="/">Alt Tag Generator</a>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-        </div>
-        <div class="sideBlock sideBlockRight"></div>
-
-        <div class="sideBlock sideBlockLeft"></div>
-        <div class="scene">
-            <video class="videos" autoplay loop muted src="vids/summary_1x.mp4"></video>
-            <div class="description">
-              <a href="/summary">Most Common Words</a>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-        </div>
-        <div class="sideBlock sideBlockRight"></div>
-
-        <div class="sideBlock sideBlockLeft"></div>
-        <div class="scene">
-            <video class="videos" autoplay loop muted src="vids/cssanimation_1x.mp4"></video>
-
-            <div class="description">
-              <a href="#">Plane CSS3 Animation</a>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-        </div>
-        <div class="sideBlock sideBlockRight"></div>
-
-        <div class="sideBlock sideBlockLeft"></div>
-        <div class="scene">
-            <video class="videos" autoplay loop muted src="vids/canvasanimation_1x.mp4"></video>
-            <div class="description">
-              <a href="/css3Animation">Canvas Video Pixels</a>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-        </div>
-        <div class="sideBlock sideBlockRight"></div>
-
-        <div class="sideBlock sideBlockLeft"></div>
-        <div class="scene">
-            <video class="videos" autoplay loop muted src="vids/csspainting_1x.mp4"></video>
-            <div class="description">
-              <a href="/css3Painting">Plane CSS3 Collage</a>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-        </div>
-        <div class="sideBlock sideBlockRight"></div>
-
-        <div class="sideBlock sideBlockLeft"></div>
-        <div class="scene">
-            <video class="videos" autoplay loop muted src="vids/live_1x.mp4"></video>
-
-            <div class="description">
-              <a href="#">Words Extrusion</a>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-        </div>
-        <div class="sideBlock sideBlockRight"></div>
-
-        <div class="sideBlock sideBlockLeft"></div>
-        <div class="scene">
-            <video class="videos" autoplay loop muted src="vids/vanillajs_1x.mp4"></video>
-
-            <div class="description">
-              <a href="/vanillaJavascript">Vanilla Javascript</a>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-        </div>
-        <div class="sideBlock sideBlockRight"></div>
-
-        <div class="sideBlock sideBlockLeft"></div>
-        <div class="scene">
-            <video class="videos" autoplay loop muted src="vids/webgl_1x.mp4"></video>
-
-            <div class="description">
-              <a href="/webglThreejs">WebGL Three.js</a>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-        </div>
-        <div class="sideBlock sideBlockRight"></div>
-
-        <div class="sideBlock sideBlockLeft"></div>
-        <div class="scene">
-            <video class="videos" autoplay loop muted src="vids/hypertext_1x.mp4"></video>
-
-            <div class="description">
-              <a href="/hypertext">Hypertext</a>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-        </div>
-        <div class="sideBlock sideBlockRight"></div>
-
-        <div class="sideBlock sideBlockLeft"></div>
-        <div class="scene">
-            <video class="videos" autoplay loop muted src="vids/processing_1x.mp4"></video>
-
-            <div class="description">
-              <a href="/processing">Processing.js Prototypes</a>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-        </div>
-        <div class="sideBlock sideBlockRight"></div>
-
-        <div class="sideBlock sideBlockLeft"></div>
-        <div class="scene">
-            <video class="videos" autoplay loop muted src="vids/flower_1x.mp4"></video>
-
-            <div class="description">
-              <a href="/flower">Plant Flower</a>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat null</p>
-            </div>
-        </div>
-        <div class="sideBlock sideBlockRight"></div>
-
-        <div class="sideBlock sideBlockLeft"></div>
-        <div class="scene">
-            <video class="videos" autoplay loop muted src="vids/2d3d_1x.mp4"></video>
-
-            <div class="description">
-              <a href="/2d3d">2D painting to 3D</a>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-        </div>
-        <div class="sideBlock sideBlockRight"></div>
-
-        <div class="sideBlock sideBlockLeft"></div>
-        <div class="scene">
-            <video class="videos" autoplay loop muted src="vids/wavegenerator_1x_540p.mp4"></video>
+            <video class="videos" autoplay controls muted src="vids/wavegenerator_1x_540p.mp4"></video>
 
             <div class="description">
               <a href="/wave">Wave Generator</a>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+              <p><span class="tech">Vanilla Javascript - P5.js - CSS3 - Node.js [Noaa Live-data, Web Scraping]</span>In this project, I was able to mimic the real world’s wave on the web using a real-time dataset. Each wave set has is different from another. Using Perlin-noise, the wave has become truly random but also organic and natural. The user can select around 30 different stations and poll different live-data from a custom server that scrapes data every 15 minutes from Noaa. The 2d lines are generated one at a time from the lefthand side. Due to the lines drawn on a curve, it has the effect of 3d wave.</p>
+
             </div>
         </div>
         <div class="sideBlock sideBlockRight"></div>
 
+        <div id="frame">
+          <div class="sideBlock sideBlockLeft"></div>
+          <div class="scene">
+              <video class="videos" autoplay controls muted src="vids/VRMaze_1x.mp4"></video>
+
+              <div class="description">
+                <a href="#">Real Time VR Multiplayer Maze</a>
+
+                <p><span class="tech">node.js socket.io P5.js Three.js Aframe.js WebGL</span>
+                Renders 3-dimensional maze on the web. The server can hold up to 20+ players due to the size and competence of the server. This project underscores the potential of 3-dimensional space on the web.
+                </p>
+
+              </div>
+          </div>
+          <div class="sideBlock sideBlockRight"></div>
+
         <div class="sideBlock sideBlockLeft"></div>
         <div class="scene">
-            <video class="videos" autoplay loop muted src="vids/citizenscience_1x.mp4"></video>
-
+            <video class="videos" autoplay controls muted src="vids/altgenerator_1x.mp4">
+            </video>
             <div class="description">
-              <a href="/citizenScience">Citizen Science Blog</a>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+              <a href="/">Alt Tag Generator</a>
+              <p>
+                <span class="tech">React.js - MongoDB, Node.js, Metropolitan API, P5.js</span>
+                This prototype first allows the user to search for artworks that they are interested in. After artworks are loaded, the user can create Alt tags(description). The descriptions generated by the audience are then stored in the NoSQL database. Because all the contributed descriptions are stored in the DB, users can look at others’ contributed works in the completed section. This prototype is an ongoing project and will likely be shown to the Metropolitan Museum.</p>
             </div>
         </div>
         <div class="sideBlock sideBlockRight"></div>
 
         <div class="sideBlock sideBlockLeft"></div>
         <div class="scene">
-            <video class="videos" autoplay loop muted src="vids/vrfeather_1x.mp4"></video>
-
-            <div class="description">
-              <a href="/vrFeather">VR Room</a>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-        </div>
-        <div class="sideBlock sideBlockRight"></div>
-
-        <div class="sideBlock sideBlockLeft"></div>
-        <div class="scene">
-            <video class="videos" autoplay loop muted src="vids/snowfield_1x.mp4"></video>
+            <video class="videos" autoplay controls muted src="vids/snowfield_1x.mp4"></video>
 
             <div class="description">
               <a href="/snowfield">VR Snowfield</a>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+              <p><span class="tech">Aframe.js P5.js</span>This project also uses Aframe, so it can be experienced on a mobile device as well. The candy canes are generated in random positions. The user has a sensor that detects whether the object is solid or not, and the candy cane rotates as one bump into one of them.</p>
             </div>
         </div>
         <div class="sideBlock sideBlockRight"></div>
 
         <div class="sideBlock sideBlockLeft"></div>
         <div class="scene">
-            <video class="videos" autoplay loop muted src="vids/cartesian_1x.mp4"></video>
+            <video class="videos" autoplay controls muted src="vids/vrfeather_1x.mp4"></video>
+
+            <div class="description">
+              <a href="/vrFeather">VR Room</a>
+
+              <p><span class="tech">Aframe.js P5.js </span>Aframe is built on Three.js so that they are fairly similar to work with, but Aframe allows the user to experience as a VR world right of the bat. This project can be experienced on a mobile phone seamlessly. In this room, the user can collect feathers by standing on top of a pillow, and shoot feathers as long as the feather is left in one’s inventory.
+              </p>
+            </div>
+        </div>
+        <div class="sideBlock sideBlockRight"></div>
+
+        <div class="sideBlock sideBlockLeft"></div>
+        <div class="scene">
+            <video class="videos" autoplay controls muted src="vids/2d3d_1x.mp4"></video>
+
+            <div class="description">
+              <a href="/2d3d">2D painting to 3D</a>
+
+              <p><span class="tech">Vanilla Javascript - P5.js [Multiple Html Canvas]</span>In this project, I broke the convention of being able to use only one Html canvas on a page. I’ve used 5 instances of Html Canvas and was able to make each canvas talk to another, using a ‘mapping’ normalizing method. The 2-dimensional canvas is then rotated in a unique way to create a 3-dimensional space on the web. The user can collect bubbles using their arrow keys. </p>
+            </div>
+        </div>
+        <div class="sideBlock sideBlockRight"></div>
+
+        <div class="sideBlock sideBlockLeft"></div>
+        <div class="scene">
+            <video class="videos" autoplay controls muted src="vids/flower_1x.mp4"></video>
+
+            <div class="description">
+              <a href="/flower">Plant Flower</a>
+
+              <p><span class="tech">P5.js [Html Canvas]</span>P5 js is one of the best libraries that can make exceptional side effects based on the user’s input. Inside the Html Canvas, the user can drop seeds to watch the flowers grow. With Object-Oriented Programming, the user can plant as many as one wishes, and each flower varies from each other. Many more sequences can be added as well.
+              </p>
+            </div>
+        </div>
+        <div class="sideBlock sideBlockRight"></div>
+
+        <div class="sideBlock sideBlockLeft"></div>
+        <div class="scene">
+            <video class="videos" controls muted src="vids/webgl_1x.mp4"></video>
+
+            <div class="description">
+              <a href="/webglThreejs">WebGL Three.js</a>
+
+              <p><span class="tech">Three.js</span>This is a simple animation that uses Three.js to render 3-dimensional objects on the web. Three.js uses WebGL to render 3D computer graphics in a web browser, which means that the quality of the 3-dimensional space is dictated by the graphics cards of the users’ computers.</p>
+            </div>
+        </div>
+        <div class="sideBlock sideBlockRight"></div>
+
+        <div class="sideBlock sideBlockLeft"></div>
+        <div class="scene">
+            <video class="videos" controls muted src="vids/summary_1x.mp4"></video>
+            <div class="description">
+              <a href="/summary">Most Common Words</a>
+
+              <p>
+                <span class="tech">Node.js [Express-hbs, Passport] - MongoDB </span>
+                This prototype allows the user to register and log-in. The registered id and password are then saved to the database so that the user can access this app if the user decides to come back and use it again. The app shows which word appeared the most once the user submits a text to the form field. It can be a useful tool to figure out which adjectives or nouns has been repeated the most throughout the text.
+              </p>
+            </div>
+        </div>
+        <div class="sideBlock sideBlockRight"></div>
+
+        <div class="sideBlock sideBlockLeft"></div>
+        <div class="scene">
+            <video class="videos" controls muted src="vids/cartesian_1x.mp4"></video>
 
             <div class="description">
               <a href="/cartesian">Cartesian Photoshop</a>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+              <p><span class="tech">P5.js </span>This pattern is created from the Cartesian plane that I created. One can easily plot on the grid, and then export its coordinates by pressing ‘c’ character. Using the coordinates listed out in an array, I’ve brought over to a canvas and painted each shape with a color that changes over time.</p>
+
             </div>
         </div>
         <div class="sideBlock sideBlockRight"></div>
 
         <div class="sideBlock sideBlockLeft"></div>
         <div class="scene">
-            <video class="videos" autoplay loop muted src="vids/selfportrait_1s.mp4"></video>
+            <video class="videos" controls muted src="vids/selfportrait_1s.mp4"></video>
 
             <div class="description">
               <a href="/cartesian/selfportrait">Selfportrait Using Cartesian Photoshop</a>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+              <p><span class="tech">P5.js</span>This also used the Cartesian plane I made. I used to draw it on top of my picture. Any work made on the Cartesian plane can be saved as a JPG file.</p>
+
             </div>
         </div>
         <div class="sideBlock sideBlockRight"></div>
 
         <div class="sideBlock sideBlockLeft"></div>
         <div class="scene">
-            <video class="videos" autoplay loop muted src="vids/penguine_1x.mp4"></video>
+            <video class="videos" controls muted src="vids/hypertext_1x.mp4"></video>
+
+            <div class="description">
+              <a href="/hypertext">Hypertext</a>
+
+              <p><span class="tech">Vanilla Javascript</span>This project is solely done in plain javascript. The story is an interactive piece where the user needs to click the ‘lights-out’ button. As the user clicks and continues the journey, the user will face different options to click into, and the story varies every time the user plays. The user’s provided name is stored inside a session.</p>
+            </div>
+        </div>
+        <div class="sideBlock sideBlockRight"></div>
+
+        <div class="sideBlock sideBlockLeft"></div>
+        <div class="scene">
+            <video class="videos" controls muted src="vids/live_1x.mp4"></video>
+
+            <div class="description">
+              <a href="#">Words Extrusion</a>
+
+              <p><span class="tech">CSS3 - Vanilla Javascript</span>In this project, the words rotate based on the cursor’s position. The rotation makes it seem that the page itself is a 3-dimensional space rather than a flat 2-dimensional space. Words are no longer static images, but rather a fluid / responsive objects.</p>
+            </div>
+        </div>
+        <div class="sideBlock sideBlockRight"></div>
+
+        <div class="sideBlock sideBlockLeft"></div>
+        <div class="scene">
+            <video class="videos" controls muted src="vids/cssanimation_1x.mp4"></video>
+
+            <div class="description">
+              <a href="#">Plane CSS3 Animation</a>
+
+              <p>
+                <span class="tech">CSS3</span> In this project, I explored what CSS3 is capable of. This wall is created solely by colored "div" tags. Because it is only dependent on CSS3, it works flawlessly on a mobile device as well.</p>
+            </div>
+        </div>
+        <div class="sideBlock sideBlockRight"></div>
+
+        <div class="sideBlock sideBlockLeft"></div>
+        <div class="scene">
+            <video class="videos"   muted src="vids/canvasanimation_1x.mp4"></video>
+            <div class="description">
+              <a href="/css3Animation">Canvas Video Pixels</a>
+
+              <p>
+                <span class="tech">Vanilla Javascript - HTML Canvas [pixel] - CSS3 [perspective]</span>
+                In this project, I used the canvas to grab the pixels of videos and then manipulated each pixel to create mosaic-like videos. Like this portfolio, the project plays around with the CSS3 perspective, creating a cinema-like environment on the web.</p>
+            </div>
+        </div>
+        <div class="sideBlock sideBlockRight"></div>
+
+        <div class="sideBlock sideBlockLeft"></div>
+        <div class="scene">
+            <video class="videos" controls muted src="vids/csspainting_1x.mp4"></video>
+            <div class="description">
+              <a href="/css3Painting">Plane CSS3 Collage</a>
+              <span class="tech">HTML - CSS [Blendmode]</span>
+              <p>Various images and videos are layered and collaged together.</p>
+            </div>
+        </div>
+        <div class="sideBlock sideBlockRight"></div>
+
+        <div class="sideBlock sideBlockLeft"></div>
+        <div class="scene">
+            <video class="videos" controls muted src="vids/vanillajs_1x.mp4"></video>
+
+            <div class="description">
+              <a href="/vanillaJavascript">Vanilla Javascript</a>
+
+              <p><span>CSS3 - Vanilla Javascript</span>Using vanilla Javascript, I created a layer of obstacle in front of the website. Thus, the user has to uncover the outer layer by moving the mouse. The obstacles fly towards you when the mouse hovers on them. Once the outer layer is removed, the user can see the images and texts positioned behind the obstacles.
+              </p>
+              <p>Use Firefox for its effective performance</p>
+            </div>
+        </div>
+        <div class="sideBlock sideBlockRight"></div>
+
+        <div class="sideBlock sideBlockLeft"></div>
+        <div class="scene">
+            <video class="videos" controls muted src="vids/processing_1x.mp4"></video>
+
+            <div class="description">
+              <a href="/processing">Processing.js Prototypes</a>
+
+              <p><span class="tech">Processing.js [WebGL, Nasa Api]</span>Processing is a great tool to carry out prototypes. Because it is almost identical to P5.js and Arduino, the prototypes made using Processing can be transferred to the Web and hooked with Arduino boards easily.</p>
+            </div>
+        </div>
+        <div class="sideBlock sideBlockRight"></div>
+
+        <div class="sideBlock sideBlockLeft"></div>
+        <div class="scene">
+            <video class="videos" controls muted src="vids/citizenscience_1x.mp4"></video>
+
+            <div class="description">
+              <a href="/citizenScience">Citizen Science Blog</a>
+              <p>
+
+              </p>
+            </div>
+        </div>
+        <div class="sideBlock sideBlockRight"></div>
+
+        <div class="sideBlock sideBlockLeft"></div>
+        <div class="scene">
+            <video class="videos" controls muted src="vids/penguine_1x.mp4"></video>
 
             <div class="description">
               <a href="/penguine">Penguin Game</a>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+              <p><span class="tech">P5.js</span>It is a simple game that allows the user to control a penguin character with arrow keys. The objective is to collect as many prizes as one can.</p>
             </div>
         </div>
         <div class="sideBlock sideBlockRight"></div>
@@ -454,8 +548,8 @@
 
           if (push == true){
             setTimeout(()=>{
-              event.target.parentElement.style.marginLeft = '-70px'
-              event.target.parentElement.style.marginRight = '-70px'
+              event.target.parentElement.style.marginLeft = '-72px'
+              event.target.parentElement.style.marginRight = '-72px'
               push = false;
             },1000)
           }

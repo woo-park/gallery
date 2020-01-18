@@ -1,0 +1,184 @@
+
+    *{
+              box-sizing:content-box;
+              margin:0;
+              padding:0;
+              font-family: 'Cardo', serif;
+    }
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        margin-top:-50px;
+        background-color:#ebf8e1;
+    }
+
+    #frame {
+      height: 600px;
+      width: auto;
+
+      margin: auto;
+      /* border:1px dashed red; */
+      display: flex;
+      flex-shrink: 0;
+      /* not sure what this does */
+      align-items:center;
+      /* justify-content: space-evenly; */
+      perspective: 20000px;
+      /* !important */
+      /* make this larger as you add more videos to it */
+    }
+
+    .scene {
+      height:600px;
+      width:auto;
+
+
+      /* border:0.4px solid white; */
+      /* box-sizing: content-box; */
+      transition: all 500ms ease-in-out;
+      position: relative;
+    }
+
+    .videos{
+      width:auto;
+      /* auto because video is proportioned by the width */
+      height:100%;
+    }
+
+    div{
+      /* overflow:hidden; */
+    }
+    .sideBlock{
+      width:200px;
+      /* need to change let length as well */
+      height:100%;
+      background-color:darkslategrey;
+      /* opacity:0.5; */
+      transition: all 500ms ease-in-out;
+      /* box-shadow: inset 0 0 2000px rgba(255, 255, 255, .9); */
+      /* box-shadow:5px 5px blue, 10px 10px red, 10px 10px green; */
+      filter: blur(1px);
+
+      z-index: -1;
+      transition: all 500ms ease-in-out;
+
+      /* linear-gradient(#e66465, #9198e5); */
+    }
+    .sideBlockLeft{
+      transform-origin:left;
+      background:linear-gradient(0.25turn, #ebf8e1,#000000 );
+    }
+    .sideBlockRight{
+      transform-origin:right;
+      background:linear-gradient(0.25turn, #000000,#ebf8e1);
+    }
+
+    video{
+
+    }
+    div.description {
+      height:200px;
+      position: absolute;
+      /* bottom:-80px; */
+      left:10px;
+    }
+
+    .description p{
+      /* color:white; */
+    }
+
+    .description a{
+      /* color:white; */
+      text-decoration: none;
+      color:darkolivegreen;
+    }
+
+    #menu{
+
+      position: fixed;
+      top:0px;
+      right:0px;
+      z-index: 999;
+
+
+
+      /* box-shadow: inset 0 0 0 200px rgba(255,255,255,0.3);
+      filter: blur(10px); */
+
+    }
+    #head{
+      /* background-color:blue; */
+
+      width:200px;
+      height:70px;
+      font-size:2rem;
+      font-weight: bold;
+
+      background-color:white;
+      opacity:0.7;
+
+      margin-bottom:10px;
+
+      padding-left:50px;
+      padding-bottom:20px;
+      margin-left:-70px;
+      text-align: center;
+    }
+
+    div.backdrop{
+      width:250px;
+      height:100vh;
+      position: fixed;
+      top:0px;
+      z-index:998;
+      opacity:0.5;
+      right:20px;
+      background-color: darkolivegreen;
+      filter: 5px;
+      mix-blend-mode:exclusion;
+      animation: 3s linear 0s forwards slideDown
+    }
+
+    ul{
+      height:100vh;
+      opacity: 1;
+      overflow-y: scroll;
+    }
+
+    .links li a {
+        text-decoration: none;
+        color:azure
+    }
+    .links li a:hover{
+        color: rosybrown;
+    }
+    .links{
+        list-style: none;
+    }
+    .links li{
+        padding:8px;
+        animation: 3s linear 0s forwards slideDown
+    }
+    @keyframes slideDown {
+        0% { margin-top: -200%}
+        50% { margin-top: -100%; }
+        100% { margin-top: 0%; }
+    }
+    .indent{
+        margin-left: 100px;
+    }
+
+
+    .crossout{
+      text-decoration: line-through;
+    }
+
+    .tech{
+      background-color: olive;
+      color: ebf8e1;
+      padding-right:5px;
+      padding-left:5px;
+      margin-right:5px;
+    }

@@ -31,8 +31,8 @@ router.get('/', function(req, res) {
     console.log('index page session_id is ', req.session.id); // they all share the same id
   }
 
-  // res.render('index');
-  res.redirect('/portfolio')
+  res.render('index');
+  // res.redirect('/portfolio')
 });
 
 

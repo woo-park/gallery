@@ -3,197 +3,10 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Ten More Days - Avicii</title>
-    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <title>Woo Park</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Cardo&display=swap" rel="stylesheet">
-    <style media="screen">
-
-    *{
-              box-sizing:content-box;
-              margin:0;
-              padding:0;
-              font-family: 'Cardo', serif;
-    }
-    body {
-        margin: 0;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        margin-top:-50px;
-        background-color:#ebf8e1;
-    }
-
-    #frame {
-      height: 600px;
-      width: auto;
-
-      margin: auto;
-      /* border:1px dashed red; */
-      display: flex;
-      flex-shrink: 0;
-      /* not sure what this does */
-      align-items:center;
-      /* justify-content: space-evenly; */
-      perspective: 20000px;
-      /* !important */
-      /* make this larger as you add more videos to it */
-    }
-
-    .scene {
-      height:600px;
-      width:auto;
-
-      /* border:0.4px solid white; */
-      /* box-sizing: content-box; */
-      transition: all 500ms ease-in-out;
-      position: relative;
-    }
-
-    .videos{
-      width:auto;
-      /* auto because video is proportioned by the width */
-      height:100%;
-    }
-
-    div{
-      /* overflow:hidden; */
-    }
-    .sideBlock{
-      width:200px;
-      /* need to change let length as well */
-      height:100%;
-      background-color:darkslategrey;
-      /* opacity:0.5; */
-      transition: all 500ms ease-in-out;
-      /* box-shadow: inset 0 0 2000px rgba(255, 255, 255, .9); */
-      /* box-shadow:5px 5px blue, 10px 10px red, 10px 10px green; */
-      filter: blur(1px);
-
-      z-index: -1;
-      transition: all 500ms ease-in-out;
-
-      /* linear-gradient(#e66465, #9198e5); */
-    }
-    .sideBlockLeft{
-      transform-origin:left;
-      background:linear-gradient(0.25turn, #ebf8e1,#000000 );
-    }
-    .sideBlockRight{
-      transform-origin:right;
-      background:linear-gradient(0.25turn, #000000,#ebf8e1);
-    }
-
-    video{
-
-    }
-    div.description {
-      height:200px;
-      position: absolute;
-      /* bottom:-80px; */
-      left:10px;
-    }
-
-    .description p{
-      /* color:white; */
-    }
-
-    .description a{
-      /* color:white; */
-      text-decoration: none;
-      color:darkolivegreen;
-    }
-
-    #menu{
-
-      position: fixed;
-      top:0px;
-      right:0px;
-      z-index: 999;
-
-
-
-      /* box-shadow: inset 0 0 0 200px rgba(255,255,255,0.3);
-      filter: blur(10px); */
-
-    }
-    #head{
-      /* background-color:blue; */
-
-      width:200px;
-      height:70px;
-      font-size:2rem;
-      font-weight: bold;
-
-      background-color:white;
-      opacity:0.7;
-
-      margin-bottom:10px;
-
-      padding-left:50px;
-      padding-bottom:20px;
-      margin-left:-70px;
-      text-align: center;
-    }
-
-    div.backdrop{
-      width:250px;
-      height:100vh;
-      position: fixed;
-      top:0px;
-      z-index:998;
-      opacity:0.5;
-      right:20px;
-      background-color: darkolivegreen;
-      filter: 5px;
-      mix-blend-mode:exclusion;
-      animation: 3s linear 0s forwards slideDown
-    }
-
-    ul{
-      height:100vh;
-      opacity: 1;
-      overflow-y: scroll;
-    }
-
-    .links li a {
-        text-decoration: none;
-        color:azure
-    }
-    .links li a:hover{
-        color: rosybrown;
-    }
-    .links{
-        list-style: none;
-    }
-    .links li{
-        padding:8px;
-        animation: 3s linear 0s forwards slideDown
-    }
-    @keyframes slideDown {
-        0% { margin-top: -200%}
-        50% { margin-top: -100%; }
-        100% { margin-top: 0%; }
-    }
-    .indent{
-        margin-left: 100px;
-    }
-
-
-    .crossout{
-      text-decoration: line-through;
-    }
-
-    .tech{
-      background-color: olive;
-      color: ebf8e1;
-      padding-right:5px;
-      padding-left:5px;
-      margin-right:5px;
-    }
-
-
-    </style>
+    <style media="screen">  </style>
   </head>
 
   <body>
@@ -217,7 +30,7 @@
               <li><a href="../physicsThreejs/navigation.html">WebGL Physi.js</a></li>
 
               <li><a href="/summary">Most Common Words</a></li>
-              
+
               <li ><a href="../facialTracking">AR Facial Tracking</a></li>
 
               <li><a href="../cartesian">Cartesian Photoshop</a></li>
@@ -258,7 +71,7 @@
       <div id="frame">
         <div class="sideBlock sideBlockLeft"></div>
         <div class="scene">
-            <video class="videos" autoplay controls muted src="vids/wavegenerator_1x_540p.mp4"></video>
+            <video class="videos"   controls muted src="vids/wavegenerator_0x_540p.mp4"></video>
 
             <div class="description">
               <a href="/wave">Wave Generator</a>
@@ -272,7 +85,7 @@
         <div id="frame">
           <div class="sideBlock sideBlockLeft"></div>
           <div class="scene">
-              <video class="videos" autoplay controls muted src="vids/VRMaze_1x.mp4"></video>
+              <video class="videos"   controls muted src="vids/VRMaze_0x.mp4"></video>
 
               <div class="description">
                 <a href="#">Real Time VR Multiplayer Maze</a>
@@ -287,7 +100,7 @@
 
         <div class="sideBlock sideBlockLeft"></div>
         <div class="scene">
-            <video class="videos" autoplay controls muted src="vids/altgenerator_1x.mp4">
+            <video class="videos"   controls muted src="vids/altgenerator_0x.mp4">
             </video>
             <div class="description">
               <a href="/">Alt Tag Generator</a>
@@ -300,7 +113,7 @@
 
         <div class="sideBlock sideBlockLeft"></div>
         <div class="scene">
-            <video class="videos" autoplay controls muted src="vids/snowfield_1x.mp4"></video>
+            <video class="videos"   controls muted src="vids/snowfield_0x.mp4"></video>
 
             <div class="description">
               <a href="/snowfield">VR Snowfield</a>
@@ -312,7 +125,7 @@
 
         <div class="sideBlock sideBlockLeft"></div>
         <div class="scene">
-            <video class="videos" autoplay controls muted src="vids/vrfeather_1x.mp4"></video>
+            <video class="videos"   controls muted src="vids/vrfeather_0x.mp4"></video>
 
             <div class="description">
               <a href="/vrFeather">VR Room</a>
@@ -325,7 +138,7 @@
 
         <div class="sideBlock sideBlockLeft"></div>
         <div class="scene">
-            <video class="videos" autoplay controls muted src="vids/2d3d_1x.mp4"></video>
+            <video class="videos"   controls muted src="vids/2d3d_0x.mp4"></video>
 
             <div class="description">
               <a href="/2d3d">2D painting to 3D</a>
@@ -337,7 +150,7 @@
 
         <div class="sideBlock sideBlockLeft"></div>
         <div class="scene">
-            <video class="videos" autoplay controls muted src="vids/flower_1x.mp4"></video>
+            <video class="videos"   controls muted src="vids/flower_0x.mp4"></video>
 
             <div class="description">
               <a href="/flower">Plant Flower</a>
@@ -350,7 +163,7 @@
 
         <div class="sideBlock sideBlockLeft"></div>
         <div class="scene">
-            <video class="videos" controls muted src="vids/webgl_1x.mp4"></video>
+            <video class="videos" controls muted src="vids/webgl_0x.mp4"></video>
 
             <div class="description">
               <a href="/webglThreejs">WebGL Three.js</a>
@@ -362,7 +175,7 @@
 
         <div class="sideBlock sideBlockLeft"></div>
         <div class="scene">
-            <video class="videos" controls muted src="vids/summary_1x.mp4"></video>
+            <video class="videos" controls muted src="vids/summary_0x.mp4"></video>
             <div class="description">
               <a href="/summary">Most Common Words</a>
 
@@ -376,7 +189,7 @@
 
         <div class="sideBlock sideBlockLeft"></div>
         <div class="scene">
-            <video class="videos" controls muted src="vids/cartesian_1x.mp4"></video>
+            <video class="videos" controls muted src="vids/cartesian_0x.mp4"></video>
 
             <div class="description">
               <a href="/cartesian">Cartesian Photoshop</a>
@@ -389,7 +202,7 @@
 
         <div class="sideBlock sideBlockLeft"></div>
         <div class="scene">
-            <video class="videos" controls muted src="vids/selfportrait_1s.mp4"></video>
+            <video class="videos" controls muted src="vids/selfportrait_0x.mp4"></video>
 
             <div class="description">
               <a href="/cartesian/selfportrait">Selfportrait Using Cartesian Photoshop</a>
@@ -402,7 +215,7 @@
 
         <div class="sideBlock sideBlockLeft"></div>
         <div class="scene">
-            <video class="videos" controls muted src="vids/hypertext_1x.mp4"></video>
+            <video class="videos" controls muted src="vids/hypertext_0x.mp4"></video>
 
             <div class="description">
               <a href="/hypertext">Hypertext</a>
@@ -414,7 +227,7 @@
 
         <div class="sideBlock sideBlockLeft"></div>
         <div class="scene">
-            <video class="videos" controls muted src="vids/live_1x.mp4"></video>
+            <video class="videos" controls muted src="vids/live_0x.mp4"></video>
 
             <div class="description">
               <a href="#">Words Extrusion</a>
@@ -426,7 +239,7 @@
 
         <div class="sideBlock sideBlockLeft"></div>
         <div class="scene">
-            <video class="videos" controls muted src="vids/cssanimation_1x.mp4"></video>
+            <video class="videos" controls muted src="vids/cssanimation_0x.mp4"></video>
 
             <div class="description">
               <a href="#">Plane CSS3 Animation</a>
@@ -439,7 +252,7 @@
 
         <div class="sideBlock sideBlockLeft"></div>
         <div class="scene">
-            <video class="videos"   muted src="vids/canvasanimation_1x.mp4"></video>
+            <video class="videos"   muted src="vids/canvasanimation_0x.mp4"></video>
             <div class="description">
               <a href="/css3Animation">Canvas Video Pixels</a>
 
@@ -452,7 +265,7 @@
 
         <div class="sideBlock sideBlockLeft"></div>
         <div class="scene">
-            <video class="videos" controls muted src="vids/csspainting_1x.mp4"></video>
+            <video class="videos" controls muted src="vids/csspainting_0x.mp4"></video>
             <div class="description">
               <a href="/css3Painting">Plane CSS3 Collage</a>
               <span class="tech">HTML - CSS [Blendmode]</span>
@@ -463,7 +276,7 @@
 
         <div class="sideBlock sideBlockLeft"></div>
         <div class="scene">
-            <video class="videos" controls muted src="vids/vanillajs_1x.mp4"></video>
+            <video class="videos" controls muted src="vids/vanillajs_0x.mp4"></video>
 
             <div class="description">
               <a href="/vanillaJavascript">Vanilla Javascript</a>
@@ -477,7 +290,7 @@
 
         <div class="sideBlock sideBlockLeft"></div>
         <div class="scene">
-            <video class="videos" controls muted src="vids/processing_1x.mp4"></video>
+            <video class="videos" controls muted src="vids/processing_0x.mp4"></video>
 
             <div class="description">
               <a href="/processing">Processing.js Prototypes</a>
@@ -489,7 +302,7 @@
 
         <div class="sideBlock sideBlockLeft"></div>
         <div class="scene">
-            <video class="videos" controls muted src="vids/citizenscience_1x.mp4"></video>
+            <video class="videos" controls muted src="vids/citizenscience_0x.mp4"></video>
 
             <div class="description">
               <a href="/citizenScience">Citizen Science Blog</a>
@@ -502,7 +315,7 @@
 
         <div class="sideBlock sideBlockLeft"></div>
         <div class="scene">
-            <video class="videos" controls muted src="vids/penguine_1x.mp4"></video>
+            <video class="videos" controls muted src="vids/penguine_0x.mp4"></video>
 
             <div class="description">
               <a href="/penguine">Penguin Game</a>
@@ -514,74 +327,6 @@
 
       </div>
 
-
-
-    <script type="text/javascript">
-      let sideBlock = document.querySelectorAll('.sideBlock');
-      let videos = document.querySelectorAll('.videos');
-      let scene = document.querySelectorAll('.scene');
-
-      videos.forEach((each) => {
-        each.addEventListener("mouseenter", function( event ) {
-
-
-          console.log(event.target.parentElement.nextElementSibling)//but need to check if it exists
-          console.log(event.target.parentElement.previousElementSibling)
-
-          let rightSideBlock = event.target.parentElement.nextElementSibling
-          let leftSideBlock =  event.target.parentElement.previousElementSibling
-          let rotateAmount = 50;
-          leftSideBlock.style.transform = `rotateY(${rotateAmount}deg)`
-
-
-
-          console.log(leftSideBlock.style,'style')
-          rightSideBlock.style.transform = `rotateY(-${rotateAmount}deg)`
-
-
-          let length = 200;
-          let pushback = length *
-              (Math.sin(rotateAmount * Math.PI / 180) / Math.sin(90 * Math.PI / 180))
-          console.log(pushback)
-
-          let push = false;
-          event.target.parentElement.style.transform = `translateZ(-${pushback}px)`;
-          push = true;
-
-          if (push == true){
-            setTimeout(()=>{
-              event.target.parentElement.style.marginLeft = '-72px'
-              event.target.parentElement.style.marginRight = '-72px'
-              push = false;
-            },1000)
-          }
-
-
-
-        })
-
-        each.addEventListener("mouseout", function( event ) {
-
-          event.target.parentElement.style.marginLeft = '0px';
-          event.target.parentElement.style.marginRight = '0px';
-
-          // setTimeout(()=>{
-            event.target.parentElement.style.transform = "translateZ(0px)";
-          // },1000)
-
-
-          let leftSideBlock = event.target.parentElement.nextElementSibling
-          let rightSideBlock =  event.target.parentElement.previousElementSibling
-
-          leftSideBlock.style.transform = "rotateY(0deg)  translateZ(0px)"
-          rightSideBlock.style.transform = "rotateY(0deg)  translateZ(0px)"
-
-        })
-      })
-
-
-    </script>
-
-    <!-- <script src="js/script.js"></script> -->
+    <script src="js/script.js"></script>
   </body>
 </html>

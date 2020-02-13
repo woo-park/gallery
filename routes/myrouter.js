@@ -9,8 +9,8 @@ const decode = require('./../decode')
 const request = require('request');
 
 Account = mongoose.model('Account');// bringing our model
-
-
+const app = express();
+const path = require('path');
 // const user1 = new Account({
 //   username: 'osaretin',
 //   password: 'makai'
@@ -62,7 +62,11 @@ router.post('/register', function(req, res, next) {
 });
 
 
-
+// router.get('/port', function(req, res) {
+//   res.sendFile(path.join(__dirname, '/port/build/final/'))
+//   // res.render('port')
+//
+// })
 
 router.get('/login', function(req, res, next) {
 

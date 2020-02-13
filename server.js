@@ -63,8 +63,6 @@ app.use(function(req, res, next) {
 
 
 
-
-
 // const publicPath = path.resolve(__dirname, "views");
 // app.use(express.static(publicPath));
 
@@ -74,9 +72,20 @@ app.set('view engine', 'hbs');
 app.use(logger('dev'));
 
 app.use(express.static(path.join(__dirname, 'public'))); // for css
-
+// app.use(express.static(path.join(__dirname, '/public/port/build/')));
 app.use('/', myRouter);
 
+
+app.get('/portal', (req, res) => {
+    // app.use(express.static(path.join(__dirname, '/public/port/build/')));
+    // res.send('hi')
+    res.sendFile(path.join(__dirname, '/public/port/build/final/'))
+    //nah,,,,
+});
+
+app.get('/react', function(req, res) {
+    res.sendFile(path.join(__dirname + '/public/port/build/'));
+});
 
 
 
